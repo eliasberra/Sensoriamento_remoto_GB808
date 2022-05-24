@@ -117,7 +117,8 @@ Map.addLayer(srtm, {min: 0, max: 2000});
 11. Agora você poderá ver a variação na faixa de elevação com valores baixos em preto e pontos mais altos em branco. As camadas adicionadas ao mapa terão nomes padrão como "Layer 1", "Layer 2", etc. Para melhorar a legibilidade, podemos dar a cada Layer um nome mais significativo, adicionando um título com a sintaxe no código a seguir. Não se esqueça de clicar em _run_.
 
 ```JavaScript
-Map.addLayer(srtm, {min: 0, max: 300}, 'Elevação acima do nível do mar');```
+Map.addLayer(srtm, {min: 0, max: 300}, 'Elevação acima do nível do mar');
+```
 ![Fig. 12. Renomeando o título](https://user-images.githubusercontent.com/41900626/170122633-90a47204-6aec-4f7c-a23f-b451200d1e4f.png)
 
 
