@@ -1,6 +1,6 @@
 
 # Sensoriamento Remoto
-Lab 1 - Começando com Google Earth Engine
+Lab 1 - Começando com Google Earth Engine (GEE)
 --------------
 
 ### Agradecimentos
@@ -24,14 +24,14 @@ O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o
 
 ------------------------------------------------------------------------
 
-### Objective
+### Objetivo
 ---------
+O objetivo deste laboratório é fornecer uma introdução ao ambiente de processamento do GEE. Ao final deste exercício, você será capaz de pesquisar, localizar e visualizar uma ampla variedade de conjuntos de dados de sensoriamento remoto. Começaremos com imagens de banda única - dados de elevação da missão SRTM.
 
-The objective of this lab is to give you an introduction to the Google Earth Engine processing environment. By the end of this exercise you will be able to search, find and visualise a broad range of remotely sensed datasets. We will start with single-band imagery - elevation data from the SRTM mission.
 
 ## 1. The Earth Engine code editor
 
-![Figure 1. The Google Earth Engine environment](gee_editor.png)
+![Figure 1. The Google Earth Engine environment](https://ardalis.com/add-images-easily-to-github/)
 
 
 1. Editor Panel
