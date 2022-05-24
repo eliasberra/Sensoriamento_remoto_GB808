@@ -6,7 +6,7 @@ Lab 1 - Começando com Google Earth Engine (GEE)
 ### Agradecimentos
 - Google Earth Engine Team
 - Earth Engine Beginning Curriculum
-- Prof. Shaun Levick do [GEARS](https://www.gears-lab.com)  Geospatial Ecology and Remote Sensing lab - 
+- Prof. Shaun Levick do laboraório [GEARS](https://www.gears-lab.com)  (Geospatial Ecology and Remote Sensing) 
 
 ------
 
