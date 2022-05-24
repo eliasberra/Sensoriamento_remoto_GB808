@@ -31,7 +31,7 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 
 ## 1. O editor de código do GEE
 
-![Figure 1. O ambiente do GEE](https://github.com/geospatialeco/GEARS/blob/master/gee_editor.png)
+![Fig. 1. O ambiente do GEE](https://github.com/geospatialeco/GEARS/blob/master/gee_editor.png)
 
 1. Painel do Editor (_Code editor_)
 	- O Painel do Editor é onde você escreve e edita seu código Javascript.
@@ -59,18 +59,23 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 
 ## 2. Primeiros passos com imagens
 
-1. Navegue até Darwin e amplie usando a roda do mouse.
+1. Navegue até Paranaguá, PR, e amplie usando a roda (_scroll_) do mouse.
+![Fig. 2. Buscando Paranaguá na barra de buscas](https://user-images.githubusercontent.com/41900626/170104019-299b4d6f-7f92-45c7-8c9e-061c298de02e.png)
+![Fig. 3. Zoom em Paranaguá](https://user-images.githubusercontent.com/41900626/170104512-6f226fa6-e6cd-4a4a-87ef-8c86b9f532b6.png)
 
-![Figure 2. Zoom to Darwin](navdarwin.png)
+2. Limpe a área de trabalho do script selecionando "_Clear script_" no menu do botão _Reset_.
+![Fig. 4. Clear script](https://user-images.githubusercontent.com/41900626/170105037-c3ab0b65-e636-435a-9bf8-77e70edc7a59.png)
 
 
-2. Clear the script workspace by selecting "Clear script" from the Reset button dropdown menu.
+3. Procure por “elevation” e clique em 'NASA SRTM Digital Elevation 30m' para apresentar a descrição do dado.
+![Fig. 5. Procure por dado de elevação](https://user-images.githubusercontent.com/41900626/170105480-91a0e7c6-da85-43d1-8782-1722c973180e.png)
 
-![Figure 3. Clear script](clearscript.png)
 
-3. Search for “elevation” and click on the SRTM Digital Elevation Data 30m result to show the dataset description.
 
-![Figure 4. Search for elevation data](elevsearch.png)
+
+
+
+
 
 4. View the information on the dataset, and then click on Import, which moves the variable to the Imports section at the top of your script.
 
