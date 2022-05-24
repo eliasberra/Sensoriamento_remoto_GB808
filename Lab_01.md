@@ -59,8 +59,9 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 
 ## 2. Primeiros passos com imagens
 
-1. Navegue até Paranaguá, PR, e amplie usando a roda (_scroll_) do mouse.
+1. Selecione Paranaguá, PR.
 ![Fig. 2. Buscando Paranaguá na barra de buscas](https://user-images.githubusercontent.com/41900626/170104019-299b4d6f-7f92-45c7-8c9e-061c298de02e.png)
+ Navegue até Paranaguá, e amplie/reduza o zoom usando a roda (_scroll_) do mouse.
 ![Fig. 3. Zoom em Paranaguá](https://user-images.githubusercontent.com/41900626/170104512-6f226fa6-e6cd-4a4a-87ef-8c86b9f532b6.png)
 
 
