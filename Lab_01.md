@@ -20,7 +20,7 @@ Uma vez registrado, você pode acessar o ambiente do Earth Engine aqui: https://
 
 O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o básico desta linguagem durante este curso. Se você quiser mais detalhes, pode ler a introdução fornecida aqui:
 
-[JavaScript background](https://developers.google.com/earth-engine/tutorial\_js\_01)
+[JavaScript background](https://developers.google.com/earth-engine/tutorials/tutorials)
 
 ------------------------------------------------------------------------
 
