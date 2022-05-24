@@ -8,6 +8,10 @@ Os alunos aprenderão sobre as interações da luz com diferentes característic
 Esse material foi inspirado no curso preparado pelo Prof. Shaun R Levick, cujo material original está disponível no [GEARS](https://www.geospatialecology.com/) e espelhado no [Github](https://github.com/geospatialeco/GEARS).
 
 
+
+![Screenshot 2022-05-24 110728](https://user-images.githubusercontent.com/41900626/170055879-88aa1564-0d85-49ec-a0c0-79fdeb9dc931.png)
+
+
 Syntax highlighted code block
 
 # Header 1
