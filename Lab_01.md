@@ -142,7 +142,8 @@ Map.addLayer(srtm, {min: 0, max: 2000}, 'Elevação acima do nível do mar');
 
 
 13. O próximo passo é salvar seu script clicando em "_Save_" > "_Save as_". Ele será salvo em seu repositório privado e estará acessível na próxima vez que você fizer login no Earth Engine.
-![Fig. 14. Salvando script](https://user-images.githubusercontent.com/41900626/170123987-def5648f-f2e9-42eb-842a-5d4804973e98.png)
+![Fig. 14. Salvando script](https://user-images.githubusercontent.com/41900626/170129763-b04462aa-d41c-4cda-9a41-8699c6d4bc3a.png)
+
 
 
 
