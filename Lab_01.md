@@ -63,120 +63,114 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 ![Fig. 2. Buscando Paranaguá na barra de buscas](https://user-images.githubusercontent.com/41900626/170104019-299b4d6f-7f92-45c7-8c9e-061c298de02e.png)
 ![Fig. 3. Zoom em Paranaguá](https://user-images.githubusercontent.com/41900626/170104512-6f226fa6-e6cd-4a4a-87ef-8c86b9f532b6.png)
 
+
 2. Limpe a área de trabalho do script selecionando "_Clear script_" no menu do botão _Reset_.
 ![Fig. 4. Clear script](https://user-images.githubusercontent.com/41900626/170105037-c3ab0b65-e636-435a-9bf8-77e70edc7a59.png)
 
 
-3. Procure por “elevation” e clique em 'NASA SRTM Digital Elevation 30m' para apresentar a descrição do dado.
-![Fig. 5. Procure por dado de elevação](https://user-images.githubusercontent.com/41900626/170105480-91a0e7c6-da85-43d1-8782-1722c973180e.png)
+3. Procure por 'elevation' e clique em 'SRTM Digital Elevation Data Version 4' para apresentar a descrição do dado.
+![Fig. 5. Procure por dado de elevação](https://user-images.githubusercontent.com/41900626/170119458-246c6372-4a70-43f1-a750-d30b33b02633.png)
 
 
 
+4. Visualize as informações sobre o conjunto de dados e clique em _Import_, que move a variável para a seção _Imports_ na parte superior do seu script.
+![Fig. 6. Importando o dado de elevação](https://user-images.githubusercontent.com/41900626/170119723-c6cfe967-6ae0-4538-acde-13732b7aa6db.png)
 
 
 
+5. Renomeie o nome da variável padrão "image" para "srtm".
+![Fig. 7. Renomeando imagem](https://user-images.githubusercontent.com/41900626/170119833-b7dc0a2f-40f5-4645-b130-fbd11131266e.png)
 
 
-4. View the information on the dataset, and then click on Import, which moves the variable to the Imports section at the top of your script.
 
-![Figure 4. View elevation datasource and import](importsrtm.png)
-
-5. Rename the default variable name "image" to be "srtm".
-
-![Figure 5. Rename image](renamesrtm.png)
-
-6. Add the image object to the console by coping the script below into the code editor, and click "run" :
-
+6. Adicione o objeto (imagem nesse caso) ao console copiando o script abaixo no editor de código e clique em _run_ :
 ```JavaScript
 print(srtm);
 ```
-![Figure 6. Print SRTM](printsrtm.png)
+
+7. Navegue pelas informações que foram impressas no _Console_. Abra a seção “bands” para mostrar uma banda chamada “elevation”. Observe que todas essas mesmas informações estão automaticamente disponíveis para todas as variáveis na seção _Imports_.
+![Fig. 8. SRTM no _Console_](https://user-images.githubusercontent.com/41900626/170120016-fd9c8243-b4b4-4a49-bb79-6654923b233f.png)
 
 
-7. Browse through the information that was printed to the console. Open the “bands” section to show the one band named “elevation”. Note that all this same information is automatically available for all variables in the Imports section.
 
-![Figure 7. SRTM in console](bandssrtm.png)
-
-
-8. Use the Map.addLayer() method to add the image to the interactive map. We will start simple, without using any of the optional parameters.
-
+8. Use o método Map.addLayer() para adicionar a imagem ao mapa interativo. Começaremos simples, sem usar nenhum dos parâmetros opcionais.
 ```JavaScript
 Map.addLayer(srtm);
 ```
+O mapa exibido ficará bem cinza, porque os parâmetros de visualização padrão mapeiam toda a faixa de 16 bits dos dados na faixa preto-branco, mas o intervalo de elevação é muito menor do que isso em qualquer local específico. Vamos corrigi-lo em um momento.
+![Fig. 9. Mapa SRTM](https://user-images.githubusercontent.com/41900626/170120188-8dacbe1b-f839-4cb6-a452-1926bd4b66d2.png)
 
-The displayed map will look pretty flat grey, because the default visualization parameters map the full 16­bit range of the data onto the black–white range, but the elevation range is much smaller than that in any particular location. We’ll fix it in a moment.
 
-![Figure 8. Map SRTM](mapsrtm.png)
 
-7. Select the Inspector tab. Then click on a few points on the map to get a feel for the elevation range in this area.
+9. Selecione a aba _Inspector_ (observe que o ponteiro do mouse assume a forma de um +). Em seguida, clique em alguns pontos no mapa para ter uma ideia dos valores da faixa de elevação nesta área.
+![Fig. 10. Inspecionando o SRTM](https://user-images.githubusercontent.com/41900626/170120421-15e4fe4f-b1fe-4a2d-86ea-53eede22ba1c.png)
 
-![Figure 8. Inspect SRTM](inspecsrtm.png)
 
-8. Now you can set some more appropriate visualization parameters by adjusting the code as follows (units are in meters above sea level):
+10. Agora você pode definir alguns parâmetros de visualização mais apropriados ajustando o código da seguinte forma (lembre-se, as unidades estão em metros acima do nível do mar):
+```JavaScript
+Map.addLayer(srtm, {min: 0, max: 2000});
+```
+![Fig. 11. Melhorando visualização do SRTM](https://user-images.githubusercontent.com/41900626/170120679-3ea69a9b-bd1c-46cf-a1ef-c7b2af8a47fc.png)
+
+
+11. Agora você poderá ver a variação na faixa de elevação com valores baixos em preto e pontos mais altos em branco. As camadas adicionadas ao mapa terão nomes padrão como "Layer 1", "Layer 2", etc. Para melhorar a legibilidade, podemos dar a cada Layer um nome mais significativo, adicionando um título com a sintaxe no código a seguir. Não se esqueça de clicar em _run_.
 
 ```JavaScript
-Map.addLayer(srtm, {min: 0, max: 300});
-```
-![Figure 9. Visualise SRTM](vissrtm.png)
+Map.addLayer(srtm, {min: 0, max: 300}, 'Elevação acima do nível do mar');```
+![Fig. 12. Renomeando o título](https://user-images.githubusercontent.com/41900626/170122633-90a47204-6aec-4f7c-a23f-b451200d1e4f.png)
 
-9. You will now be able to see variation in elevation range with low values in black and highest points in white. Layers added to the map will have default names like "Layer 1", "Layer 2", etc. To improve the readability, we can give each layer a human­-readable name, by adding a title with the syntax in the following code. Don't forget to click run.
 
-```JavaScript
-Map.addLayer(srtm, {min: 0, max: 300}, 'Elevation above sea level');
-```
-![Figure 10. Rename title](title2srtm.png)
-
-10. Now the last step for today is to save your code, however before doing that it is good practice to add a some comment lines to your code reminding you of what you did and why. We add these with two forward slashes // :
+12. Agora, o último passo de hoje é salvar seu código, no entanto, antes de fazer isso, é uma boa prática adicionar algumas linhas de comentário ao seu código, lembrando-o do que você fez e por quê. Nós os adicionamos com duas barras //:
 
 ```Javascript
-// Print data details to console
+// Imprima metadados no console. 
 print(srtm);
 
-// Add the SRTM data to the interactive map
+// Adicione o dado SRTM no mapa base interativo.
 Map.addLayer(srtm)
 
-// Add the data again, but with rescrited value ranges for better visualisation
-Map.addLayer(srtm, {min: 0, max: 300})
+// Adicione os dados novamente, mas com intervalos de valores rescritos para melhor visualização.
+Map.addLayer(srtm, {min: 0, max: 2000})
 
-// Add the data again, with value ranges, and a useful title for teh Layer tab
-Map.addLayer(srtm, {min: 0, max: 300}, 'Elevation above sea level');
+// Adicione os dados novamente, com intervalos de valores e um título útil para a guia Layer
+Map.addLayer(srtm, {min: 0, max: 2000}, 'Elevação acima do nível do mar');
 ```
-![Figure 11. Comment script](commentsrtm.png)
+![Fig. 13. Comentando o script](https://user-images.githubusercontent.com/41900626/170123437-f64ad028-ab99-48eb-95f3-5ea255b790d0.png)
 
-11. The next step is then to save you script by clicking "Save". It will be saved in your private repository, and will be accessible the next time you log in to Earth Engine.
 
-![Figure 12. Comment script](savesrtm.png)
 
-12. If you would like to experiment with different colour combinations, you can play with colour palettes as per the example below:
+13. O próximo passo é salvar seu script clicando em "_Save_" > "_Save as_". Ele será salvo em seu repositório privado e estará acessível na próxima vez que você fizer login no Earth Engine.
+![Fig. 14. Salvando script](https://user-images.githubusercontent.com/41900626/170123987-def5648f-f2e9-42eb-842a-5d4804973e98.png)
 
+
+
+14. Se você quiser experimentar diferentes combinações de cores, pode brincar com as paletas de cores conforme o exemplo abaixo:
 ```Javascript
-Map.addLayer(srtm, {min: 0, max: 300, palette: ['blue', 'yellow', 'red']}, 'Elevation above sea level');
+Map.addLayer(srtm, {min: 0, max: 300, palette: ['blue', 'yellow', 'red']}, 'Elevação acima do nível do mar');
 ```
+![Fig. 15. Paleta de cores](https://user-images.githubusercontent.com/41900626/170124951-9cb41e1b-468a-423b-9184-678084d71714.png)
 
-![Figure 13. Colour scale elevation](coloursrtm.png)
 
-13. For better visualisation we can create a hillshade view of the elevation data. Remember you can use the Layer transparency options to create draped images for colourised hillshades.
-
+15. Para uma melhor visualização, podemos criar uma visualização em sombreamento (_hillshade_) dos dados de elevação. Você pode usar as opções de transparência de camada para criar imagens para sombras coloridas.
 ```JavaScript
 var hillshade = ee.Terrain.hillshade(srtm);
 Map.addLayer(hillshade, {min: 150, max:255}, 'Hillshade');
 ```
+![Fig. 16. Mapa de sombreamento '_Hillshade_'](https://user-images.githubusercontent.com/41900626/170126914-a1fc7be9-d9d4-4ca9-ac22-0ce05a04dffc.png)
 
-![Figure 14. Hillshade view](hillsrtm.png)
 
-
-14. Slope works in a similar way:
-
+16. A inclinação (_slope_) funciona de maneira semelhante:
 ```javascript
 var slope = ee.Terrain.slope(srtm);
 Map.addLayer(slope, {min: 0, max: 20}, 'Slope')
 ```
+![Fig. 17. Mapa de inclinação](https://user-images.githubusercontent.com/41900626/170127593-80bbb245-c86d-4f11-959e-cc259d186cd4.png)
 
-![Figure 15. Slope map](slopesrtm.png)
+
 -------
-### Thank you
+### Obrigado
+Espero que esse tutorial tenha sido útil.  
 
-I hope you found that useful. A recorded video of this tutorial can be found on my YouTube Channel's [Introduction to Remote Sensing of the Environment Playlist](https://www.youtube.com/playlist?list=PLf6lu3bePWHDi3-lrSqiyInMGQXM34TSV) and on my lab website [GEARS](https://www.gears-lab.com).
 
-#### Kind regards, Shaun R Levick
+#### Atenciosamente, Elias F Berra
 ------
