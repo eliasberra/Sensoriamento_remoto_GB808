@@ -31,7 +31,30 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 
 ## 1. The Earth Engine code editor
 
-![Figure 1. The Google Earth Engine environment](https://ardalis.com/add-images-easily-to-github/)
+![Figure 1. O ambiente do GEE](https://github.com/geospatialeco/GEARS/blob/master/gee_editor.png)
+
+1. Painel do Editor (_Code editor_)
+	- O Painel do Editor é onde você escreve e edita seu código Javascript.
+2. Painel Direito
+	- Guia do console para saída de impressão.
+	- Guia Inspetor para consultar os resultados do mapa.
+	- Guia Tarefas para gerenciar tarefas de longa duração.
+3. Painel Esquerdo
+	- Aba Scripts: para gerenciar seus scripts de programação.
+	- Aba Docs: para acessar a documentação dos objetos e métodos do Earth Engine, bem como alguns específicos do aplicativo Code Editor.
+	- Aba Assets: Guia de dados geoespaciais que você criou e salvou, ou carregou.
+4. Mapa Interativo
+	- Para visualizar a saída das camadas do mapa
+5. Barra de pesquisa
+	- Para encontrar conjuntos de dados e locais de interesse.
+6. Menu Ajuda
+	- Documentação de referência do guia do usuário
+	- Grupo de ajuda do fórum do Google para discutir o Earth Engine
+	- Atalhos de teclado para o Editor de código
+	- Visão geral do tour de recursos do Editor de código
+	- Feedback para enviar feedback sobre o Code Editor
+	- Sugerir um novo conjunto de dados.
+
 
 
 1. Editor Panel
