@@ -29,7 +29,7 @@ O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o
 O objetivo deste laboratório é fornecer uma introdução ao ambiente de processamento do GEE. Ao final deste exercício, você será capaz de pesquisar, localizar e visualizar uma ampla variedade de conjuntos de dados de sensoriamento remoto. Começaremos com imagens de banda única - dados de elevação da missão SRTM.
 
 
-## 1. The Earth Engine code editor
+## 1. O editor de código do GEE
 
 ![Figure 1. O ambiente do GEE](https://github.com/geospatialeco/GEARS/blob/master/gee_editor.png)
 
@@ -54,37 +54,12 @@ O objetivo deste laboratório é fornecer uma introdução ao ambiente de proces
 	- Visão geral do tour de recursos do Editor de código
 	- Feedback para enviar feedback sobre o Code Editor
 	- Sugerir um novo conjunto de dados.
-
-
-
-1. Editor Panel
-	- The Editor Panel is where you write and edit your Javascript code
-2. Right Panel
-	- Console tab for printing output.
-	- Inspector tab for querying map results.
-	- Tasks tab for managing long­ running tasks.
-3. Left Panel
-	- Scripts tab for managing your programming scripts.
-	- Docs tab for accessing documentation of Earth Engine objects and methods, as well as a few specific to the Code Editor application
-	- Assets tab for managing assets that you upload.
-4. Interactive Map
-	- For visualizing map layer output
-5. Search Bar
-	- For finding datasets and places of interest
-6. Help Menu
-	- User guide ­ reference documentation
-	- Help forum ­ Google group for discussing Earth Engine
-	- Shortcuts ­ Keyboard shortcuts for the Code Editor
-	- Feature Tour ­ overview of the Code Editor
-	- Feedback ­ for sending feedback on the Code Editor
-	- Suggest a dataset. Our intention is to continue to collect datasets in our public archive
-and make them more accessible, so we appreciate suggestions on which new datasets we should ingest into the Earth Engine public archive.
-
 ---------
 
-## 2. Getting started with images
 
-1. Navigate to Darwin and zoom in using the mouse wheel.
+## 2. Primeiros passos com imagens
+
+1. Navegue até Darwin e amplie usando a roda do mouse.
 
 ![Figure 2. Zoom to Darwin](navdarwin.png)
 
