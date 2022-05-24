@@ -5,7 +5,7 @@ O objetivo destes tutoriais é fornecer uma introdução à teoria e prática do
 Os alunos aprenderão sobre as interações da luz com diferentes características ambientais, radiação eletromagnética, imagens multiespectrais e hiperespectrais, RADAR, LiDAR, processamento digital de imagens, análise de imagens baseadas em objetos e várias aplicações operacionais da tecnologia. Os alunos também obterão conhecimentos básicos de trabalho com a linguagem de programação JavaScript.
 
 ## Agradecimento
-Esse material foi inspirado no curso preparado pelo Prof. Shaun R Levick, cujo material original está disponível no [GEARS](https://www.geospatialecology.com/),  [Github](https://github.com/geospatialeco/GEARS) e canal no [YouTube](https://www.youtube.com/channel/UCPZMj2ykE9pgJGV1r0kXQMg).
+Esse material foi inspirado no curso preparado pelo Prof. Shaun R Levick, cujo material original está disponível no [GEARS](https://www.geospatialecology.com/), no [Github](https://github.com/geospatialeco/GEARS) e canal no [YouTube](https://www.youtube.com/channel/UCPZMj2ykE9pgJGV1r0kXQMg).
 
 
 
