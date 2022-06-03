@@ -34,6 +34,26 @@ O objetivo deste laboratório é fortalecer sua compreensão dos princípios de 
 
 2. Vamos navegar até a área de interesse copiando o código abaixo no Editor de Código e clicando em "_Run_" (Executar). Lembre-se de que a linha que começa com // é uma nota para nós mesmos e para os outros, e não é processada (chamamos isso de comentário). Os números entre parênteses são a longitude, latitude e nível de zoom (o intervalo é de 1 a 22). 
 
+```Javascript
+//Navegue até a área de intresse
+Map.setCenter(132.5685, -12.6312, 8);
+```
+![image](https://user-images.githubusercontent.com/41900626/171919936-de4802ae-6f9a-466b-90e6-5a9187975466.png)
+
+3. Agora que estamos no lugar certo, vamos escolher uma imagem do Sentinel-2 usando o código abaixo. Copie e cole no Editor de Código e clique em "Run". Copernicus refere-se à missão do satélite, S2 é a abreviação de Sentinel-2, e o número longo 20180422T012719_20180422T012714_T52LHM refere-se a uma imagem específica, definida por uma data, hora e um caminho e linha da órbita do satélite. Escolhi uma única imagem para os propósitos deste laboratório, mas abordaremos a pesquisa de imagens para áreas e datas específicas em um estágio posterior.
+
+```Javascript
+// `Selecione uma imagem específica do arquivo Sentinel-2
+var sent2 = ee.Image("COPERNICUS/S2_SR/20220125T134211_20220125T134211_T21KZQ");
+``
+
+Se o código não retornou nenhum erro, a imagem foi encontrada com sucesso no arquivo. Para verificar novamente, vamos executar a linha abaixo para imprimir as informações da imagem (metadados) no Console. Depois que as informações forem carregadas no Console, você poderá clicar nas pequenas setas suspensas ao lado de "Imagem" e "bandas" para ver mais detalhes sobre a estrutura da banda e o formato de nomenclatura.
+
+```Javascript
+// Imprima os detalhes da imagem no Console
+print(sent2);
+```
+![image](https://user-images.githubusercontent.com/41900626/171924580-4d4503b0-11c4-451c-875c-9239a9722dd8.png)
 
 
 
