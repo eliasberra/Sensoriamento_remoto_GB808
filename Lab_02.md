@@ -109,8 +109,64 @@ Map.addLayer(sent2,{bands:['B8','B4','B3'], min:0, max:3000}, "Cor falsa");
 ![image](https://user-images.githubusercontent.com/41900626/171933695-53357dc5-f07c-4fad-b9b8-f662de8bdac2.png)
 
 
-14. Agora você pode navegar pela cena e alternar entre as visualizações de cores verdadeiras e cores falsas usando a guia de camadas (Layers). Observe atentamente como as diferentes partes da cena são representadas nessas diferentes visualizações - e explore como alguns elementos da paisagem, como cicatrizes de queimaduras, saltam mais claramente na composição de cores falsas.
+14. Agora você pode navegar pela cena e alternar entre as visualizações de cores verdadeiras e cores falsas usando a guia de camadas (Layers). Observe atentamente como as diferentes partes da cena são representadas nessas diferentes visualizações - e explore como alguns elementos da paisagem, como clareiras florestais, saltam mais claramente na composição de cores falsas.
 
 
 
+15. Para realmente construir sua compreensão de como diferentes comprimentos de onda interagem com superfícies, agora vamos carregar bandas individuais sequencialmente, de comprimentos de onda mais curtos a mais longos. Para exibir a Banda 1, o código é o seguinte:
+
+```JavaScript
+// Adicione a Banda 1 ao mapa
+Map.addLayer(sent2,{bands:['B1'], min:0, max:3000}, "B1");
+```
+![image](https://user-images.githubusercontent.com/41900626/172051074-b52cbe61-1b02-4ab9-8d6f-bb8a007e72a7.png)
+
+
+16. Para exibir mais as bandas individualmente, o código é o mesmo, por ex.:
+```JavaScript
+// Adicione mais algumas bandas ao mapa
+Map.addLayer(sent2,{bands:['B4'], min:0, max:3000}, "B4");
+Map.addLayer(sent2,{bands:['B8'], min:0, max:3000}, "B8");
+Map.addLayer(sent2,{bands:['B12'], min:0, max:3000}, "B12");
+```
+17. Use a guia de camadas (Layers) para ativar e desativar as bandas na visualização de exibição do mapa. Observe quais elementos da paisagem aparecem mais claros e mais escuros à medida que você altera o número da banda (e, portanto, passa de comprimentos de onda mais curtos para mais longos).
+
+
+------
+### Exercício prático
+
+1. Carregue outra imagem do Sentinel-2 para a mesma área de interesse. O código abaixo contém o identificador de imagem para uma imagem coletada em agosto de 2018.
+
+
+```JavaScript
+// Selecione uma imagem específica do Sentinel-2 do arquivo
+var sent2inv = ee.Image("COPERNICUS/S2_SR/20220125T134211_20220125T134211_T21KZQ");
+```
+2. Visualize esta imagem em cores verdadeiras e cores falsas, usando a composição RGB.
+
+3. Compare a imagem de agosto com a de janeiro de 2022. O que mudou e por quê?
+
+4. Até agora, exploramos apenas duas opções de visualização (cores verdadeiras e cores falsas), mas existem muitas outras combinações RGB possíveis:
+     - Cor natural: 4 3 2
+     - Infravermelho de cor falsa: 8 4 3
+     - Falsa cor urbana: 12 11 4
+     - Agricultura: 11 8 2
+     - Penetração atmosférica: 12 11 8A
+     - Vegetação saudável: 8 11 2
+     - Terra/Água: 8 11 4
+     - Cores naturais com remoção atmosférica: 12 8 3
+     - Infravermelho de ondas curtas: 12 8 4
+     - Análise de vegetação: 11 8 4
+
+5. Experimente as combinações listadas acima e pense no motivo pelo qual podemos querer usá-las.
+
+6. Use esta imagem ("COPERNICUS/S2_SR/20200127T131241_20200127T131235_T23KLP") para explorar um cenário mais urbano na região metropolitana da cidade de São Paulo.
+
+-------
+### Thank you
+
+I hope you found that useful. A recorded video of this tutorial can be found on my YouTube Channel's [Introduction to Remote Sensing of the Environment Playlist](https://www.youtube.com/playlist?list=PLf6lu3bePWHDi3-lrSqiyInMGQXM34TSV) and on my lab website [GEARS](https://www.gears-lab.com).
+
+#### Kind regards, Shaun R Levick
+------
 
