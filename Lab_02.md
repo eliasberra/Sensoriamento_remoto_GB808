@@ -43,9 +43,9 @@ Map.setCenter(132.5685, -12.6312, 8);
 3. Agora que estamos no lugar certo, vamos escolher uma imagem do Sentinel-2 usando o código abaixo. Copie e cole no Editor de Código e clique em "Run". Copernicus refere-se à missão do satélite, S2 é a abreviação de Sentinel-2, e o número longo 20180422T012719_20180422T012714_T52LHM refere-se a uma imagem específica, definida por uma data, hora e um caminho e linha da órbita do satélite. Escolhi uma única imagem para os propósitos deste laboratório, mas abordaremos a pesquisa de imagens para áreas e datas específicas em um estágio posterior.
 
 ```Javascript
-// `Selecione uma imagem específica do arquivo Sentinel-2
+// Selecione uma imagem específica do arquivo Sentinel-2
 var sent2 = ee.Image("COPERNICUS/S2_SR/20220125T134211_20220125T134211_T21KZQ");
-``
+```
 
 4. Se o código não retornou nenhum erro, a imagem foi encontrada com sucesso no arquivo. Para verificar novamente, vamos executar a linha abaixo para imprimir as informações da imagem (metadados) no Console. Depois que as informações forem carregadas no Console, você poderá clicar nas pequenas setas suspensas ao lado de "Imagem" e "bandas" para ver mais detalhes sobre a estrutura da banda e o formato de nomenclatura.
 
