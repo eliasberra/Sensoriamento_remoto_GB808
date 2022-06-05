@@ -163,10 +163,6 @@ var sent2inv = ee.Image("COPERNICUS/S2_SR/20220125T134211_20220125T134211_T21KZQ
 6. Use esta imagem ("COPERNICUS/S2_SR/20200127T131241_20200127T131235_T23KLP") para explorar um cenário mais urbano na região metropolitana da cidade de São Paulo.
 
 -------
-### Thank you
-
-I hope you found that useful. A recorded video of this tutorial can be found on my YouTube Channel's [Introduction to Remote Sensing of the Environment Playlist](https://www.youtube.com/playlist?list=PLf6lu3bePWHDi3-lrSqiyInMGQXM34TSV) and on my lab website [GEARS](https://www.gears-lab.com).
-
-#### Kind regards, Shaun R Levick
-------
-
+### Obrigado
+Espero que tenha achado esse tutorial útil.
+Um vídeo gravado do tutorial original, em inglês, pode ser encontrado no canal do YouTube do Prof. Shaun Levick (https://www.youtube.com/playlist?list=PLf6lu3bePWHDi3-lrSqiyInMGQXM34TSV).
