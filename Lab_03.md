@@ -126,51 +126,49 @@ Nota: Você já pode salvar seu código. Salvei com o nome 'Lab3'.
 ![image](https://user-images.githubusercontent.com/41900626/173068670-00118ab6-fbfc-4b77-9d9c-de3920556e6c.png)
 
 
-13. Composições de cores falsas colocam a faixa do infravermelho próximo no canal vermelho, e vemos uma forte resposta ao conteúdo de clorofila nas folhas verdes. Vegetação que aparece verde escuro na cor verdadeira, aparecendo vermelho brilhante na cor falsa. Observe as variações em vermelho que podem ser vistas na vegetação que margeia Rapid Creek. Você também verá que "composição de cores falsas" foi adicionada à guia Camadas na visualização do mapa.
+13. Composições de cores falsas colocam a faixa do infravermelho próximo no canal do vermelho (R), e vemos uma forte resposta ao conteúdo de clorofila nas folhas verdes e quantidade de folhas. Vegetação que aparece verde escuro na cor verdadeira, aparece vermelho brilhante na cor falsa. Observe as variações em vermelho que podem ser vistas na vegetação que margeia Bandeirantes. Você também verá que "composição de cores falsas" foi adicionada à guia 'Layers' na visualização do mapa.
 
 ---------
 
 ### Calculando o NDVI
 
-14. Em seguida, vamos calcular o índice de vegetação de diferença normalizada (NDVI) para esta imagem. O NDVI é um índice calculado a partir das bandas RED e NIR, de acordo com esta equação:
+14. Em seguida, vamos calcular o índice de vegetação de diferença normalizada (NDVI - Normalized Difference Vegetation Index) para esta imagem. O NDVI é um índice calculado a partir das bandas VERMELHO (RED) e NIR, de acordo com esta equação:
 
 NDVI = (NIR - VERMELHO)/(NIR + VERMELHO)
 
-Cole as seguintes linhas abaixo das que você já adicionou e clique em "Executar". Os valores do NDVI variam de 0 a 1, e quanto maior o valor mais “vigorosa” a vegetação.
+Cole as seguintes linhas abaixo das que você já adicionou e clique em "Run". Os valores do NDVI variam de 0 a 1, e quanto maior o valor mais “vigorosa” a vegetação.
 
 
 ```javascript
-//Define a variável NDVI da equação
-    var NDVI = imagem.expressão(
-        "(NIR - VERMELHO) / ​​(NIR + VERMELHO)",
+   var NDVI = imagem.expression(
+        "(NIR - RED) / (NIR + RED)",
         {
-          VERMELHO: image.select("B4"), // VERMELHO
-          NIR: image.select("B8"), // NIR
-          AZUL: image.select("B2") // AZUL
+          RED: imagem.select("B4"),    //  RED
+          NIR: imagem.select("B8"),    // NIR
         });
 
     Map.addLayer(NDVI, {min: 0, max: 1}, "NDVI");
 ```
 
-![Figura 10. Recuperando NDVI do Sentinel-2](ndvi.png)
+![image](https://user-images.githubusercontent.com/41900626/173073210-5c842e72-1109-436e-84c8-21895c4dbe48.png)
 
-15. Explore as diferentes partes da imagem e veja como os valores de NDVI variam com os diferentes tipos de substrato.
+15. Explore as diferentes partes da imagem e veja como os valores de NDVI variam com os diferentes tipos de cobertura da terra.
 
 
 ----
 ### Exercício prático
 
-1. Procure uma imagem Sentinel-2 sem nuvens de maio, julho e setembro de 2018 coletada no Litchfield National Park (Litchfield está localizado ao sul de Darwin, perto da cidade de Batchelor, Território do Norte, Austrália).
+1. Procure uma imagem Sentinel-2 sem nuvens de maio, julho e setembro de 2018 coletada em uma área de sua escolha.
 2. Calcule o NDVI para cada uma das cenas e carregue-os na visualização do mapa.
 3. Inspecione como o NDVI varia espacialmente em cada imagem e explore como os padrões no NDVI variam de acordo com a época do ano.
-4. Procure uma imagem do Landsat 8 sem nuvens (USGS Landsat 8 Surface Reflectance Tier 1) de maio, julho e setembro de 2018 coletada no Litchfield National Park.
+4. Procure uma imagem do Landsat 8 sem nuvens (USGS Landsat 8 Surface Reflectance Tier 1) de maio, julho e setembro de 2018 na sua área de estudo.
 5. Lembre-se de que a posição da banda dos comprimentos de onda RED e NIR pode diferir entre os diferentes sensores. Para Landsat 8, a propriedade de metadados para cobertura de nuvens é 'CLOUD_COVER'.
 6. Compare os valores de NDVI obtidos pelos dois sensores e pense por que eles podem diferir.
 
 -------
-### Obrigada
+### Obrigado
 
-Espero que você tenha achado isso útil. Um vídeo gravado deste tutorial pode ser encontrado na [Lista de reprodução de introdução ao sensoriamento remoto do ambiente] do meu canal do YouTube (https://www.youtube.com/playlist?list=PLf6lu3bePWHDi3-lrSqiyInMGQXM34TSV) e no site do meu laboratório [GEARS] (https://www.gears-lab.com).
+Espero que você tenha achado isso útil. 
 
-#### Atenciosamente, Shaun R Levick
+
 ------
