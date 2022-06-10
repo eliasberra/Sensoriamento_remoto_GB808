@@ -41,7 +41,7 @@ O objetivo deste laboratório é entender uma variedade de índices espectrais e
 
 ![image](https://user-images.githubusercontent.com/41900626/173056048-64e1112e-bfbf-4fb4-9ba4-8fc3e04c17e0.png)
 
-Nota: Você já pode salvar seu código
+Nota: Você já pode salvar seu código. Salvei com o nome 'Lab3'.
 
 4. Procure por 'Sentinel-2' na barra de pesquisa. Na seção de resultados, você verá 'Sentinel-2 MSI: MultiSpectral Instrument, Level-2A' - clique nele e depois clique no botão 'Import'.
 
@@ -66,7 +66,7 @@ Nota: Você já pode salvar seu código
     var imagem = ee.Image(sent2
 
     // Em seguida, incluiremos um filtro para obter apenas imagens no intervalo de datas em que estamos interessados
-    .filterDate("01-10-2021", "30-12-2021")
+    .filterDate("2021-07-01", "2021-09-30")
 
     // Em seguida, incluímos um filtro geográfico para restringir a pesquisa a imagens no local do nosso ponto
     .filterBounds(bandeirantes)
@@ -81,9 +81,9 @@ Nota: Você já pode salvar seu código
     print("Uma cena do Sentinel-2:", imagem);
 ```
 
-8. Você precisa copiar todo o código acima e colá-lo na caixa “Novo script” do editor de código GEE. Em seguida, clique no botão "Executar" e veja o Google fazer sua mágica... Este pedaço de código pesquisará o arquivo completo do Sentinel-2, encontrará imagens localizadas em Darwin, classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retorne a imagem livre de nuvem mais recente para nós. As informações relacionadas a esta imagem serão impressas no Console, onde está listada como "Uma cena do Sentinel-2" com alguns detalhes sobre essa cena (COPERNICUS/S2/20160629T014038\_20160629T062926\_T52LFM (16 bandas)). Sabemos pelo nome da cena que foi coletado em 29 de junho de 2016.
+8. Você precisa copiar todo o código acima e colá-lo na caixa do editor de código do GEE. Em seguida, clique no botão "Run" (executar) e veja o GEE fazer sua mágica... Este pedaço de código pesquisará o arquivo completo do Sentinel-2, encontrará imagens localizadas em Bandeirantes, PR, classificá-las de acordo com a porcentagem de cobertura de nuvens e, em seguida, retornará a imagem mais livre de cobertura de nuvens. As informações relacionadas a esta imagem serão impressas no Console, onde está listada como "Uma cena do Sentinel-2" com alguns detalhes sobre essa cena (COPERNICUS/S2_SR/20210810T133229_20210810T133225_T22KEV). Sabemos pelo nome da cena que foi coletado em 10 de agosto de 2021.
 
-![Figura 6. Filtrando a coleção](run.png)
+![image](https://user-images.githubusercontent.com/41900626/173060430-f0ffb7f9-3a3c-406d-b7c5-a90231b7ebca.png)
 ---------
 ## Adicionando imagens à visualização do mapa
 9. Agora, para realmente dar uma olhada nesta imagem, precisamos adicioná-la ao nosso ambiente de mapeamento. Antes de fazer isso, no entanto, vamos definir como queremos exibir a imagem. Vamos começar com uma representação de cores verdadeiras colando as seguintes linhas abaixo das que você já adicionou e clique em "Executar".
