@@ -1,6 +1,6 @@
 
 # Sensoriamento Remoto
-Lab 2 - Compreendendo combinações de bandas e visualização de imagens
+Lab 3 - De espectros até índices, e encontrando a imagem correta
 --------------
 
 ### Agradecimentos
