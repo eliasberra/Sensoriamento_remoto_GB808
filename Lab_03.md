@@ -85,43 +85,46 @@ Nota: Você já pode salvar seu código. Salvei com o nome 'Lab3'.
 
 ![image](https://user-images.githubusercontent.com/41900626/173060430-f0ffb7f9-3a3c-406d-b7c5-a90231b7ebca.png)
 ---------
-## Adicionando imagens à visualização do mapa
-9. Agora, para realmente dar uma olhada nesta imagem, precisamos adicioná-la ao nosso ambiente de mapeamento. Antes de fazer isso, no entanto, vamos definir como queremos exibir a imagem. Vamos começar com uma representação de cores verdadeiras colando as seguintes linhas abaixo das que você já adicionou e clique em "Executar".
+
+## Adicionando imagens à visualização do mapa ('Map view')
+9. Agora, para realmente dar uma olhada nesta imagem, precisamos adicioná-la ao nosso ambiente de mapeamento. Antes de fazer isso, no entanto, vamos definir como queremos exibir a imagem. Vamos começar com uma representação de cores verdadeiras colando as seguintes linhas abaixo das que você já adicionou e clique em "Run".
 
 ```JavaScript
 // Defina os parâmetros de visualização em um dicionário JavaScript para renderização de cores verdadeiras. Bandas 4,3 e 2 necessárias para RGB.
-    var trueColour = {
-        bandas: ["B4", "B3", "B2"],
+    var corVerdadeira = {
+        bands: ["B4", "B3", "B2"],
         min: 0,
-        máximo: 3000
+        max: 3000
         };
 
   // Adicione a imagem ao mapa, usando os parâmetros de visualização.
-  Map.addLayer(image, trueColour, "imagem de cor verdadeira");
+  Map.addLayer(imagem, corVerdadeira, "imagem de cor verdadeira");
 ```
 
-10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 4,3 e 2 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Darwin. Vemos grandes detalhes na imagem do Sentinel-2, que tem resolução de 10m para as bandas selecionadas. Os símbolos (+) e (-) no canto superior esquerdo do mapa podem ser usados ​​para ampliar e para fora (também possível com a roda de rolagem do mouse/trackpad). Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Mover o mouse sobre o botão "Camadas" no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
+10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 4,3 e 2 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Bandeirantes e a um pouco da região norte do Paraná. Vemos grandes detalhes na imagem do Sentinel-2, que tem resolução de 10 m para as bandas selecionadas. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem do mouse/trackpad). Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Mover o mouse sobre o botão 'Layers' (camadas) no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
 
-![Figura 7. Adicionando uma imagem true color ao mapa](truecolour.png)
-
-11. Para obter mais informações em locais específicos, podemos usar a ferramenta Inspector localizada no Painel do Console - guia à esquerda. Clique na guia Inspetor e, em seguida, clique na imagem na visualização do mapa. Onde quer que você clique na imagem, os valores da banda nesse ponto serão exibidos na janela do Inspetor. Clique sobre alguns tipos de manchas diferentes (campos esportivos, manguezais, oceano, praia, casas) para ver como o perfil espectral muda.
+![image](https://user-images.githubusercontent.com/41900626/173065724-aeb70824-e7d5-4828-ab47-2a260f0bf240.png)
 
 
-12. Agora vamos dar uma olhada em uma composição de cores falsas - precisamos trazer a banda do infravermelho próximo (banda 8) para isso. Cole as seguintes linhas abaixo das que você já adicionou e clique em "Executar".
+11. Para obter mais informações em locais específicos, podemos usar a ferramenta 'Inspector' localizada no Painel do Console - guia à esquerda. Clique na guia 'Inspetor' e, em seguida, clique na imagem na visualização do mapa. Onde quer que você clique na imagem, os valores da(s) banda(s) nesse ponto serão exibidos na janela do 'Inspetor'. Clique sobre alguns tipos de manchas diferentes (campos esportivos, corpo d'água, casas) para ver como o perfil espectral muda.
+
+
+12. Agora vamos dar uma olhada em uma composição de cores falsas - precisamos trazer a banda do infravermelho próximo (banda 8) para isso. Cole as seguintes linhas, logo abaixo das que você já adicionou, e clique em "Run".
 
 ```JavaScript
 //Definir parâmetros de visualização de cores falsas.
-    var falseCor = {
-        bandas: ["B8", "B4", "B3"],
+    var falsaCor = {
+        bands: ["B8", "B4", "B3"],
         min: 0,
-        máximo: 3000
+        max: 3000
         };
 
     // Adicione a imagem ao mapa, usando os parâmetros de visualização.
-    Map.addLayer(image, falseColour, "composição de cores falsas");
+    Map.addLayer(imagem, falsaCor, "composição de cores falsas");
 ```
 
-![Figura 9. Adicionando uma composição de cores falsas ao mapa](false.png)
+![image](https://user-images.githubusercontent.com/41900626/173068670-00118ab6-fbfc-4b77-9d9c-de3920556e6c.png)
+
 
 13. Composições de cores falsas colocam a faixa do infravermelho próximo no canal vermelho, e vemos uma forte resposta ao conteúdo de clorofila nas folhas verdes. Vegetação que aparece verde escuro na cor verdadeira, aparecendo vermelho brilhante na cor falsa. Observe as variações em vermelho que podem ser vistas na vegetação que margeia Rapid Creek. Você também verá que "composição de cores falsas" foi adicionada à guia Camadas na visualização do mapa.
 
