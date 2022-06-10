@@ -37,7 +37,7 @@ O objetivo deste laboratório é entender uma variedade de índices espectrais e
 ![image](https://user-images.githubusercontent.com/41900626/173055410-18cd4d0e-55f7-48f8-9386-73e1a0410466.png)
 
 
-3. Renomeie o ponto resultante como 'Bandeirantes' clicando no nome da 'Imports' (que é chamado de 'geometry' por padrão).
+3. Renomeie o ponto resultante como 'bandeirantes' clicando no nome da 'Imports' (que é chamado de 'geometry' por padrão).
 
 ![image](https://user-images.githubusercontent.com/41900626/173056048-64e1112e-bfbf-4fb4-9ba4-8fc3e04c17e0.png)
 
@@ -48,33 +48,34 @@ Nota: Você já pode salvar seu código
 ![image](https://user-images.githubusercontent.com/41900626/173056842-c0562f7b-689b-47d6-afac-62c5dc524d8d.png)
 
 
-5. Após clicar em importar, o Sentinel-2 será adicionado às nossas Importações no painel Codificação como uma variável. Ele será listado abaixo do ponto de geometria do nosso campus com o nome padrão "imageCollection". Vamos renomear isso para “sent2” clicando em imageCollection e digitando “sent2”.
+5. Após clicar em 'Import', o Sentinel-2 será adicionado às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de Bandeirantes com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “sent2” clicando em 'imageCollection' e digitando “sent2”.
 
-![Figura 5. Importando dados do Sentinel-2](sent2_2.png)
+![image](https://user-images.githubusercontent.com/41900626/173057420-4d099f26-8947-4633-add6-8fb80e124a82.png)
 
-6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Sentinel-2 (ou seja, todas as imagens que foram coletadas até o momento) ao nosso script. Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem livre de nuvem sobre a Universidade Charles Darwin. Dessa forma, agora podemos filtrar a coleção de imagens com alguns critérios, como tempo de aquisição, localização espacial e cobertura de nuvens.
+
+6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Sentinel-2 (ou seja, todas as imagens que foram coletadas até o momento) ao nosso script. Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem livre de nuvem sobre a cidade de Bandeirantes. Dessa forma, agora podemos filtrar a coleção de imagens com alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
 
 ---------
 
 ### Filtrando coleções de imagens
 
-7. Para conseguir isso, precisamos usar um pouco de codificação. Na linguagem de programação JavaScript, duas barras invertidas (//) indicam linhas de comentários e são ignoradas nas etapas de processamento reais. Usamos // para escrever notas para nós mesmos em nosso código, para que nós (e outros que queiram usar nosso código) possamos entender por que fizemos certas coisas.
+7. Para filtrar a coleção, precisamos usar um pouco de codificação. Na linguagem de programação JavaScript, duas barras (//) indicam linhas de comentários e são ignoradas quando rodamos o processamento. Usamos // para escrever notas para nós mesmos em nosso código, para que nós (e outros que queiram usar nosso código) possamos entender por que fizemos certas coisas.
 
 ```JavaScript
 // Esta é nossa primeira linha de código. Vamos definir a coleção de imagens com a qual estamos trabalhando escrevendo este comando
     var imagem = ee.Image(sent2
 
     // Em seguida, incluiremos um filtro para obter apenas imagens no intervalo de datas em que estamos interessados
-    .filterDate("01-07-2015", "30-09-2017")
+    .filterDate("01-10-2021", "30-12-2021")
 
     // Em seguida, incluímos um filtro geográfico para restringir a pesquisa a imagens no local do nosso ponto
-    .filterBounds(campus)
+    .filterBounds(bandeirantes)
 
     // Em seguida, também classificaremos a coleção por uma propriedade de metadados, no nosso caso, a cobertura de nuvens é muito útil
     .sort("CLOUD_COVERAGE_ASSESSMENT")
 
     // Agora vamos selecionar a primeira imagem desta coleção - ou seja, a imagem mais livre de nuvens no intervalo de datas
-    .primeiro());
+    .first());
 
     // E vamos imprimir a imagem no console.
     print("Uma cena do Sentinel-2:", imagem);
