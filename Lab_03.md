@@ -25,28 +25,27 @@ O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o
 ------------------------------------------------------------------------
 ### Objetivo
 
+O objetivo deste laboratório é entender uma variedade de índices espectrais e desenvolver as habilidades para calcular qualquer índice que você precisar. Antes de chegar a isso, vamos desenvolver um pouco mais o laboratório da semana passada e aprender como encontrar uma imagem para qualquer local geográfico de interesse.
 
-O objetivo deste laboratório é entender uma variedade de índices espectrais e desenvolver as habilidades para calcular qualquer índice que você precisar. Antes de chegar a isso, vamos desenvolver o laboratório da semana passada e aprender como encontrar uma imagem para qualquer local geográfico de interesse.
+1. Logo acima do painel Codificação está a barra de pesquisa. Procure 'Bandeirantes', PR, nesta barra de pesquisa GEE e clique no resultado para deslocar e ampliar o mapa para Bandeirantes.
 
-1. Logo acima do painel Codificação está a barra de pesquisa. Procure 'Darwin' nesta barra de pesquisa GEE e clique no resultado para deslocar e ampliar o mapa para Darwin (Figura 1).
-
-
-![Figura 1. Navegando para a área de interesse no Google Earth Engine](search.png)
+![image](https://user-images.githubusercontent.com/41900626/173054996-57985aa9-ab7f-46e9-902b-5fb41f8c8ce8.png)
 
 
-2. Use as ferramentas de geometria para marcar um ponto no campus Casuarina da Charles Darwin University (localizado no subúrbio de Brinkin, ao norte de Rapid Creek). Depois de criar o ponto de geometria, você o verá adicionado ao seu painel Codificação como uma variável (var) sob o título Importações.
+2. Use a ferramenta de geometria 'Add a marker' para marcar um ponto sobre a cidade de Bandeirantes (uma vez selecionado o marcador é só clicar sobre o mapa base). Depois de criar o ponto de geometria, você o verá adicionado ao seu painel Codificação como uma variável (var) sob o título 'Imports'.
+
+![image](https://user-images.githubusercontent.com/41900626/173055410-18cd4d0e-55f7-48f8-9386-73e1a0410466.png)
 
 
-![Figura 2. Criando um ponto geométrico](geometry.png)
+3. Renomeie o ponto resultante como 'Bandeirantes' clicando no nome da 'Imports' (que é chamado de 'geometry' por padrão).
 
-3. Renomeie o ponto resultante como 'campus' clicando no nome da importação (que é chamado de 'geometria' por padrão).
+![image](https://user-images.githubusercontent.com/41900626/173056048-64e1112e-bfbf-4fb4-9ba4-8fc3e04c17e0.png)
 
-![Figura 3. Renomeando um ponto geométrico](campus.png)
+Nota: Você já pode salvar seu código
 
+4. Procure por 'Sentinel-2' na barra de pesquisa. Na seção de resultados, você verá 'Sentinel-2 MSI: MultiSpectral Instrument, Level-2A' - clique nele e depois clique no botão 'Import'.
 
-4. Procure por 'Sentinel-2' na barra de pesquisa. Na seção de resultados, você verá 'Sentinel-2: Instrumento multiespectral (MSI), Nível-1C' - clique nele e depois clique no botão 'Importar'.
-
-![Figura 4. Importando dados do Sentinel-2](sent2.png)
+![image](https://user-images.githubusercontent.com/41900626/173056842-c0562f7b-689b-47d6-afac-62c5dc524d8d.png)
 
 
 5. Após clicar em importar, o Sentinel-2 será adicionado às nossas Importações no painel Codificação como uma variável. Ele será listado abaixo do ponto de geometria do nosso campus com o nome padrão "imageCollection". Vamos renomear isso para “sent2” clicando em imageCollection e digitando “sent2”.
