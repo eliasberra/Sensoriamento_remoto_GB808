@@ -167,8 +167,7 @@ Cole as seguintes linhas abaixo das que você já adicionou e clique em "Run". O
 
 -------
 ### Obrigado
-
-Espero que você tenha achado isso útil. 
+Espero que tenha achado esse tutorial útil. Um vídeo gravado do tutorial original, em inglês, pode ser encontrado no canal do YouTube do Prof. Shaun Levick (https://www.youtube.com/playlist?list=PLf6lu3bePWHDi3-lrSqiyInMGQXM34TSV).
 
 
 ------
