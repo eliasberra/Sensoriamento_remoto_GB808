@@ -71,40 +71,48 @@ Map.addLayer(img_recorte, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 2000
 ```
 ![image](https://user-images.githubusercontent.com/41900626/175123110-27fa7196-5fd9-4acd-931c-524d9fe1bc47.png)
 
+Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imports'.
+
 
 
 ## Coletando dados de treinamento
 1. O primeiro passo para classificar nossa imagem é coletar alguns dados de treinamento para ensinar o classificador. Queremos coletar amostras representativas de espectros de refletância para cada classe de cobertura do solo de interesse.
-2. Usando a cena livre de nuvens como orientação, passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer'.![image](https://user-images.githubusercontent.com/41900626/175116961-49a6ac14-9361-4b0a-b228-dbf553ee73da.png)
+2. Usando a cena livre de nuvens como orientação, passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer' ![image](https://user-images.githubusercontent.com/41900626/175124178-fd317651-ebba-403b-bc2d-c9693a6698c9.png).
 
-3. Cada nova camada (layer) a ser criada irá representar uma classe dentro do conjunto de dados de treinamento, por exemplo, 'urbano'.
-4. Vamos definir a primeira nova camada como 'urbano'. Localize pontos representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando pontos na camada de geometria.
-5. Colete 25 pontos representativos e renomeie a 'geometria' como 'urbana'.
-
-![Figura 4. Crie e colete a classe urbana](screenshots/l4_urban.png)
-
-
-5. Em seguida, você pode configurar a importação de geometria urbana (roda dentada, parte superior do script na seção de importações) da seguinte forma. Clique no ícone da roda dentada para configurá-lo, altere 'Importar como' de 'Geometria' para 'FeatureCollection'. Use a cobertura de terra 'Adicionar propriedade' e defina seu valor como 0. (As classes subsequentes serão 1, 2, 3 etc.) quando terminar, clique em 'OK'.
-
-![Figura 5. A caixa de diálogo de geometria](screenshots/l4_cog.png)
+3. Cada nova camada (layer) a ser criada irá representar, agora, uma classe temática para o conjunto de dados de treinamento.
+4. Vamos definir nossa primeira nova camada/classe como 'urbano'. Localize pontos representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando pontos na camada de geometria.
+5. Colete em torno de 30 pontos representativos e renomeie a 'geometria' como 'urbana'.
+![image](https://user-images.githubusercontent.com/41900626/175125644-60957f00-c770-456b-8854-22a65140db6a.png)
 
 
-6. Repita a etapa 5 para cada classe de cobertura do solo que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Adicione 'água', 'floresta' e 'agricultura' em seguida - coletando 25 pontos para cada um. Use a roda dentada para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como landcover com valores de 1, 2 e 3 para as diferentes classes.
 
-![Figura 6. Adicionando classes](screenshots/l4_classes.png)
+5. Em seguida, você pode configurar a importação da geometria da classe urbana clicando no símbolo da engrenagem na mesma linha em que ela se encontra (![image](https://user-images.githubusercontent.com/41900626/175126735-c6bc88e9-c6b3-47b5-871f-342c364d8c16.png)
+). Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (nome = Cobertura_terra) e defina seu valor como 0. (As classes subsequentes serão 1, 2, 3 etc.) quando terminar, clique em 'OK'.
 
-7. Agora temos quatro classes definidas (urbana, água, floresta, agricultura), mas antes de podermos usá-las para coletar dados de treinamento, precisamos mesclá-las em uma única coleção, chamada FeatureCollection. Execute a seguinte linha para mesclar as geometrias em um único FeatureCollection:
+![image](https://user-images.githubusercontent.com/41900626/175126255-ab240ac8-9f5c-4653-8d1e-0c2cbdccbbf9.png)
 
-```javascript
-var classNames = urban.merge(água).merge(floresta).merge(agricultura);
-```
 
-8. Imprima a coleção de recursos e inspecione os recursos.
+
+6. Adicione mais 4 classes: 'floresta', 'area_agricola_cultivada' (área agrícola com cultivo evidente), 'area_agricola_solo' (área agrícola sem um cultivo evidente) e 'agua'. Colete as amostras de treinamento (~30).
+7. Repita a etapa 5 para cada classe de cobertura do solo que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como Cobertura_terra com valores de 1, 2, 3 e 4 para as diferentes classes.
+![image](https://user-images.githubusercontent.com/41900626/175130852-808b0b57-29d1-40de-8896-5520190547d7.png)
+
+
+
+8. Agora temos cinco classes definidas ('urbano', 'floresta', 'area_agricola_cultivada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados de treinamento, precisamos mesclá-las em uma única coleção, chamada FeatureCollection. Execute a seguinte linha para mesclar as geometrias em um único FeatureCollection:
 
 ```javascript
-print(classNames)
+//mesclar as classes em uma única coleção
+var nomeClasses = urbano.merge(floresta).merge(area_agricola_cultivada).merge(area_agricola_solo).merge(agua);
 ```
-![Figura 7. Classes de impressão](screenshots/l4_printclass.png)
+
+9. Imprima a coleção de recursos e inspecione os recursos.
+
+```javascript
+//Imprimir a coleção de feições
+print(nomeClasses)
+```
+![image](https://user-images.githubusercontent.com/41900626/175132079-a751b042-a999-4b7a-8f34-119c1c713261.png)
 
 
 ## Crie os dados de treinamento
