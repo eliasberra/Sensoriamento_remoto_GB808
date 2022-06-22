@@ -1,5 +1,5 @@
 # Sensoriamento Remoto
-Lab 3 - De espectros até índices, e encontrando a imagem correta
+Lab 04 - Classificação de imagens - parte 1
 --------------
 
 ### Agradecimentos
@@ -24,41 +24,61 @@ O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o
 ------------------------------------------------------------------------
 ### Objetivo
 
-O objetivo deste laboratório é entender o processo de classificação de imagens e explorar formas de transformar imagens de sensoriamento remoto em mapas de cobertura do solo.
+O objetivo deste laboratório é entender o processo de classificação de imagens e explorar formas de transformar imagens de sensoriamento remoto em mapas de cobertura da terra.
 
 ----------
 
 ## Carregando a imagem
 
-O primeiro passo é obter uma imagem sem nuvem para trabalhar. Faça isso importando imagens USGS Landsat 8 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo o menor cena nublada (primeiro).
+O primeiro passo é obter uma imagem sem nuvem para trabalhar. Faça isso importando imagens USGS Landsat 8 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first - primeira).
 
-Com base na semana passada, podemos usar a ferramenta de desenho de ponto (ícone de lágrima) das ferramentas de geometria e desenhar um único ponto na região de interesse - vamos usar a cidade de Cairns para este exemplo. Em seguida, 'Sair' das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações, contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
+Com base na semana passada, podemos usar a ferramenta de desenho de ponto (ícone de lágrima) das ferramentas de geometria e desenhar um único ponto na região de interesse - vamos usar a cidade de Apucarana, PR, para este exemplo. Em seguida, clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
 
+![image](https://user-images.githubusercontent.com/41900626/175110172-408ef3bd-8eb2-4e7e-8fdb-5cb37ac035f8.png)
 
-![Figura 1. Navegando para Cairns](l4_cairns.png)
 
 Em seguida, podemos executar o script abaixo para extrair nossa imagem desejada da coleção Landsat 8 e adicioná-la à visualização do mapa como um composto de cores reais:
 
 ```JavaScript
-var imagem = ee.Image(ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
+var imagem = ee.Image(ee.ImageCollection('LANDSAT/LC08/C02/T1_L2') 
     .filterBounds(roi)
-    .filterDate('2016-05-01', '2016-06-30')
+    .filterDate('2022-01-01', '2022-06-30')
     .sort('CLOUD_COVER')
-    .primeiro());
-Map.addLayer(image, {bandas: ['B4', 'B3', 'B2'],min:0, max: 3000}, 'True color image');
+    .first());   
+Map.addLayer(imagem, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 10000}, 'Imagem cor verdadeira');
 ```
+![image](https://user-images.githubusercontent.com/41900626/175113459-c2752997-5f80-4d75-8e56-5a1921977137.png)
 
-![Figura 2. Adicionando imagem à visualização do mapa](l4_layers.png)
 
-Dê uma olhada ao redor da cena e familiarize-se com a paisagem. Você notará que a imagem é bastante escura - podemos ajustar o brilho/contraste usando as rodas de configurações para a camada que criamos na guia Camadas. Deslize o ajustador Gamma ligeiramente para a direita (de 1,0 a 1,4) para aumentar o brilho da cena.
+Dê uma olhada ao redor da cena e familiarize-se com a paisagem. Você pode testar diferentes limiares de contraste ajustando o valor de min e max.
 
-![Figura 3. Ajuste de brilho](l4_gamma.png)
+
+
+## Recortando a cena para uma área menor
+Antes de prosseguirmos às etapas de classificação, vamos recortar nossa cena para uma área teste de menor tamanho a fim tornar mais rápida a etapa de classificação automática.
+Passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer'.![image](https://user-images.githubusercontent.com/41900626/175122195-9242e624-cf3b-4ab1-973c-1581a8aa0578.png)
+Use a ferramenta de geometria 'Draw a rectangle' ![image](https://user-images.githubusercontent.com/41900626/175122290-343fa15c-cd83-4321-aaa5-56d152b35c76.png)
+para desenhar um retângulo ao redor de Apucarana representando nossa área de interesse. Desenhe um retângulo com dimensões parecidas as apresentadas na figura abaixo. Renomei o vetor para 'recorte'.
+![image](https://user-images.githubusercontent.com/41900626/175122567-8cd8085a-c78c-4543-9de3-7a11169b5153.png)
+Clique novamente na mãozinha para sair do modo desenho.
+
+Em seguida, podemos executar o script abaixo para extrair nossa imagem recortada:
+
+```JavaScript
+//Recortar cena
+var img_recorte =  imagem.clip(recorte);
+Map.addLayer(img_recorte, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 20000}, 'Recorte');
+```
+![image](https://user-images.githubusercontent.com/41900626/175123110-27fa7196-5fd9-4acd-931c-524d9fe1bc47.png)
+
+
 
 ## Coletando dados de treinamento
 1. O primeiro passo para classificar nossa imagem é coletar alguns dados de treinamento para ensinar o classificador. Queremos coletar amostras representativas de espectros de refletância para cada classe de cobertura do solo de interesse.
-2. Usando a cena livre de nuvens como orientação, passe o mouse na caixa 'Importações de geometria' ao lado das ferramentas de desenho de geometria e clique em '+ nova camada'.
-3. Cada nova camada representa uma classe dentro dos dados de treinamento, por exemplo, 'urbano'.
-4. Deixe a primeira nova camada representar 'urbano'. Localize pontos na nova camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los 9adicionando pontos na camada de geometria.
+2. Usando a cena livre de nuvens como orientação, passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer'.![image](https://user-images.githubusercontent.com/41900626/175116961-49a6ac14-9361-4b0a-b228-dbf553ee73da.png)
+
+3. Cada nova camada (layer) a ser criada irá representar uma classe dentro do conjunto de dados de treinamento, por exemplo, 'urbano'.
+4. Vamos definir a primeira nova camada como 'urbano'. Localize pontos representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando pontos na camada de geometria.
 5. Colete 25 pontos representativos e renomeie a 'geometria' como 'urbana'.
 
 ![Figura 4. Crie e colete a classe urbana](screenshots/l4_urban.png)
