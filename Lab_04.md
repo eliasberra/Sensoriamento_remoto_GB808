@@ -32,12 +32,12 @@ O objetivo deste laboratório é entender o processo de classificação de image
 
 O primeiro passo é obter uma imagem sem nuvem para trabalhar. Faça isso importando imagens USGS Landsat 8 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first - primeira).
 
-Com base na semana passada, podemos usar a ferramenta de desenho de ponto (ícone de lágrima) das ferramentas de geometria e desenhar um único ponto na região de interesse - vamos usar a cidade de Apucarana, PR, para este exemplo. Em seguida, clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
+Com base na semana passada, podemos usar a ferramenta de desenho de ponto (ícone de lágrima) das ferramentas de geometria e desenhar um único ponto na região de interesse - vamos usar a cidade de Apucarana, PR, para este exemplo. Após desenhado, clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
 
 ![image](https://user-images.githubusercontent.com/41900626/175110172-408ef3bd-8eb2-4e7e-8fdb-5cb37ac035f8.png)
 
 
-Em seguida, podemos executar o script abaixo para extrair nossa imagem desejada da coleção Landsat 8 e adicioná-la à visualização do mapa como um composto de cores reais:
+Em seguida, podemos executar o script abaixo para extrair nossa imagem desejada da coleção Landsat 8 e adicioná-la à visualização do mapa como uma composição de cores verdadeiras:
 
 ```JavaScript
 var imagem = ee.Image(ee.ImageCollection('LANDSAT/LC08/C02/T1_L2') 
