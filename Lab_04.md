@@ -179,5 +179,6 @@ Parabéns - você fez sua primeira classificação de cobertura da terra! Mas...
 
 Veremos como refinar isso e discutiremos limitações e caminhos para melhorias no próximo tutorial.
 
+Lembre de salvar seu script, pois o mesmo será utilizado no próximo tutorial.
 -------
 ### Obrigado
