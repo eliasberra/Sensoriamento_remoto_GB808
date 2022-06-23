@@ -15,52 +15,58 @@ O objetivo deste laboratório é aprofundar sua compreensão do processo de clas
 
 ## Carregue sua classificação anterior da semana passada
 
-Abra seu script do laboratório da semana passada. Se você não o salvou, repita as etapas do [Lab 4](https://github.com/geospatialeco/GEARS/blob/master/Intro_RS_Lab4.md) e salve-o desta vez.
+Abra seu script do laboratório da semana passada. Se você não o salvou, repita as etapas do [Lab_04](https://github.com/eliasberra/Sensoriamento_remoto_GB808/blob/99f77c491b61da623bfff5f70d4ec06269bc725a/Lab_04.md) e salve-o desta vez.
 
-Forneci o código completo abaixo, mas lembre-se de que você precisa coletar manualmente os dados de treinamento e atribuir propriedades de cobertura do solo.
+Forneci o código completo abaixo, mas lembre-se de que você precisa coletar manualmente os dados de treinamento e atribuir propriedades de cobertura da terra.
 
 ```JavaScript
-//Filtrar coleção de imagens para janela de tempo, localização espacial e cobertura de nuvens
-var imagem = ee.Image(ee.ImageCollection('LANDSAT/LC08/C01/T1_SR')
+//Selecionar imagem e formar uma composição colorida
+var imagem = ee.Image(ee.ImageCollection('LANDSAT/LC08/C02/T1_L2') 
     .filterBounds(roi)
-    .filterDate('2016-05-01', '2016-06-30')
+    .filterDate('2022-01-01', '2022-06-30')
     .sort('CLOUD_COVER')
-    .primeiro());
+    .first());   
+Map.addLayer(imagem, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 20000}, 'Imagem cor verdadeira', false);
 
-//Adiciona o composto true-clour ao mapa
-Map.addLayer(image, {bandas: ['B4', 'B3', 'B2'],min:0, max: 3000}, 'True color image');
+//Recortar cena
+var img_recorte =  imagem.clip(recorte);
+Map.addLayer(img_recorte, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 20000}, 'Recorte');
 
-//Mesclar recursos em um FeatureCollection
-var classNames = urban.merge(água).merge(floresta).merge(agricultura);
+//mesclar as classes em uma única coleção
+var nomeClasses = urbano.merge(floresta).merge(area_agricola_cultivada).merge(area_agricola_solo).merge(agua);
 
-//Seleciona as bandas a serem usadas
-var bandas = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7'];
+//Imprimir a coleção de feições
+print(nomeClasses)
 
-//Amostra os valores de refletância para cada ponto de treinamento
-var treinamento = image.select(bands).sampleRegions({
-  coleção: classNames,
-  propriedades: ['cobertura do solo'],
-  escala: 30
+//Extrair uma lista de valores em cada ponto pem cada banda
+var bandas = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+var treinamento = img_recorte.select(bandas).sampleRegions({
+  collection: nomeClasses,
+  properties: ['cobertura_terra'],
+  scale: 30
+});
+print('treinamento', treinamento);
+
+//Treinar o classificador
+var classificador = ee.Classifier.smileCart().train({
+      features: treinamento,
+      classProperty: 'cobertura_terra',
+      inputProperties: bandas
 });
 
-//Treina o classificador - neste caso usando uma árvore de regressão CART
-var classificador = ee.Classifier.cart().train({
-  características: treinamento,
-  classProperty: 'landcover',
-  propriedades de entrada: bandas
-});
+//Executar a classificação
+var classificada = img_recorte.select(bandas).classify(classificador);
 
-//Executa a classificação
-var classificado = image.select(bandas).classify(classificador);
-
-//Exibe o mapa de classificação
-Map.centerObject(classNames, 11);
-Map.addLayer(classificado,
-{min: 0, max: 3, paleta: ['red', 'blue', 'green','yellow']},
+//Exibir a classificação
+Map.centerObject(nomeClasses, 11);
+Map.addLayer(classificada,
+{min: 0, max: 4, palette: ['grey', 'green', 'blue','olive', 'yellow']},
 'classificação');
-```
 
-![Figura 1. Mapa classificado](screenshots/l4_classified.png)
+```
+![image](https://user-images.githubusercontent.com/41900626/175385609-82018207-6d8a-471c-bf3e-2a8c8fb22df7.png)
+
+
 
 -----
 ## Melhorando a Classificação
