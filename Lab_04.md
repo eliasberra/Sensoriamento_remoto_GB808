@@ -136,7 +136,9 @@ Depois de executar o script, os dados de treinamento serão impressos no Console
 
 
 ## Treine o classificador e execute a classificação
+Nesse exemplo, vamos usar o classificador CART (Classification and Regression Trees) (Breiman et al. 1984) para prever as classes temáticas.
 
+O exemplo a seguir usa um classificador de árvores de classificação e regressão (CART) (Breiman et al. 1984) para prever três classes simples:
 Agora podemos treinar o algoritmo do classificador usando nossos exemplos de como são as diferentes classes de cobertura da terra de uma perspectiva multiespectral.
 
 ```javascript
@@ -157,6 +159,7 @@ var classificada = img_recorte.select(bandas).classify(classificador);
 ```
 
 Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbano = 0, floresta = 1, agua = 2, area_agricola_cultivada = 3, area_agricola_solo = 44 - então o resultado será renderizado com essas classes como urbano = cinza, floresta = verde, água = azul, area_agricola_cultivada = oliva e area_agricola_solo = amarelo, respectivamente.
+Você pode consultar opções de cores para a pallete em <https://en.wikipedia.org/wiki/Web_colors>.
 
 
 ```javascript
