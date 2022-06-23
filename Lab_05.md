@@ -9,7 +9,7 @@ Lab 05 - Classificação de imagens - parte 2
 
 ------
 ### Objetivo
-O objetivo deste laboratório é aprofundar sua compreensão do processo de classificação de imagens e melhorar a classificação da semana passada.
+O objetivo deste laboratório é aprofundar sua compreensão do processo de classificação de imagens e melhorar a classificação do tutorial passado.
 
 ----------
 
