@@ -58,7 +58,7 @@ Dê uma olhada ao redor da cena e familiarize-se com a paisagem. Você pode test
 Antes de prosseguirmos às etapas de classificação, vamos recortar nossa cena para uma área teste de menor tamanho a fim tornar mais rápida a etapa de classificação automática.
 Passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer'.![image](https://user-images.githubusercontent.com/41900626/175122195-9242e624-cf3b-4ab1-973c-1581a8aa0578.png)
 Use a ferramenta de geometria 'Draw a rectangle' ![image](https://user-images.githubusercontent.com/41900626/175122290-343fa15c-cd83-4321-aaa5-56d152b35c76.png)
-para desenhar um retângulo ao redor de Apucarana representando nossa área de interesse. Desenhe um retângulo com dimensões parecidas as apresentadas na figura abaixo. Renomei o vetor para 'recorte'.
+para desenhar um retângulo ao redor de Apucarana representando nossa área de interesse. Desenhe um retângulo com dimensões parecidas as apresentadas na figura abaixo. Renomeie o vetor para 'recorte'.
 ![image](https://user-images.githubusercontent.com/41900626/175122567-8cd8085a-c78c-4543-9de3-7a11169b5153.png)
 Clique novamente na mãozinha para sair do modo desenho.
 
