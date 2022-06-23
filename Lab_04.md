@@ -87,16 +87,15 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 
 
 5. Em seguida, você pode configurar a importação da geometria da classe urbana clicando no símbolo da engrenagem na mesma linha em que ela se encontra (![image](https://user-images.githubusercontent.com/41900626/175126735-c6bc88e9-c6b3-47b5-871f-342c364d8c16.png)
-). Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (nome = Cobertura_terra) e defina seu valor como 0. (As classes subsequentes serão 1, 2, 3 etc.) quando terminar, clique em 'OK'.
+). Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (nome = cobertura_terra) e defina seu valor como 0. (As classes subsequentes serão 1, 2, 3 etc.) quando terminar, clique em 'OK'.
 
 ![image](https://user-images.githubusercontent.com/41900626/175126255-ab240ac8-9f5c-4653-8d1e-0c2cbdccbbf9.png)
 
 
 
 6. Adicione mais 4 classes: 'floresta', 'area_agricola_cultivada' (área agrícola com cultivo evidente), 'area_agricola_solo' (área agrícola sem um cultivo evidente) e 'agua'. Colete as amostras de treinamento (~30).
-7. Repita a etapa 5 para cada classe de cobertura do solo que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como Cobertura_terra com valores de 1, 2, 3 e 4 para as diferentes classes.
+7. Repita a etapa 5 para cada classe de cobertura do solo que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como 'cobertura_terra' com valores de 1, 2, 3 e 4 para as diferentes classes.
 ![image](https://user-images.githubusercontent.com/41900626/175130852-808b0b57-29d1-40de-8896-5520190547d7.png)
-
 
 
 8. Agora temos cinco classes definidas ('urbano', 'floresta', 'area_agricola_cultivada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados de treinamento, precisamos mesclá-las em uma única coleção, chamada FeatureCollection. Execute a seguinte linha para mesclar as geometrias em um único FeatureCollection:
@@ -106,7 +105,7 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 var nomeClasses = urbano.merge(floresta).merge(area_agricola_cultivada).merge(area_agricola_solo).merge(agua);
 ```
 
-9. Imprima a coleção de recursos e inspecione os recursos.
+9. Imprima a coleção de feições e as inspecione.
 
 ```javascript
 //Imprimir a coleção de feições
@@ -117,67 +116,67 @@ print(nomeClasses)
 
 ## Crie os dados de treinamento
 
-Agora podemos usar o FeatureCollection que criamos para detalhar a imagem e extrair os dados de refletância para cada ponto, de cada banda. Criamos dados de treinamento sobrepondo os pontos de treinamento na imagem. Isso adicionará novas propriedades à coleção de recursos que representam valores de banda de imagem em cada ponto:
+Agora podemos usar o FeatureCollection que criamos para extrair os dados de reflectância para cada ponto amostral, de cada banda. Criamos dados de treinamento sobrepondo os pontos de treinamento na imagem. Isso adicionará novas propriedades à coleção de feições que representará os valores das banda espectrais de cada ponto:
 
 ```javascript
-var bandas = ['B2', 'B3', 'B4', 'B5', 'B6', 'B7'];
-var treinamento = image.select(bands).sampleRegions({
-  coleção: classNames,
-  propriedades: ['cobertura do solo'],
-  escala: 30
+//Extrair uma lista de valores em cada ponto pem cada banda
+var bandas = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
+var treinamento = img_recorte.select(bandas).sampleRegions({
+  collection: nomeClasses,
+  properties: ['cobertura_terra'],//essa propriedade deve ser escrita da mesma forma como escrita no passo 5 e 7
+  scale: 30
 });
-imprimir(treinamento);
+print('treinamento', treinamento);
 ```
+Depois de executar o script, os dados de treinamento serão impressos no Console. Você notará que as informações de 'properties' agora mudaram e, além da classe de cobertura do solo, para cada ponto agora há um valor de refletância correspondente para cada banda da imagem.
 
-Depois de executar o script, os dados de treinamento serão impressos no console. Você notará que as informações de 'propriedades' agora mudaram e, além da classe de cobertura do solo, para cada ponto agora há um valor de refletância correspondente para cada banda da imagem.
+![image](https://user-images.githubusercontent.com/41900626/175360982-a0a30777-c258-41d3-9a49-a9cd8dc7ef2a.png)
 
-![Figura 8. Imprimindo dados de treinamento](screenshots/l4_training.png)
+
 
 
 ## Treine o classificador e execute a classificação
 
-Agora podemos treinar o algoritmo do classificador usando nossos exemplos de como são as diferentes classes de cobertura do solo de uma perspectiva multiespectral.
+Agora podemos treinar o algoritmo do classificador usando nossos exemplos de como são as diferentes classes de cobertura da terra de uma perspectiva multiespectral.
 
 ```javascript
-var classificador = ee.Classifier.cart().train({
-  características: treinamento,
-  classProperty: 'landcover',
-  propriedades de entrada: bandas
+//Treinar o classificador
+var classificador = ee.Classifier.smileCart().train({
+      features: treinamento,
+      classProperty: 'cobertura_terra',
+      inputProperties: bandas
 });
 ```
 
-O próximo passo é aplicar esse conhecimento de nosso treinamento ao restante da imagem - o uso foi aprendido em nossa coleção supervisionada para informar decisões sobre a qual classe outros pixels devem pertencer.
+O próximo passo é aplicar esse conhecimento de nosso treinamento ao restante da imagem - usando o que foi aprendido em nossa coleção supervisionada (ou seja, nós supervisionamos a coleta das amostras) para auxiliar o classificador a decidir sobre qual classe os outros pixels devem pertencer.
+
 
 ```javascript
 //Executa a classificação
-var classificado = image.select(bandas).classify(classificador);
+var classificada = img_recorte.select(bandas).classify(classificador);
 ```
 
-Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbano=0, água=1, floresta=2 e agricultura=3 - então o resultado será renderizado com essas classes como amarelo, azul e verde, respectivamente.
+Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbano = 0, floresta = 1, agua = 2, area_agricola_cultivada = 3, area_agricola_solo = 44 - então o resultado será renderizado com essas classes como urbano = cinza, floresta = verde, água = azul, area_agricola_cultivada = oliva e area_agricola_solo = amarelo, respectivamente.
 
 
 ```javascript
-//Exibir classificação
-Map.centerObject(classNames, 11);
-Map.addLayer(classificado,
-{min: 0, max: 3, paleta: ['red', 'blue', 'green','yellow']},
+//Exibir a classificação
+Map.centerObject(nomeClasses, 11);
+Map.addLayer(classificada,
+{min: 0, max: 4, palette: ['grey', 'green', 'blue','olive', 'yellow']},
 'classificação');
 ```
-
-
-
-![Figura 9. Mapa classificado](screenshots/l4_classified.png)
+![image](https://user-images.githubusercontent.com/41900626/175368855-95bebf10-06ae-4df1-8644-fe6d0632cadc.png)
 
 
 ## Examine seus resultados
 
-Parabéns - sua primeira classificação de cobertura de terra! Mas.....
+Parabéns - você fez sua primeira classificação de cobertura da terra! Mas.....
 - Você está feliz com a classificação?
 - Como poderia ser melhorado?
 - Tente adicionar algumas classes extras para categorias de cobertura de terra que mostram sinais de confusão
 
-Veremos como refinar isso e discutiremos limitações e caminhos para melhorias na próxima semana.
+Veremos como refinar isso e discutiremos limitações e caminhos para melhorias no próximo tutorial.
 
 -------
 ### Obrigado
-
