@@ -81,7 +81,7 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 
 3. Cada nova camada (layer) a ser criada armazenará a localização do conjunto de pontos representando uma determinada classe de cobertura da terra.
 4. Vamos definir nossa primeira nova camada/classe como 'urbano'. Localize pontos representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando pontos na camada de geometria.
-5. Colete em torno de 30 pontos representativos e renomeie a 'geometria' como 'urbana'.
+5. Colete em torno de 30 pontos representativos e renomeie a 'geometry' como 'urbana'.
 ![image](https://user-images.githubusercontent.com/41900626/175125644-60957f00-c770-456b-8854-22a65140db6a.png)
 
 
