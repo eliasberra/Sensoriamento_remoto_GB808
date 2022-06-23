@@ -116,10 +116,10 @@ print(nomeClasses)
 
 ## Crie os dados de treinamento
 
-Agora podemos usar o FeatureCollection que criamos para extrair os dados de reflectância para cada ponto amostral, de cada banda. Criamos dados de treinamento sobrepondo os pontos de treinamento na imagem. Isso adicionará novas propriedades à coleção de feições que representará os valores das banda espectrais de cada ponto:
+Agora podemos usar o FeatureCollection que criamos para extrair os dados de reflectância para cada ponto amostral, de cada banda. Criamos dados de treinamento sobrepondo os pontos de treinamento na imagem. Isso adicionará novas propriedades à coleção de feições que representará os valores das bandas espectrais de cada ponto:
 
 ```javascript
-//Extrair uma lista de valores em cada ponto pem cada banda
+//Extrair uma lista de valores em cada ponto em cada banda
 var bandas = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
 var treinamento = img_recorte.select(bandas).sampleRegions({
   collection: nomeClasses,
