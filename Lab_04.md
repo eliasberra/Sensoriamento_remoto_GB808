@@ -180,5 +180,17 @@ Parabéns - você fez sua primeira classificação de cobertura da terra! Mas...
 Veremos como refinar isso e discutiremos limitações e caminhos para melhorias no próximo tutorial.
 
 Lembre de salvar seu script, pois o mesmo será utilizado no próximo tutorial.
+
 -------
+
+## Melhorando a Classificação
+
+Aqui devemos pensar se estamos satisfeitos ou não com essa classificação. Mesmo sem quaisquer dados quantitativos, podemos perceber erros em algumas regiões. Como podemos melhorar? Existem algumas opções que podemos explorar:
+
+1. Altere o tamanho da amostra de treinamento. Amostramos apenas ~30 pixels por classe. Foram muitos cliques, mas poderíamos usar polígonos em vez de pontos para amostrar mais pixels para treinamento.
+2. Altere a estratégia de amostragem. Coletamos um mesmo número de pontos por classe, mas algumas classes de cobertura da terra cobrem muito mais área do que outras. Em vez disso, poderíamos experimentar uma abordagem de amostragem estratificada.
+3. Altere o classificador. Usamos um classificador CART, podemos tentar uma abordagem diferente, como uma Support Vector Machine(SVM) ou a abordagem randomForest.
+4. Altere as bandas. Poderíamos adicionar informações auxiliares, como dados de elevação, ou um índice derivado, como NDVI, para fornecer informações para discriminação de classe.
+5. Altere a imagem. Usamos uma cena de verão do Landsat-8. Poderíamos tentar uma cena de inverno ou mudar para uma imagem do Sentinel-2.
+
 ### Obrigado
