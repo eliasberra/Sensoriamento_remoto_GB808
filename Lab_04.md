@@ -137,8 +137,6 @@ Depois de executar o script, os dados de treinamento serão impressos no Console
 
 ## Treine o classificador e execute a classificação
 Nesse exemplo, vamos usar o classificador CART (Classification and Regression Trees) (Breiman et al. 1984) para prever as classes temáticas.
-
-O exemplo a seguir usa um classificador de árvores de classificação e regressão (CART) (Breiman et al. 1984) para prever três classes simples:
 Agora podemos treinar o algoritmo do classificador usando nossos exemplos de como são as diferentes classes de cobertura da terra de uma perspectiva multiespectral.
 
 ```javascript
