@@ -97,10 +97,10 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 
 
 6. Adicione mais 4 classes. Colete 20 amostras de treinamento para cada uma dessas classes: 
--'floresta', 
--'area_agricola_vegetada' (área agrícola com cultivo evidente), 
--'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e,
--'agua'. 
+  - 'floresta', 
+  - 'area_agricola_vegetada' (área agrícola com cultivo evidente), 
+  - 'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e,
+  - 'agua'. 
 
 
 
