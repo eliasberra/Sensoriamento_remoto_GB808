@@ -48,36 +48,50 @@ Execute novamente sua classificação. Você deve estar visualizando algo pareci
 Por exemplo, coletando poligonos para representar os dados de validação dentro de vUrbana: 
 ![image](https://user-images.githubusercontent.com/41900626/175941484-d0724dc3-8b75-4618-b038-a004948a6f60.png)
 
+Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos dados de treinamento. Por exemplo, para 'vUrbana', configure para 'FeatureCollection', adicione a propriedade 'cobertura_terra' e valor = 0 (para as demais classes escreva valor 1,2,3 e 4).
+![image](https://user-images.githubusercontent.com/41900626/175942534-a534d5b4-a343-445e-a86a-5896eaeb8bab.png)
+
+Nota: Lembre de ir salvando o código.
+Ao final, você deve ter adquirido amsotras para as cinco classes de validação:
+![image](https://user-images.githubusercontent.com/41900626/175948116-243de285-0749-4d6f-97dd-c2111f749dae.png)
+
   
 
 10. Mescle seus polígonos de validação em uma coleção de recursos
 
 ```JavaScript
-//Mesclar em um FeatureCollection
-var valNames = vWater.merge(vCity).merge(vForest).merge(vOther);
+//--------------Validação--------------------------------
+
+//mesclar os polígonos de validação
+var nomeClasses = vUrbana.merge(vFloresta).merge(vArea_agricola_vegetada).merge(vArea_agricola_solo).merge(vAgua);
 ```
 
 11. Amostra seus resultados de classificação para suas novas áreas de validação
 
 ```JavaScript
-var validação = classificado.sampleRegions({
-  coleção: valNames,
-  propriedades: ['cobertura do solo'],
-  escala: 30,
+//Extrair valores da classificação nos polígonos de validação
+var validacao = classificada.sampleRegions({
+  collection: nomeVal,
+  properties: ['cobertura_terra'],
+  scale: 30,
 });
-imprimir(validação);
+print('validação', validacao);
 ```
+![image](https://user-images.githubusercontent.com/41900626/175950839-df5f6b58-a555-423c-9a8d-9d619b87d4ff.png)
+
 
 12. Execute a avaliação de validação usando a abordagem de matriz de erros
 
 ```JavaScript
-//Compara a cobertura do solo de seus dados de validação com o resultado da classificação
-var testAccuracy = validation.errorMatrix('landcover', 'classification');
+//Compare a cobertura da terra de seus dados de validação contra o resultado da classificação
+var testeAccuracia = validacao.errorMatrix('cobertura_terra', 'classification');
 // Imprime a matriz de erro no console
-print('Matriz de erro de validação: ', testAccuracy);
+print('Matriz de erro de validação: ', testeAccuracia);
 // Imprime a precisão geral no console
-print('Precisão geral da validação: ', testAccuracy.accuracy());
+print('Acurácia geral da validação: ', testeAccuracia.accuracy());
 ```
+![image](https://user-images.githubusercontent.com/41900626/175952844-d2b46b79-14f7-4e71-9410-72eb0f45f992.png)
+
 13. Exporte sua matriz de erro para análise posterior para calcular a precisão de classe individual e a precisão do usuário e do produtor.
 
 -------
