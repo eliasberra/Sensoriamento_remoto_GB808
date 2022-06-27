@@ -122,5 +122,12 @@ print('AC:', testeAcuracia.producersAccuracy());
 print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
+O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
+
+6. Calcular a área de cada classe temática?
+Concluir-------------
+
+
+
 -------
 ### Obrigado
