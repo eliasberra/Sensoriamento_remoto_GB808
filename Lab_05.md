@@ -43,10 +43,12 @@ Execute novamente sua classificação. Você deve estar visualizando algo pareci
   - use os mesmos nomes e rótulos de propriedade.
   - não sobreponha os polígonos aos dados de treinamento (pontos).
   - não exceda 5000 pixels.
-  - coletar exemplos das mesmas cinco classes, mas renomeia-as de forma diferente (vUrbana, vCity, vForest, vOther)
+  - coletar exemplos das mesmas cinco classes, mas renomeia-as de forma diferente ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', -'vAgua')
 
-Por exemplo, coletando poligonos para representar os dados de validação para vUrbana
-  - 'floresta', -'area_agricola_vegetada' (área agrícola com cultivo evidente), -'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e, -'agua'.
+Por exemplo, coletando poligonos para representar os dados de validação dentro de vUrbana: 
+![image](https://user-images.githubusercontent.com/41900626/175941484-d0724dc3-8b75-4618-b038-a004948a6f60.png)
+
+  
 
 10. Mescle seus polígonos de validação em uma coleção de recursos
 
