@@ -38,7 +38,7 @@ Execute novamente sua classificação. Você deve estar visualizando algo pareci
 
 ## Validação da classificação
 
-9. Colete dados de validação usando a ferramenta de geometria de polígono retangular ![image](https://user-images.githubusercontent.com/41900626/175937417-b8d465e1-d5af-48e2-b5ba-958bd98e2e09.png):
+1. Colete dados de validação usando a ferramenta de geometria de polígono retangular ![image](https://user-images.githubusercontent.com/41900626/175937417-b8d465e1-d5af-48e2-b5ba-958bd98e2e09.png):
   - faça isso da mesma maneira que você coletou dados de treinamento.
   - use os mesmos nomes e rótulos de propriedade.
   - não sobreponha os polígonos aos dados de treinamento (pontos).
@@ -57,7 +57,7 @@ Ao final, você deve ter adquirido amsotras para as cinco classes de validação
 
   
 
-10. Mescle seus polígonos de validação em uma coleção de feições
+2. Mescle seus polígonos de validação em uma coleção de feições
 ```JavaScript
 //--------------Validação--------------------------------
 
@@ -65,7 +65,7 @@ Ao final, você deve ter adquirido amsotras para as cinco classes de validação
 var nomeVal = vUrbana.merge(vFloresta).merge(vArea_agricola_vegetada).merge(vArea_agricola_solo).merge(vAgua);
 ```
 
-11. Amostrar os resultados da classificação para as áreas de validação
+3. Amostrar os resultados da classificação para as áreas de validação
 ```JavaScript
 //Extrair valores da classificação nos polígonos de validação
 var validacao = classificada.sampleRegions({
@@ -78,7 +78,7 @@ print('validação', validacao);
 ![image](https://user-images.githubusercontent.com/41900626/175950839-df5f6b58-a555-423c-9a8d-9d619b87d4ff.png)
 
 
-12. Executar a avaliação de validação usando a abordagem de matriz de erros
+4. Executar a avaliação de validação usando a abordagem de matriz de erros
 ```JavaScript
 // Construir a matriz de confusão dos dados de validação contra o resultado da classificação
 var testeAcuracia = validacao.errorMatrix('cobertura_terra', 'classification');
@@ -105,7 +105,7 @@ Se você clicar nela, irá aparece uma tarefa (task) esperando a ser executada. 
 ![image](https://user-images.githubusercontent.com/41900626/176022613-a803a49d-9816-4885-92a3-c64193e5bd0c.png)
 
 
-13. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação
+5. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação
 ```JavaScript
 // Calcula e imprime a acurácia geral no console
 print('Acurácia geral da validação: ', testeAcuracia.accuracy());
