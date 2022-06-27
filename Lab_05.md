@@ -46,7 +46,7 @@ Execute novamente sua classificação. Você deve estar visualizando algo pareci
   - coletar exemplos das mesmas cinco classes, mas renomeia-as de forma diferente (vUrbana, vCity, vForest, vOther)
 
 Por exemplo, coletando poligonos para representar os dados de validação para vUrbana
-  -'floresta', -'area_agricola_vegetada' (área agrícola com cultivo evidente), -'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e, -'agua'.
+  - 'floresta', -'area_agricola_vegetada' (área agrícola com cultivo evidente), -'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e, -'agua'.
 
 10. Mescle seus polígonos de validação em uma coleção de recursos
 
