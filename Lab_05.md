@@ -80,16 +80,47 @@ print('validação', validacao);
 
 12. Executar a avaliação de validação usando a abordagem de matriz de erros
 ```JavaScript
-//Compare a cobertura da terra de seus dados de validação contra o resultado da classificação
-var testeAccuracia = validacao.errorMatrix('cobertura_terra', 'classification');
-// Imprime a matriz de erro no console
-print('Matriz de erro de validação: ', testeAccuracia);
-// Imprime a precisão geral no console
-print('Acurácia geral da validação: ', testeAccuracia.accuracy());
-```
-![image](https://user-images.githubusercontent.com/41900626/175952844-d2b46b79-14f7-4e71-9410-72eb0f45f992.png)
+// Construir a matriz de confusão dos dados de validação contra o resultado da classificação
+var testeAcuracia = validacao.errorMatrix('cobertura_terra', 'classification');
 
-13. Exporte sua matriz de erro para análise posterior para calcular a precisão de classe individual e a precisão do usuário e do produtor.
+// Imprime a matriz de erro no console e exporta tabela
+print('Matriz de erro de validação: ', testeAcuracia);
+
+//Exporta para o Google Drive a tabela com a matriz de confusão
+var featureCollection = ee.FeatureCollection(testeAcuracia.getInfo()
+                        .map(function(element){
+                        return ee.Feature(null,{prop:element})}));
+Export.table.toDrive({collection: featureCollection,
+    description: 'Exportar_matriz_confusao',
+    folder: 'GB808',//Folder no Google Drive onde será armazenado o arquivo CSV
+    fileNamePrefix: 'matrizConfusao', 
+    fileFormat: 'CSV',
+    selectors: (['system:index', 'prop'])
+});
+```
+![image](https://user-images.githubusercontent.com/41900626/176021853-48d4451b-2eca-4312-8e40-6e15118aa6e3.png)
+
+Você deve ter observado que a aba 'Tasks' ficou laranja ![image](https://user-images.githubusercontent.com/41900626/176021968-ccf22719-c332-4979-aa52-34102b3ceedd.png)
+Se você clicar nela, irá aparece uma tarefa (task) esperando a ser executada. Clique em 'RUN' para exportar a tabela e salvá-la no seu Google Drive. Uma vez exportada, você pode trabalhar a tabela posteriormente calculando, por exemplo, a acurácia de cada classe individualmente.
+![image](https://user-images.githubusercontent.com/41900626/176022613-a803a49d-9816-4885-92a3-c64193e5bd0c.png)
+
+
+13. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação
+```JavaScript
+// Calcula e imprime a acurácia geral no console
+print('Acurácia geral da validação: ', testeAcuracia.accuracy());
+
+// Calcula a Acurácia do Consumidor (ou do Usuário) – AC, também conhecida como 
+//especificidade e complemento do erro de comissão (1 − erro de comissão)
+print('AC:', testeAcuracia.consumersAccuracy());
+
+// Calcula a Acurácia do Produtor – AP, também conhecida como 
+//especificidade e complemento do erro de omissão (1 − erro de omissão)
+print('AC:', testeAcuracia.producersAccuracy());
+
+// Calcula e imprime a estatística kappa
+print('Estatística kappa:', testeAcuracia.kappa());
+```
 
 -------
 ### Obrigado
