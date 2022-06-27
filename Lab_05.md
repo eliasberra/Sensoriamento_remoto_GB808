@@ -52,7 +52,7 @@ Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos d
 ![image](https://user-images.githubusercontent.com/41900626/175942534-a534d5b4-a343-445e-a86a-5896eaeb8bab.png)
 
 Nota: Lembre de ir salvando o código.
-Ao final, você deve ter adquirido amsotras para as cinco classes de validação:
+Ao final, você deve ter adquirido amostras para as cinco classes de validação:
 ![image](https://user-images.githubusercontent.com/41900626/175948116-243de285-0749-4d6f-97dd-c2111f749dae.png)
 
   
