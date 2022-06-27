@@ -41,9 +41,9 @@ Execute novamente sua classificação. Você deve estar visualizando algo pareci
 1. Colete dados de validação usando a ferramenta de geometria de polígono retangular ![image](https://user-images.githubusercontent.com/41900626/175937417-b8d465e1-d5af-48e2-b5ba-958bd98e2e09.png):
   - faça isso da mesma maneira que você coletou dados de treinamento.
   - use os mesmos nomes e rótulos de propriedade.
-  - não sobreponha os polígonos aos dados de treinamento (pontos).
+  - não sobreponha os polígonos aos dados de treinamento (pontos); queremos dados independentes.
   - não exceda 5000 pixels.
-  - coletar exemplos das mesmas cinco classes, mas renomeia-as de forma diferente ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', -'vAgua')
+  - coletar amostras das mesmas cinco classes, mas renomeia-as de forma diferente ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua')
 
 Por exemplo, coletando poligonos para representar os dados de validação dentro de vUrbana: 
 ![image](https://user-images.githubusercontent.com/41900626/175941484-d0724dc3-8b75-4618-b038-a004948a6f60.png)
