@@ -57,17 +57,15 @@ Ao final, você deve ter adquirido amsotras para as cinco classes de validação
 
   
 
-10. Mescle seus polígonos de validação em uma coleção de recursos
-
+10. Mescle seus polígonos de validação em uma coleção de feições
 ```JavaScript
 //--------------Validação--------------------------------
 
 //mesclar os polígonos de validação
-var nomeClasses = vUrbana.merge(vFloresta).merge(vArea_agricola_vegetada).merge(vArea_agricola_solo).merge(vAgua);
+var nomeVal = vUrbana.merge(vFloresta).merge(vArea_agricola_vegetada).merge(vArea_agricola_solo).merge(vAgua);
 ```
 
-11. Amostra seus resultados de classificação para suas novas áreas de validação
-
+11. Amostrar os resultados da classificação para as áreas de validação
 ```JavaScript
 //Extrair valores da classificação nos polígonos de validação
 var validacao = classificada.sampleRegions({
@@ -80,8 +78,7 @@ print('validação', validacao);
 ![image](https://user-images.githubusercontent.com/41900626/175950839-df5f6b58-a555-423c-9a8d-9d619b87d4ff.png)
 
 
-12. Execute a avaliação de validação usando a abordagem de matriz de erros
-
+12. Executar a avaliação de validação usando a abordagem de matriz de erros
 ```JavaScript
 //Compare a cobertura da terra de seus dados de validação contra o resultado da classificação
 var testeAccuracia = validacao.errorMatrix('cobertura_terra', 'classification');
