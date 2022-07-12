@@ -129,12 +129,12 @@ A acurácia do consumidor (AC), ou do usuário, é a medida de acurácia do pont
 A acurácia do produtor (AP) é a acurácia do ponto de vista do criador/produtor do mapa. Esta é a frequência com que as características reais no solo são mostradas corretamente no mapa classificado ou a probabilidade de uma determinada cobertura/uso da terra ser classificada como tal no mapa. A AP é complementada pelo erro de omissão (EO), que nos informa a quantidade percentual de erros de omissões, ou seja, classes que deveriam ter sido detectadas, mas que por alguma razão foram omitidas da classificação.] (https://solved.eco.br/avaliacao-de-acuracia-ou-concordancia/)
 
 
-
 6. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
 ![image](https://user-images.githubusercontent.com/41900626/178567779-a0a63829-30c8-4e25-8e8b-70a81c9278f9.png)
 O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
 
-7. Calcular a área de cada classe temática?
+
+## Calcular a área de cada classe temática
 Concluir-------------
 
 
