@@ -78,7 +78,7 @@ print('validação', validacao);
 ![image](https://user-images.githubusercontent.com/41900626/175950839-df5f6b58-a555-423c-9a8d-9d619b87d4ff.png)
 
 
-4. Executar a avaliação de validação usando a abordagem de matriz de erros
+4. Executar a avaliação de validação usando a abordagem de matriz de erros (ou matriz de confusão). Além do Console, a matriz de erros é exportada como um arquivo texto (.csv) para permitir que esse resultado seja melhor trabalhado e organizado.
 ```JavaScript
 // Construir a matriz de confusão dos dados de validação contra o resultado da classificação
 var testeAcuracia = validacao.errorMatrix('cobertura_terra', 'classification');
@@ -86,7 +86,7 @@ var testeAcuracia = validacao.errorMatrix('cobertura_terra', 'classification');
 // Imprime a matriz de erro no console e exporta tabela
 print('Matriz de erro de validação: ', testeAcuracia);
 
-//Exporta para o Google Drive a tabela com a matriz de confusão
+//Exportar para o Google Drive a tabela com a matriz de confusão
 var featureCollection = ee.FeatureCollection(testeAcuracia.getInfo()
                         .map(function(element){
                         return ee.Feature(null,{prop:element})}));
@@ -129,9 +129,12 @@ A acurácia do consumidor (AC), ou do usuário, é a medida de acurácia do pont
 A acurácia do produtor (AP) é a acurácia do ponto de vista do criador/produtor do mapa. Esta é a frequência com que as características reais no solo são mostradas corretamente no mapa classificado ou a probabilidade de uma determinada cobertura/uso da terra ser classificada como tal no mapa. A AP é complementada pelo erro de omissão (EO), que nos informa a quantidade percentual de erros de omissões, ou seja, classes que deveriam ter sido detectadas, mas que por alguma razão foram omitidas da classificação.] (https://solved.eco.br/avaliacao-de-acuracia-ou-concordancia/)
 
 
+
+6. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
+![image](https://user-images.githubusercontent.com/41900626/178567779-a0a63829-30c8-4e25-8e8b-70a81c9278f9.png)
 O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
 
-6. Calcular a área de cada classe temática?
+7. Calcular a área de cada classe temática?
 Concluir-------------
 
 
