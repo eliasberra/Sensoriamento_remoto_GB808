@@ -135,6 +135,8 @@ Este pedaço de código pesquisará o arquivo completo do Landsat-5, encontrará
 10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 3,2 e 1 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Paranaguá e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem do mouse/trackpad). 
 Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Mover o mouse sobre o botão 'Layers' (camadas) no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
 Experimente diferentes limiares de contraste alterando os valores de 'min:' (valor mínimo) e 'max:' (valor máximo).
+![image](https://user-images.githubusercontent.com/41900626/178803288-9323cb8a-0a93-44e2-a42b-ff91297e7d2b.png)
+
 
 
 
