@@ -121,23 +121,47 @@ Este pedaço de código pesquisará o arquivo completo do Landsat-5, encontrará
 1. Agora, para realmente dar uma olhada nesta imagem, precisamos adicioná-la ao nosso ambiente de mapeamento (similarmente a um SIG como QGIS). Antes de fazer isso, no entanto, vamos definir como queremos exibir a imagem. Vamos começar com uma representação de cores verdadeiras colando as seguintes linhas abaixo das que você já adicionou e clique em "Run".
 
 ```JavaScript
-  // Defina os parâmetros de visualização em um dicionário JavaScript para renderização de cores verdadeiras. Bandas 3,2 e 1 são  necessárias para tal.
-    var corVerdadeira = {
-        bands: ["SR_B3", "SR_B2", "SR_B1"],
+  // Adiciona uma composição RGB em cores verdadeiras (Bandas 3,2 e 1) ao mapa, primeiramente sem contraste.
+   Map.addLayer(imagem, {bands: ["SR_B3", "SR_B2", "SR_B1"]}, "sem contraste");
+```
+![image](https://user-images.githubusercontent.com/41900626/178990072-3df5f050-3c40-4e79-934e-b4af53b0968d.png)
+Observe como a composição colorida se apresenta bastante escura.
+
+
+Agora, vamos definir um contraste para melhorar a vizualização da nossa composição colorida. 
+```JavaScript
+  // Defina os parâmetros de visualização em um dicionário JavaScript para renderização de cores verdadeiras. Bandas 3,2 e 1 são necessárias para tal.
+    var parVizualizacao = {
+        bands: ["SR_B3", "SR_B2", "SR_B1"],//A serem associadas ao canais de cores R-G-B
         min: 7000,//Os valores em min: e max: definem os limiares de contraste a ser aplicado
         max: 12000
         };
 
   // Adicione a imagem ao mapa, usando os parâmetros de visualização.
-  Map.addLayer(imagem, corVerdadeira, "imagem de cor verdadeira");
+  Map.addLayer(imagem, parVizualizacao, "imagem de cor verdadeira");
 ```
+![image](https://user-images.githubusercontent.com/41900626/178991066-c8f834e7-2324-42b4-89ae-1385f1561bc3.png)
+
 
 10. Este código especifica que para uma imagem de cores verdadeiras, as bandas 3,2 e 1 devem ser usadas na composição RGB. Depois que a imagem aparecer no mapa, você poderá ampliar e explorar Paranaguá e arredores. Os símbolos (+) e (-) no canto superior esquerdo do ambinete de mapa podem ser usados para aplicar diferentes níveis de zoom na cena (também possível com a roda de rolagem do mouse/trackpad). 
 Um clique com o botão esquerdo do mouse abre a "mão" para mover a imagem ao redor. Mover o mouse sobre o botão 'Layers' (camadas) no canto superior direito do painel do mapa mostra as camadas disponíveis e permite ajustar a opacidade das diferentes camadas.
 Experimente diferentes limiares de contraste alterando os valores de 'min:' (valor mínimo) e 'max:' (valor máximo).
-![image](https://user-images.githubusercontent.com/41900626/178803288-9323cb8a-0a93-44e2-a42b-ff91297e7d2b.png)
 
 
 
+## Crie composições coloridas com diferentes bandas espectrais
+
+Você aprendeu acima como criar uma composição colorida em cores verdadeiras. 
+Agora crie composições falsa-cor e coloque as bandas nos filtros de cor seguindo as seguintes sequências:
+R3G4B5/ R4G5B3/ R5G3B4/ R5G4B3
+
+
+## Lendo os valores do pixels
+Agora, vamos fazer a leitura de pixels para os seguintes alvos/temas: vegetação, água, área urbana e solo. 
+Vamos começar com vegetação. Para isso aproxime até algum tipo de vegetação.
+Dica: Desabilite os 'Layers' desnecessários para tornar mais leve a renderização da imagem de satélite (![image](https://user-images.githubusercontent.com/41900626/178992992-d12b07f4-1551-47e4-a4c1-1414c13d34e7.png)
+).
+
+Agora clique em 'Inspector' no lado direito, parte superior (![image](https://user-images.githubusercontent.com/41900626/178993313-84f86e7b-cd52-4703-8785-4dfe031c019f.png)). Como a própira janela sugere 'Click on the map to inspect the layers.' agora clicando no mapa, você pode inspecionar o valor dos pixels.
 
 
