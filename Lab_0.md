@@ -159,9 +159,21 @@ R3G4B5/ R4G5B3/ R5G3B4/ R5G4B3
 ## Lendo os valores do pixels
 Agora, vamos fazer a leitura de pixels para os seguintes alvos/temas: vegetação, água, área urbana e solo. 
 Vamos começar com vegetação. Para isso aproxime até algum tipo de vegetação.
-Dica: Desabilite os 'Layers' desnecessários para tornar mais leve a renderização da imagem de satélite (![image](https://user-images.githubusercontent.com/41900626/178992992-d12b07f4-1551-47e4-a4c1-1414c13d34e7.png)
+Dica: Desabilite os 'Layers' desnecessários para tornar mais leve a renderização da imagem de satélite (![image](https://user-images.githubusercontent.com/41900626/179014761-11fdc2a0-eaf1-4a8c-a2d0-496c29492bbb.png)
 ).
 
-Agora clique em 'Inspector' no lado direito, parte superior (![image](https://user-images.githubusercontent.com/41900626/178993313-84f86e7b-cd52-4703-8785-4dfe031c019f.png)). Como a própira janela sugere 'Click on the map to inspect the layers.' agora clicando no mapa, você pode inspecionar o valor dos pixels.
+Agora clique em 'Inspector' no lado direito, parte superior ![image](https://user-images.githubusercontent.com/41900626/179014873-47fec4b4-a09b-4b01-995d-614fab5afd08.png). Como a própira janela sugere 'Click on the map to inspect the layers.' ao clicar no mapa, você pode inspecionar o valor dos pixels em cada banda espectral. Ao clicar no mapa, os valores aparecerão na janela 'Inspector'.
 
+![image](https://user-images.githubusercontent.com/41900626/179015976-af83c367-7dda-4336-bb3c-c3a35df41548.png)
+Talvez os valores dos pixels são mostrados em forma de gráfico de barras verticais.
+Ao clicar em 'List view' (![image](https://user-images.githubusercontent.com/41900626/179016714-127467d3-a359-41e5-ad59-12e13c668a63.png)), os valores exatos são mostrados na forma de uma lista.
+![image](https://user-images.githubusercontent.com/41900626/179016986-5e1e9f7b-4f90-46b5-b3ae-170fb44e0a60.png).
+
+Repita a leitura de pixels para os outros alvos e observe as diferenças de valores entre eles e como isso se relaciona com o conteúdo teórico.
+
+
+## Obrigado
+Espero que esse tutorial tenha sido útil.
+
+Atenciosamente, Elias F Berra
 
