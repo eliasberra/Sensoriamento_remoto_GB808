@@ -160,7 +160,7 @@ R3G4B5/ R4G5B3/ R5G3B4/ R5G4B3
 Agora, vamos fazer a leitura de pixels para os seguintes alvos/temas: vegetação, água, área urbana e solo. 
 Vamos começar com vegetação. Para isso aproxime até algum tipo de vegetação.
 Dica: Desabilite os 'Layers' desnecessários para tornar mais leve a renderização da imagem de satélite (![image](https://user-images.githubusercontent.com/41900626/179014761-11fdc2a0-eaf1-4a8c-a2d0-496c29492bbb.png)
-).
+)
 
 Agora clique em 'Inspector' no lado direito, parte superior ![image](https://user-images.githubusercontent.com/41900626/179014873-47fec4b4-a09b-4b01-995d-614fab5afd08.png). Como a própira janela sugere 'Click on the map to inspect the layers.' ao clicar no mapa, você pode inspecionar o valor dos pixels em cada banda espectral. Ao clicar no mapa, os valores aparecerão na janela 'Inspector'.
 
