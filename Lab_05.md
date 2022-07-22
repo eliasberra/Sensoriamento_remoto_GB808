@@ -135,8 +135,22 @@ O que achou dos resultados da classificação? Considera um bom mapa temático d
 
 
 ## Calcular a área de cada classe temática
-Concluir-------------
+Vamos agora calcular a área de cada classe temática que acabamos de detectar.
 
+'''JavaScript
+//-----------------Calcular a área ocupada por cada classe temática--------------
+for (var a = 0; a < 5; a++){//'a' vai representa a quantidade de classes temáticas (0, 1, 2, 3 e 4)
+  var x = classificada.eq(a).multiply(ee.Image.pixelArea());//recupera a área de cada pixel em m²
+  var stats = x.reduceRegion({//reduz a imagem de interesse em uma quantidade, nesse caso, a área total
+  reducer: ee.Reducer.sum(),//soma a área de todos os pixels
+  geometry: imagem.geometry(),//define a região de interesse onde realizar a soma
+  maxPixels: 1e9//o número máximo de pixels a reduzir
+});
+  var area_class = ee.Number(stats.get('classification'));//define a área em formato numérico
+  area_class = area_class.divide(10000);//transforma de m² para hectares (ha)
+  print('pixels da classe', a, area_class, 'ha');//imprime a área no Console  
+  }
+'''
 
 
 -------
