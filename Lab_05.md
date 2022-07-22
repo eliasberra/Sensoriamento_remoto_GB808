@@ -136,10 +136,11 @@ O que achou dos resultados da classificação? Considera um bom mapa temático d
 
 ## Calcular a área de cada classe temática
 Vamos agora calcular a área de cada classe temática que acabamos de detectar.
+Para isso, é interessante realizar o cálculo em _loop_, utilizando a função 'for', a qual automatiza o processo. Caso contrário, teríamos que escrever um código para cada classe de interesse.
 
 ```JavaScript
 //-----------------Calcular a área ocupada por cada classe temática--------------
-for (var a = 0; a < 5; a++){//'a' vai representa a quantidade de classes temáticas (0, 1, 2, 3 e 4)
+for (var a = 0; a < 5; a++){//'a' vai representar a quantidade de classes temáticas (0, 1, 2, 3 e 4)
   var x = classificada.eq(a).multiply(ee.Image.pixelArea());//recupera a área de cada pixel em m²
   var stats = x.reduceRegion({//reduz a imagem de interesse em uma quantidade, nesse caso, a área total
   reducer: ee.Reducer.sum(),//soma a área de todos os pixels
@@ -151,6 +152,44 @@ for (var a = 0; a < 5; a++){//'a' vai representa a quantidade de classes temáti
   print('pixels da classe', a, area_class, 'ha');//imprime a área no Console  
   }
 ```
+Ao final, a área de cada classe deverá aparecer no Console.
+![image](https://user-images.githubusercontent.com/41900626/180432057-529b9496-a7c5-4894-b85a-ab5dfa125127.png)
+
+
+## Exportar mapa para impressão
+O GEE é excelente para processamento digital de imagens, mas não é o mais indicado para preparação de mapas para impressão. Para isso, vamos utilizar o QGIS.
+Então, precisamos exportar a imagem classificada para, depois, importá-la no QGIS.
+
+```JavaScript
+//-----------------Preparar mapa temático para impressão--------------
+// --- Exportar imagem classificada para o Google Drive---
+Export.image.toDrive({image: classificada,//indica qual imagem será exportada 
+                    description: 'Exportar_classificada', //descrição da tarefa que aparecerá em Tasks
+                    folder: 'GB808',//pasta no Google Drive onde será salva a imagem.
+                    fileNamePrefix: 'Classificada',//nome da imagem a ser salva                     
+                    scale: 30,//resolução espacial que será salva a imagem 
+                    });
+```
+A tarefa de exportação irá aparecer na aba 'Tasks'.
+![image](https://user-images.githubusercontent.com/41900626/180433984-1c2e8922-20f6-4af7-844a-07c94f30fb1d.png)
+
+Em 'Exportar_classificada', clique em _Run_.
+Na janela que abre, clique em _Run_. Você pode modificar os parâmetros se julgar necessário.
+![image](https://user-images.githubusercontent.com/41900626/180434645-9a79a801-0014-4d41-8ef9-7c6143992e70.png)
+
+Pronto, a imagem classificada está salva no seu Google Drive (![image](https://user-images.githubusercontent.com/41900626/180434989-c67e7765-7ddd-4e5d-8371-ea3a3e51ce0d.png)) e pode ser importada no QGIS.
+
+
+
+## Preparando mapa para impressão no QGIS
+Baixe a imagem 'Classificada.tif' para uma pasta no seu computador.
+Abra o QGIS e importe a imagem.
+Acesse as 'Propriedades' da imagem e observe o item 'Sistema de Referência de Coordenadas (SRC)'
+![image](https://user-images.githubusercontent.com/41900626/180450171-288ace23-719a-4570-a818-78c9b54a67bb.png)
+Como se pode ver, o SRC está como  'EPSG:32622 - WGS 84 / UTM zone 22N'. O que aparenta ser, em um primiero momento, um erro, é uma metodologia adotada pela distribuidora das cenas Landsat para otimizar alguns processamentos. Veja mais informações na matéria ['Why do Landsat scenes in the Southern Hemisphere display negative UTM values?'](https://www.usgs.gov/faqs/why-do-landsat-scenes-southern-hemisphere-display-negative-utm-values)
+
+
+<https://www.usgs.gov/faqs/why-do-landsat-scenes-southern-hemisphere-display-negative-utm-values>
 
 
 -------
