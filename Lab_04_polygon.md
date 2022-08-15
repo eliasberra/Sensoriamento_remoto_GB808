@@ -35,10 +35,9 @@ clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova v
 
 ![image](https://user-images.githubusercontent.com/41900626/175430473-421e0bfc-7656-407f-a242-ffbd52765c49.png)
 
-
 O primeiro passo é obter uma imagem sem nuvem para trabalhar. Faça isso importando imagens USGS Landsat 8 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first - primeira).
 
-Em seguida, podemos executar o script abaixo para extrair nossa imagem desejada da coleção Landsat 8 e adicioná-la à visualização do mapa como uma composição de cores verdadeiras:
+Em seguida, podemos executar o script abaixo para extrair nossa imagem desejada da coleção Landsat 8 e adicioná-la à visualização do mapa como uma composição de cores verdadeiras (você pode copiar e colar OU digitar manualmente o Script):
 
 ```JavaScript
 //Seleciona imagem 
@@ -81,68 +80,73 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 
 
 ## Coletando dados de treinamento
-1. O primeiro passo para classificar nossa imagem é coletar alguns dados de treinamento para ensinar o classificador. Queremos coletar amostras representativas de espectros de refletância para cada classe de cobertura da terra de interesse no cena recortada.
+1. O primeiro passo para classificar nossa imagem é coletar alguns dados de treinamento para ensinar o classificador. Queremos coletar amostras representativas de espectros de refletância para cada classe de cobertura da terra de interesse na cena recortada. Ative o 'Draw a rectangle' primeiramente: ![image](https://user-images.githubusercontent.com/41900626/184734863-20d9b073-204b-49ef-aba6-a6b24bcf00e5.png)
+
 2. Passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer' ![image](https://user-images.githubusercontent.com/41900626/175124178-fd317651-ebba-403b-bc2d-c9693a6698c9.png).
 
-3. Cada nova camada (layer) a ser criada armazenará a localização do conjunto de pontos representando uma determinada classe de cobertura da terra.
-4. Vamos definir nossa primeira nova camada/classe como 'urbano'. Localize pontos representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando pontos na camada de geometria.
-5. Colete em torno de 20 pontos representativos e renomeie a 'geometry' para 'urbana'.
-![image](https://user-images.githubusercontent.com/41900626/175432420-04095fb5-c7cb-4d9c-b67b-2384411ea9b9.png)
+3. Cada nova camada (layer) a ser criada armazenará a localização do conjunto de polígonos representando uma determinada classe de cobertura da terra.
+4. Vamos definir nossa primeira nova camada/classe como 'urbana'. Localize áreas (alguns pixels) representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando polígonos na camada de geometria.
+5. Colete em torno de 10 polígonos representativos e renomeie a 'geometry' para 'urbana'. Lembre de parar a aquisição clicando no símbolo da mãozinha![image]![image](https://user-images.githubusercontent.com/41900626/184735493-b28b6d65-a3db-40bc-a2ba-9847533ac11a.png)
+
+
+6. Em seguida, você pode configurar a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://user-images.githubusercontent.com/41900626/175432525-c8ee3afd-3265-4e20-b680-352c89888f73.png). 
+Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (Property = 'Uso' (de Uso da Terra) e Value = 0). As classes subsequentes terão 'Value' 1, 2, 3 etc. 
+Clique mais uma vez em '+Property' e escreva Property = 'Nome' e Value = urbana, para garantir a identificação da classe de interesse futuramente, conforme abaixo:
+Quando terminar, clique em 'OK'.
+![image](https://user-images.githubusercontent.com/41900626/184736429-2d8b455d-ab59-4298-b17f-fb4a08c4190a.png)
 
 
 
-5. Em seguida, você pode configurar a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://user-images.githubusercontent.com/41900626/175432525-c8ee3afd-3265-4e20-b680-352c89888f73.png). Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (nome = 'cobertura_terra') e defina seu valor como 0. As classes subsequentes serão 1, 2, 3 etc. Quando terminar, clique em 'OK'.
-![image](https://user-images.githubusercontent.com/41900626/175432632-730234cf-761b-4663-b903-10f0c62c93fc.png)
-
-
-
-6. Adicione mais 4 classes. Colete 20 amostras de treinamento para cada uma dessas classes: 
+7. Adicione mais 4 classes. Colete em torno de 10 amostras de treinamento para cada uma dessas classes: 
   - 'floresta', 
   - 'area_agricola_vegetada' (área agrícola com cultivo evidente), 
   - 'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e,
   - 'agua'. 
 
+Nota: Lembre de salvar seu código---
+
+8. Repita a etapa 5 para cada classe de cobertura da terra que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como 'Uso' com valores de 1, 2, 3 e 4 para as diferentes classes. Também defina o 'Nome' com o nome da respectivas classes.
+![image](https://user-images.githubusercontent.com/41900626/184743002-ae2f92f4-95d6-4295-8235-0d7b9c322be8.png)
 
 
-7. Repita a etapa 5 para cada classe de cobertura da terra que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como 'cobertura_terra' com valores de 1, 2, 3 e 4 para as diferentes classes.
-![image](https://user-images.githubusercontent.com/41900626/175434365-180a4944-5ee6-4689-8a38-0c966f323a9b.png)
 
 
-
-8. Agora temos cinco classes definidas ('urbano', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais de treinamento, precisamos mesclá-las em uma única coleção, chamada FeatureCollection. Execute a seguinte linha para mesclar as geometrias em um único FeatureCollection:
+9. Agora temos cinco classes definidas ('urbana', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais de treinamento, precisamos mesclá-las em uma única coleção, chamada FeatureCollection. Execute a seguinte linha para mesclar as geometrias em um único FeatureCollection:
 
 ```javascript
 //mesclar as classes em uma única coleção
 var nomeClasses = urbana.merge(floresta).merge(area_agricola_vegetada).merge(area_agricola_solo).merge(agua);
 ```
 
-9. Imprima a coleção de feições e as inspecione.
+10. Imprima a coleção de feições e as inspecione no Console.
 
 ```javascript
 //Imprimir a coleção de feições para inspeção
 print('nome das classes', nomeClasses)
 ```
-![image](https://user-images.githubusercontent.com/41900626/175434746-b5a58b69-5b0c-4fe5-8425-259e2258a2af.png)
+![image](https://user-images.githubusercontent.com/41900626/184744424-400a3a38-8a47-46c1-8ed0-bf0dccca6061.png)
+
 
 
 
 ## Extraia os dados espectrais para treinamento do classificador
 
-Agora podemos usar o FeatureCollection que criamos para extrair os dados de reflectância para cada ponto amostral, de cada banda. Criamos dados de treinamento sobrepondo os pontos de treinamento na imagem. Isso adicionará novas propriedades à coleção de feições que representará os valores das bandas espectrais de cada ponto:
+Agora podemos usar o FeatureCollection que criamos para extrair os dados de reflectância para cada ponto amostral, de cada banda. Criamos dados de treinamento sobrepondo os polígonos de treinamento na imagem. Isso adicionará novas propriedades à coleção de feições que representará os valores das bandas espectrais de cada polígono:
 
 ```javascript
 //Extrair uma lista de valores em cada ponto em cada banda
 var bandas = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
 var treinamento = img_recorte.select(bandas).sampleRegions({
   collection: nomeClasses,
-  properties: ['cobertura_terra'],//essa propriedade deve ser escrita da mesma forma como escrita no passo 5 e 7
+  properties: ['Uso','Nome'],//essa propriedade deve ser escrita da mesma forma como escrita no passo 5 e 7
   scale: 30
 });
 print('treinamento', treinamento);
 ```
 Depois de executar o script, os dados de treinamento serão impressos no Console. Você notará que as informações de 'properties' agora mudaram e, além da classe de cobertura da terra, para cada ponto agora há um valor de refletância correspondente para cada banda da imagem.
 
-![image](https://user-images.githubusercontent.com/41900626/175435184-c256819b-e38e-421f-aeb6-fc340d933108.png)
+![image](https://user-images.githubusercontent.com/41900626/184747281-6f90ec3b-f346-49a2-9696-2a0783a3c1e1.png)
+
 
 
 
@@ -156,7 +160,7 @@ Agora podemos treinar o algoritmo do classificador usando nossas amostras que de
 //Treinar o classificador
 var classificador = ee.Classifier.smileCart().train({
       features: treinamento,
-      classProperty: 'cobertura_terra',
+      classProperty: 'Uso',
       inputProperties: bandas
 });
 ```
@@ -175,7 +179,7 @@ Você pode consultar opções de cores para a pallete em <https://en.wikipedia.o
 
 ```javascript
 //Exibir a classificação
-Map.centerObject(nomeClasses, 11);
+Map.centerObject(nomeClasses, 10);
 Map.addLayer(classificada,
 {min: 0, max: 4, palette: ['grey', 'green', 'olive','yellow', 'blue']}, 'classificação');
 ```
