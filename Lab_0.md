@@ -78,7 +78,7 @@ Clique nele e observe as importantes descrições do tipo de produto, como resol
 Após essa analise, volte alguns passos e clique no botão 'Import'.
 ![image](https://user-images.githubusercontent.com/41900626/178797596-25c93775-9dd1-48fa-b0f1-7999eda3437e.png)
 
-5. Após clicar em 'Import', o Sentinel-2 será adicionado às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land5” clicando em 'imageCollection' e digitando “land5”.
+5. Após clicar em 'Import', o Landsat-5 será adicionado às nossas importações ('Imports') no painel de Codificação como uma variável (var). Ele será listado abaixo do ponto de geometria do cidade de 'paranagua' com o nome padrão "imageCollection" (coleção de imagens). Vamos renomeá-lo para “land5” clicando em 'imageCollection' e digitando “land5”.
 ![image](https://user-images.githubusercontent.com/41900626/178797936-98cc6d8e-2246-49b4-8825-dbea9b4c16a6.png)
 
 6. É importante entender que agora adicionamos acesso à coleção completa de imagens do Landsat-5 (ou seja, todas as imagens que foram coletadas até o momento) ao nosso script. Para este exercício, não queremos carregar todas essas imagens - queremos uma única imagem livre de nuvem sobre a cidade de Paranaguá. Dessa forma, agora podemos filtrar a coleção de imagens com alguns critérios, como intervalo de aquisição, localização espacial e cobertura de nuvens.
