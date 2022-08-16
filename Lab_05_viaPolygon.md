@@ -215,18 +215,11 @@ Agora, você deve estar visualizando as classes de 1 a 5. Agora substitua os nú
 Agora, você pode preparar um layout para imprimir o mapa:
 ![image](https://user-images.githubusercontent.com/41900626/184966380-52e6737a-af60-459a-a905-bbe394eda386.png)
 
-
-
-
-
-
-
-
-
-
+Se você não lembra como utilizar o layout de impressão, você pode consultar vídeos no YouTube como por exemplo ['Como fazer o Layout de um mapa no QGIS?'](https://youtu.be/WVeMSAxt3O4) ou revisar os tutoriais de Cartografia Temática.
 
 
 
 -------
 ### Obrigado
+Espero que este tutorial tenha sido útil.
 
