@@ -132,18 +132,19 @@ print('AC:', testeAcuracia.producersAccuracy());
 print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
-6. Essas metricas, na mioria dos casos, ficam melhora apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
-![image](https://user-images.githubusercontent.com/41900626/184903539-63aec414-b62c-4d4a-876c-5f1f51e52ea3.png)
+6. Essas metricas, na mioria dos casos, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
+![image](https://user-images.githubusercontent.com/41900626/184937282-f8496879-3135-4506-bbcf-f72956d3b7d6.png)
+  Vamos à interpretação da tabela (a sua tabela terá, provavelmente, valores diferentes):
+  Acurácia de Usuário (AC):
+  Por exemplo, para a classe Área Urbana, temos uma acurácia de usuário AC=78%. Isso significa que, de todos os pixels que o classificador 'disse' (classificou) que  eram área urbana (37), ele acertou 29, ou seja, 29/37 = 78% dos casos. Ou seja, era área urbana e o classificador classificou como área urbana (_true positive_). Associado ao AC, temos o erro de comissão (ou complemento de AC); 
+No exemplo, o classificador 'disse' que 8 amostras (7 de área agricola vegetada + 1 de de área agricola solo) eram Área Urbana quando, na verdade, eram outra classe (áreas agrícolas). Assim, 8/37= 22% foi o erro de comissão (que é o complemento de 78%) 
 
-
-
-
+  Acurácia de Produtor (AP):
+  De quantas amostras que eu indiquei que eram Área Urbana e, que, de fato, o algorítimo acertou como Área Urbana? No exemplo, indiquei um total de 30 amostras como Área Urbana (verdade de campo) e o algorítmo acertou 29, ou seja, 29/30 = 97%. O complemento, 100%-97% = 3% é o erro de omissão, ou seja, ele omitiu em 1/30 casos dizendo que essas 1 amostra não é Área Urbanda, quando, na relaidade, é área urbana.
 
 
 O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
-
-
-Maiores explicações podem ser vistas em (https://solved.eco.br/avaliacao-de-acuracia-ou-concordancia/) ou (https://mapbiomas.org/analise-de-acuracia).
+Maiores explicações podem ser vistas em (https://solved.eco.br/avaliacao-de-acuracia-ou-concordancia/) ou (https://mapbiomas.org/analise-de-acuracia). Também, o vídeo no YouTube chamado 'Avaliação da Acurácia da Classificação' tem uma boa explicação do tópico (https://youtu.be/hoWymG_lsWw).
 
 ## Calcular a área de cada classe temática
 Vamos agora calcular a área de cada classe temática que acabamos de detectar.
