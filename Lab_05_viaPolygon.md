@@ -155,7 +155,7 @@ Para isso, é interessante realizar o cálculo em _loop_, utilizando a função 
 
 ```JavaScript
 //-----------------Calcular a área ocupada por cada classe temática--------------
-for (var a = 0; a < 5; a++){//'a' vai representar a quantidade de classes temáticas (1, 2, 3, 4 e 5)
+for (var a = 1; a < 6; a++){//'a' vai representar a quantidade de classes temáticas (1, 2, 3, 4 e 5)
   var x = classificada.eq(a).multiply(ee.Image.pixelArea());//recupera a área de cada pixel em m²
   var stats = x.reduceRegion({//reduz a imagem de interesse em uma quantidade, nesse caso, a área total
   reducer: ee.Reducer.sum(),//soma a área de todos os pixels
