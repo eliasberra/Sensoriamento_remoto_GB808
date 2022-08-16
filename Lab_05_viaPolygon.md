@@ -115,7 +115,7 @@ Se você clicar nela, irá aparece uma tarefa (task) esperando a ser executada. 
 ![image](https://user-images.githubusercontent.com/41900626/176022613-a803a49d-9816-4885-92a3-c64193e5bd0c.png)
 
 
-5. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação
+5. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação.
 ```JavaScript
 // Calcula e imprime a acurácia geral no console
 print('Acurácia geral da validação: ', testeAcuracia.accuracy());
@@ -132,7 +132,7 @@ print('AC:', testeAcuracia.producersAccuracy());
 print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
-6. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
+6. Essas metricas, na mioria dos casos, ficam melhora apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
 ![image](https://user-images.githubusercontent.com/41900626/184903539-63aec414-b62c-4d4a-876c-5f1f51e52ea3.png)
 
 
