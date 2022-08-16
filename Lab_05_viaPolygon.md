@@ -134,7 +134,9 @@ print('Estatística kappa:', testeAcuracia.kappa());
 
 6. Essas metricas, na mioria dos casos, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
 ![image](https://user-images.githubusercontent.com/41900626/184937282-f8496879-3135-4506-bbcf-f72956d3b7d6.png)
-  Vamos à interpretação da tabela (a sua tabela terá, provavelmente, valores diferentes):
+  
+ Vamos à interpretação da tabela (a sua tabela terá, provavelmente, valores diferentes):
+ 
   Acurácia de Usuário (AC):
   Por exemplo, para a classe Área Urbana, temos uma acurácia de usuário AC=78%. Isso significa que, de todos os pixels que o classificador 'disse' (classificou) que  eram área urbana (37), ele acertou 29, ou seja, 29/37 = 78% dos casos. Ou seja, era área urbana e o classificador classificou como área urbana (_true positive_). Associado ao AC, temos o erro de comissão (ou complemento de AC); 
 No exemplo, o classificador 'disse' que 8 amostras (7 de área agricola vegetada + 1 de de área agricola solo) eram Área Urbana quando, na verdade, eram outra classe (áreas agrícolas). Assim, 8/37= 22% foi o erro de comissão (que é o complemento de 78%) 
@@ -160,12 +162,13 @@ for (var a = 0; a < 5; a++){//'a' vai representar a quantidade de classes temát
   maxPixels: 1e9//o número máximo de pixels a reduzir
 });
   var area_class = ee.Number(stats.get('classification'));//define a área em formato numérico
-  area_class = area_class.divide(10000);//transforma de m² para hectares (ha)
+  area_class = area_class.divide(10000).round();//transforma de m² para hectares (ha)
   print('pixels da classe', a, area_class, 'ha');//imprime a área no Console  
   }
 ```
 Ao final, a área de cada classe deverá aparecer no Console.
-![image](https://user-images.githubusercontent.com/41900626/180432057-529b9496-a7c5-4894-b85a-ab5dfa125127.png)
+![image](https://user-images.githubusercontent.com/41900626/184939542-480e8373-697c-4580-8357-52173784323a.png)
+Por exemplo, a classe 'Área urbana', valor = 0, nesse tutorial atingiu uma área total de 7.685 ha.
 
 
 ## Exportar mapa para impressão
@@ -186,7 +189,7 @@ A tarefa de exportação irá aparecer na aba 'Tasks'.
 ![image](https://user-images.githubusercontent.com/41900626/180433984-1c2e8922-20f6-4af7-844a-07c94f30fb1d.png)
 
 Em 'Exportar_classificada', clique em _Run_.
-Na janela que abre, clique em _Run_. Você pode modificar os parâmetros se julgar necessário.
+Na janela que abre, clique em _Run_. Você pode modificar os parâmetros se julgar necessário. No momento, deixe os parametros como estão.
 ![image](https://user-images.githubusercontent.com/41900626/180451150-ecbbcee8-8be8-41b1-a10b-6dd8af4c8b30.png)
 
 Pronto, a imagem classificada está salva no seu Google Drive (![image](https://user-images.githubusercontent.com/41900626/180434989-c67e7765-7ddd-4e5d-8371-ea3a3e51ce0d.png)) e pode ser importada no QGIS.
