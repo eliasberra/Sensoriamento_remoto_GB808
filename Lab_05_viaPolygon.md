@@ -122,17 +122,18 @@ print('AC:', testeAcuracia.producersAccuracy());
 print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
-[A acurácia global, é uma medida percentual da quantidade de amostras corretamente classificadas, em relação ao total de amostras disponíveis.
-
-A acurácia do consumidor (AC), ou do usuário, é a medida de acurácia do ponto de vista do usuário/consumidor do mapa. Aqui, a acurácia basicamente diz ao usuário com que frequência a classe do mapa estará realmente presente no solo ou em sua referência. É também conhecida como medida de confiabilidade (reliability). O erro de comissão (EC) é complemento de AC e nos informa a quantidade de classificações associadas a falsos positivos ou falsos alarmes.
-
-A acurácia do produtor (AP) é a acurácia do ponto de vista do criador/produtor do mapa. Esta é a frequência com que as características reais no solo são mostradas corretamente no mapa classificado ou a probabilidade de uma determinada cobertura/uso da terra ser classificada como tal no mapa. A AP é complementada pelo erro de omissão (EO), que nos informa a quantidade percentual de erros de omissões, ou seja, classes que deveriam ter sido detectadas, mas que por alguma razão foram omitidas da classificação.] (https://solved.eco.br/avaliacao-de-acuracia-ou-concordancia/)
-
-
 6. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
-![image](https://user-images.githubusercontent.com/41900626/178567779-a0a63829-30c8-4e25-8e8b-70a81c9278f9.png)
+![image](https://user-images.githubusercontent.com/41900626/184903539-63aec414-b62c-4d4a-876c-5f1f51e52ea3.png)
+
+
+
+
+
+
 O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
 
+
+Maiores explicações podem ser vistas em (https://solved.eco.br/avaliacao-de-acuracia-ou-concordancia/) ou (https://mapbiomas.org/analise-de-acuracia).
 
 ## Calcular a área de cada classe temática
 Vamos agora calcular a área de cada classe temática que acabamos de detectar.
