@@ -64,8 +64,8 @@ Ao final, você deve ter adquirido amostras de validação para as cinco classes
 
 2. Mescle seus polígonos de validação em uma coleção de feições
 ```JavaScript
-//--------------Validação--------------------------------
-
+///--------------Validação------------------------------------------------
+//-----------------------------------------------------------------------
 //mesclar os polígonos de validação
 var nomeVal = vUrbana.merge(vFloresta).merge(vArea_agricola_vegetada).merge(vArea_agricola_solo).merge(vAgua);
 ```
@@ -75,20 +75,22 @@ var nomeVal = vUrbana.merge(vFloresta).merge(vArea_agricola_vegetada).merge(vAre
 //Extrair valores da classificação nos polígonos de validação
 var validacao = classificada.sampleRegions({
   collection: nomeVal,
-  properties: ['cobertura_terra'],
+  properties: ['Uso', 'Nome'],
   scale: 30,
 });
 print('validação', validacao);
+
 ```
-![image](https://user-images.githubusercontent.com/41900626/175950839-df5f6b58-a555-423c-9a8d-9d619b87d4ff.png)
+![image](https://user-images.githubusercontent.com/41900626/184910866-0eb5a43a-a436-4955-99e1-8b6494fa0d7b.png)
+
 
 
 4. Executar a avaliação de validação usando a abordagem de matriz de erros (ou matriz de confusão). Além do Console, a matriz de erros é exportada como um arquivo texto (.csv) para permitir que esse resultado seja melhor trabalhado e organizado.
 ```JavaScript
 // Construir a matriz de confusão dos dados de validação contra o resultado da classificação
-var testeAcuracia = validacao.errorMatrix('cobertura_terra', 'classification');
+var testeAcuracia = validacao.errorMatrix('Uso', 'classification');
 
-// Imprime a matriz de erro no console e exporta tabela
+// Imprime a matriz de erro no Console 
 print('Matriz de erro de validação: ', testeAcuracia);
 
 //Exportar para o Google Drive a tabela com a matriz de confusão
@@ -102,8 +104,11 @@ Export.table.toDrive({collection: featureCollection,
     fileFormat: 'CSV',
     selectors: (['system:index', 'prop'])
 });
+
+
 ```
-![image](https://user-images.githubusercontent.com/41900626/176021853-48d4451b-2eca-4312-8e40-6e15118aa6e3.png)
+![image](https://user-images.githubusercontent.com/41900626/184911504-abb712ee-84a8-419b-954e-c5e8fcbba737.png)
+
 
 Você deve ter observado que a aba 'Tasks' ficou laranja ![image](https://user-images.githubusercontent.com/41900626/176021968-ccf22719-c332-4979-aa52-34102b3ceedd.png)
 Se você clicar nela, irá aparece uma tarefa (task) esperando a ser executada. Clique em 'RUN' para exportar a tabela e salvá-la no seu Google Drive. Uma vez exportada, você pode trabalhar a tabela posteriormente calculando, por exemplo, a acurácia de cada classe individualmente.
