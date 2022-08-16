@@ -206,8 +206,19 @@ Como se pode ver, o SRC está como  'EPSG:32622 - WGS 84 / UTM zone 22N'. O que 
 
 Deixe o SRC como está.
 Agora vamos identificar as classes com nomes que tragam um significado claro para o leitor do mapa.
-No QGIS, clique com o botão direito em 'Classificada' > 'Simbologia' e separe e nomeie as classes conforme abaixo. Escolha as cores para as classes.
-![image](https://user-images.githubusercontent.com/41900626/184946688-0f53723a-e705-41d8-bf32-946abba6cf20.png)
+No QGIS, clique com o botão direito em 'Classificada' > 'Simbologia' e classifique as classes. Primeiramente, elimine a classe '0' que representa a borda da imagem sem valores significativos (no data), conforme abaixo. 
+![image](https://user-images.githubusercontent.com/41900626/184964806-5639b40d-7c4c-42bd-8a39-eb40cad23b7e.png)
+
+Agora, você deve estar visualizando as classes de 1 a 5. Agora substitua os números na coluna 'Rótulo' pelos respectivos nomes das classes temáticas. Também, modifique as cores das classes. 
+![image](https://user-images.githubusercontent.com/41900626/184965940-0477c61e-ba6f-48b3-b70f-e63f530efb86.png)
+
+Agora, você pode preparar um layout para imprimir o mapa:
+![image](https://user-images.githubusercontent.com/41900626/184966380-52e6737a-af60-459a-a905-bbe394eda386.png)
+
+
+
+
+
 
 
 
