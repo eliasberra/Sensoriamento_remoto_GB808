@@ -90,7 +90,7 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 
 
 6. Em seguida, você pode configurar a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://user-images.githubusercontent.com/41900626/175432525-c8ee3afd-3265-4e20-b680-352c89888f73.png). 
-Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (Property = 'Uso' (de Uso da Terra) e Value = 0). As classes subsequentes terão 'Value' 2, 3, 4 e 5. 
+Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (Property = 'Uso' (de Uso da Terra) e Value = 1). As classes subsequentes terão 'Value' 2, 3, 4 e 5. 
 Clique mais uma vez em '+Property' e escreva Property = 'Nome' e Value = urbana, para garantir a identificação da classe de interesse futuramente, conforme abaixo:
 Quando terminar, clique em 'OK'.
 ![image](https://user-images.githubusercontent.com/41900626/184952065-d7acfead-0fda-4958-8279-ee1ba186446b.png)
