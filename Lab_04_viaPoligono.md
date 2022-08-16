@@ -90,10 +90,10 @@ Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imp
 
 
 6. Em seguida, você pode configurar a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://user-images.githubusercontent.com/41900626/175432525-c8ee3afd-3265-4e20-b680-352c89888f73.png). 
-Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (Property = 'Uso' (de Uso da Terra) e Value = 0). As classes subsequentes terão 'Value' 1, 2, 3 etc. 
+Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (Property = 'Uso' (de Uso da Terra) e Value = 0). As classes subsequentes terão 'Value' 2, 3, 4 e 5. 
 Clique mais uma vez em '+Property' e escreva Property = 'Nome' e Value = urbana, para garantir a identificação da classe de interesse futuramente, conforme abaixo:
 Quando terminar, clique em 'OK'.
-![image](https://user-images.githubusercontent.com/41900626/184736429-2d8b455d-ab59-4298-b17f-fb4a08c4190a.png)
+![image](https://user-images.githubusercontent.com/41900626/184952065-d7acfead-0fda-4958-8279-ee1ba186446b.png)
 
 
 
@@ -105,7 +105,7 @@ Quando terminar, clique em 'OK'.
 
 Nota: Lembre de salvar seu código---
 
-8. Repita a etapa 5 para cada classe de cobertura da terra que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como 'Uso' com valores de 1, 2, 3 e 4 para as diferentes classes. Também defina o 'Nome' com o nome da respectivas classes.
+8. Repita a etapa 5 para cada classe de cobertura da terra que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como 'Uso' com valores de 2, 3, 4 e 5 para as diferentes classes. Também defina o 'Nome' com o nome da respectivas classes.
 ![image](https://user-images.githubusercontent.com/41900626/184743002-ae2f92f4-95d6-4295-8235-0d7b9c322be8.png)
 
 
@@ -173,7 +173,7 @@ O próximo passo é aplicar esse conhecimento de nosso treinamento ao restante d
 var classificada = img_recorte.select(bandas).classify(classificador);
 ```
 
-Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbana = 0, floresta = 1,  area_agricola_vegetada = 2, area_agricola_solo = 3, agua = 4, - então o resultado será renderizado com essas classes como urbanoa= cinza, floresta = verde,  area_agricola_cultivada = oliva, area_agricola_solo = amarelo e água = azul.
+Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbana = 1, floresta = 2,  area_agricola_vegetada = 3, area_agricola_solo = 4, agua = 5, - então o resultado será renderizado com essas classes como urbanoa= cinza, floresta = verde,  area_agricola_cultivada = oliva, area_agricola_solo = amarelo e água = azul.
 Você pode consultar opções de cores para a pallete em <https://en.wikipedia.org/wiki/Web_colors>.
 
 
@@ -181,7 +181,7 @@ Você pode consultar opções de cores para a pallete em <https://en.wikipedia.o
 //Exibir a classificação
 Map.centerObject(nomeClasses, 10);
 Map.addLayer(classificada,
-{min: 0, max: 4, palette: ['grey', 'green', 'olive','yellow', 'blue']}, 'classificação');
+{min: 1, max: 5, palette: ['grey', 'green', 'olive','yellow', 'blue']}, 'classificação');
 ```
 ![image](https://user-images.githubusercontent.com/41900626/175436317-53ad2840-1bbe-4fc5-9d61-9abcf9671f24.png)
 
