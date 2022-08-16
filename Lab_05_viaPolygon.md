@@ -33,7 +33,7 @@ Abra o código do último laboratório no GEE. Faça uma pequena edição, por e
 ![image](https://user-images.githubusercontent.com/41900626/184905996-8fa3b600-0ed8-4762-84cd-d5035340f8ca.png)
 
 Execute novamente sua classificação. Você deve estar visualizando algo parecido com a figura abaixo:
-![image](https://user-images.githubusercontent.com/41900626/184906440-07fd4e8e-0d4e-408b-bd10-0fe10d87be53.png)
+![image](https://user-images.githubusercontent.com/41900626/184953593-a423368b-44f2-4d23-abd0-69acbfb526d9.png)
 
 
 ## Validação da classificação
@@ -49,10 +49,11 @@ Por exemplo, coletando poligonos para representar os dados de validação dentro
 ![image](https://user-images.githubusercontent.com/41900626/184908712-6aabf151-31ad-4a55-aa9c-bb6e108485a2.png)
 
 
-Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos dados de treinamento. Por exemplo, para 'vUrbana', configure para 'FeatureCollection', clique em '+Property' e  adicione a propriedade 'Property' = 'Uso'  e 'Value' = '0' (para as demais classes escreva valor 1,2,3 e 4).
+Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos dados de treinamento. Por exemplo, para 'vUrbana', configure para 'FeatureCollection', clique em '+Property' e  adicione a propriedade 'Property' = 'Uso'  e 'Value' = '1' (para as demais classes escreva valor 2,3, 4 e 5).
 Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 'vUrbana'
 
-![image](https://user-images.githubusercontent.com/41900626/184909445-7c5c9b6f-d64f-4d1c-bcca-3face2e5c810.png)
+![image](https://user-images.githubusercontent.com/41900626/184953877-df13171b-7c4f-4394-ba07-49e15876f39a.png)
+
 
 Nota: Lembre de ir salvando o código.
 
@@ -154,7 +155,7 @@ Para isso, é interessante realizar o cálculo em _loop_, utilizando a função 
 
 ```JavaScript
 //-----------------Calcular a área ocupada por cada classe temática--------------
-for (var a = 0; a < 5; a++){//'a' vai representar a quantidade de classes temáticas (0, 1, 2, 3 e 4)
+for (var a = 0; a < 5; a++){//'a' vai representar a quantidade de classes temáticas (1, 2, 3, 4 e 5)
   var x = classificada.eq(a).multiply(ee.Image.pixelArea());//recupera a área de cada pixel em m²
   var stats = x.reduceRegion({//reduz a imagem de interesse em uma quantidade, nesse caso, a área total
   reducer: ee.Reducer.sum(),//soma a área de todos os pixels
