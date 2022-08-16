@@ -30,10 +30,10 @@ O objetivo deste laboratório é aprender como avaliar os resultados de classifi
 ## Recapitulando
 Vamos continuar de onde paramos no último laboratório.
 Abra o código do último laboratório no GEE. Faça uma pequena edição, por exemplo, adicione uma linha a mais. Acesse 'Save' e 'Save as' para salvar uma cópia do código. Dê um nome ao arquivo.
-![image](https://user-images.githubusercontent.com/41900626/175935827-bdb54136-6de9-4357-a197-9b1160a7ee2e.png)
+![image](https://user-images.githubusercontent.com/41900626/184905996-8fa3b600-0ed8-4762-84cd-d5035340f8ca.png)
 
 Execute novamente sua classificação. Você deve estar visualizando algo parecido com a figura abaixo:
-![image](https://user-images.githubusercontent.com/41900626/175936358-28294555-d2b7-4d7c-ae41-6ac0b0d378fe.png)
+![image](https://user-images.githubusercontent.com/41900626/184906440-07fd4e8e-0d4e-408b-bd10-0fe10d87be53.png)
 
 
 ## Validação da classificação
