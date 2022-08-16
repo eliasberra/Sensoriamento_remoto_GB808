@@ -46,14 +46,19 @@ Execute novamente sua classificação. Você deve estar visualizando algo pareci
   - coletar amostras das mesmas cinco classes, mas renomeia-as de forma diferente ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua')
 
 Por exemplo, coletando poligonos para representar os dados de validação dentro de vUrbana: 
-![image](https://user-images.githubusercontent.com/41900626/175941484-d0724dc3-8b75-4618-b038-a004948a6f60.png)
+![image](https://user-images.githubusercontent.com/41900626/184908712-6aabf151-31ad-4a55-aa9c-bb6e108485a2.png)
 
-Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos dados de treinamento. Por exemplo, para 'vUrbana', configure para 'FeatureCollection', adicione a propriedade 'cobertura_terra' e valor = 0 (para as demais classes escreva valor 1,2,3 e 4).
-![image](https://user-images.githubusercontent.com/41900626/175942534-a534d5b4-a343-445e-a86a-5896eaeb8bab.png)
+
+Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos dados de treinamento. Por exemplo, para 'vUrbana', configure para 'FeatureCollection', clique em '+Property' e  adicione a propriedade 'Property' = 'Uso'  e 'Value' = '0' (para as demais classes escreva valor 1,2,3 e 4).
+Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 'vUrbana'
+
+![image](https://user-images.githubusercontent.com/41900626/184909445-7c5c9b6f-d64f-4d1c-bcca-3face2e5c810.png)
 
 Nota: Lembre de ir salvando o código.
-Ao final, você deve ter adquirido amostras para as cinco classes de validação:
-![image](https://user-images.githubusercontent.com/41900626/175948116-243de285-0749-4d6f-97dd-c2111f749dae.png)
+
+Ao final, você deve ter adquirido amostras de validação para as cinco classes temáticas:
+![image](https://user-images.githubusercontent.com/41900626/184909657-6788ea15-d573-4ca7-a574-ee1e7e4eac60.png)
+
 
   
 
