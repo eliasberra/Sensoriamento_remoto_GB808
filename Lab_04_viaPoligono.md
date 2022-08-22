@@ -55,6 +55,7 @@ Map.addLayer(imagem, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 10000}, '
 Dê uma olhada ao redor da cena e familiarize-se com a paisagem. A composição parece ter muito brilho, não achas? Você pode testar diferentes limiares de contraste ajustando o valor de min e max.
 
 
+**Nota: Lembre de ir SALVANDO o código.**
 
 ## Recortando a cena para uma área menor
 Antes de prosseguirmos às etapas de classificação, vamos recortar nossa cena para uma área teste de menor tamanho a fim tornar mais rápida a etapa de classificação automática e economizar recurso computacional.
