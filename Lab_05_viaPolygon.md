@@ -55,7 +55,7 @@ Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 
 ![image](https://user-images.githubusercontent.com/41900626/184953877-df13171b-7c4f-4394-ba07-49e15876f39a.png)
 
 
-Nota: Lembre de ir salvando o código.
+**Nota: Lembre de ir SALVANDO o código.**
 
 Ao final, você deve ter adquirido amostras de validação para as cinco classes temáticas:
 ![image](https://user-images.githubusercontent.com/41900626/184909657-6788ea15-d573-4ca7-a574-ee1e7e4eac60.png)
@@ -134,10 +134,10 @@ print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
 6. Essas metricas, na maioria dos casos, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive.
-Desconsidere a primeira linha e a primeira coluna.
+Ao abrir o arquivo, desconsidere a primeira linha e a primeira coluna.
 ![image](https://user-images.githubusercontent.com/41900626/185953931-1d31cee9-c634-4a3d-95db-3fd894eb1f56.png)
 
-Após isso, organize os resultados da validação em uma tabela similar a apresentada abaixo:
+Após isso, organize os resultados da validação em uma tabela similar a apresentada abaixo (a tabela aabixo está no Teams e pode ser utilizada como modelo  para os cálculos):
 ![image](https://user-images.githubusercontent.com/41900626/184937282-f8496879-3135-4506-bbcf-f72956d3b7d6.png)
   
  Vamos à interpretação da tabela (a sua tabela terá, provavelmente, valores diferentes):
