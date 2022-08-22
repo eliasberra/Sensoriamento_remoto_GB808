@@ -147,7 +147,7 @@ Após isso, organize os resultados da validação em uma tabela similar a aprese
 No exemplo, o classificador 'disse' que 8 amostras (7 de área agricola vegetada + 1 de de área agricola solo) eram Área Urbana quando, na verdade, eram outra classe (áreas agrícolas). Assim, 8/37= 22% foi o erro de comissão (que é o complemento de 78%) 
 
   Acurácia de Produtor (AP):
-  De quantas amostras que eu indiquei que eram Área Urbana e, que, de fato, o algorítimo acertou como Área Urbana? No exemplo, indiquei um total de 30 amostras como Área Urbana (verdade de campo) e o algorítmo acertou 29, ou seja, 29/30 = 97%. O complemento, 100%-97% = 3% é o erro de omissão, ou seja, ele omitiu em 1/30 casos dizendo que essas 1 amostra não é Área Urbanda, quando, na relaidade, é área urbana.
+  De quantas amostras que eu indiquei que eram Área Urbana e, que, de fato, o algorítimo acertou como Área Urbana? No exemplo, indiquei um total de 30 amostras como Área Urbana (verdade de campo) e o algorítmo acertou 29, ou seja, 29/30 = 97%. O complemento, 100%-97% = 3% é o erro de omissão, ou seja, ele omitiu em 1/30 casos dizendo que essas 1 amostra não é Área Urbana, quando, na realidade, é área urbana.
 
 
 O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
