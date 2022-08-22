@@ -133,7 +133,7 @@ print('AC:', testeAcuracia.producersAccuracy());
 print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
-6. Essas metricas, na mioria dos casos, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
+6. Essas metricas, na maioria dos casos, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive e organize os resultados da validação em uma tabela similar a apresentada abaixo:
 ![image](https://user-images.githubusercontent.com/41900626/184937282-f8496879-3135-4506-bbcf-f72956d3b7d6.png)
   
  Vamos à interpretação da tabela (a sua tabela terá, provavelmente, valores diferentes):
