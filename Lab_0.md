@@ -5,6 +5,7 @@ Lab 0 - Comportamento espectral dos alvos
 ### Agradecimentos
 - Google Earth Engine Team
 
+mudanças
 ------
 
 ### Prerequisitos
