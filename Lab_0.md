@@ -178,3 +178,5 @@ Espero que esse tutorial tenha sido útil.
 
 Atenciosamente, Elias F Berra
 
+Nota: 'shift' + > para abrir editor em segunda aba
+
