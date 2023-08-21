@@ -1,5 +1,5 @@
 # Sensoriamento Remoto
-Lab 04 - Classificação de imagens - parte 1
+Classificação de imagens de satélite
 --------------
 
 ### Agradecimentos
@@ -24,14 +24,30 @@ O Google Earth Engine usa a linguagem de programação JavaScript. Abordaremos o
 ------------------------------------------------------------------------
 ### Objetivo
 
-O objetivo deste laboratório é entender o processo de classificação de imagens e explorar formas de transformar imagens de sensoriamento remoto em mapas de cobertura da terra.
+O objetivo deste laboratório é entender o processo de classificação de imagens e explorar formas de transformar imagens de sensoriamento remoto em mapas de uso e cobertura da terra.
 
 ----------
 
 ## Carregando a imagem
-Para carregar uma imagem, precisamos definir uma área de interesse.
-Vamos usar a ferramenta de desenho de ponto (ícone de lágrima) das ferramentas de geometria e desenhar um único ponto 
-na região de interesse - vamos usar a cidade de Carlópolis, PR, para este exemplo. Após desenhado, 
+Para carregar uma imagem, precisamos definir uma área de interesse (AOI). Nesse exercício, vamos utilizar como AOI o polígono representando o limite municipal de Carlópolis, PR, conforme disponibilizado pela FAO.
+
+Nota: Quando iniciamos a linha com '//', a mesma vira um comentário e não será executada. Isso serve para que possamos comentar a finalidade das linhas de código.
+
+
+```JavaScript
+//------------Importar o limite territorial de Carlópolis, PR, com dados da FAO 
+var zeroLevel = ee.FeatureCollection("FAO/GAUL/2015/level0");// País                      
+var firstLevel = ee.FeatureCollection("FAO/GAUL/2015/level1");//Estado
+var secondLevel = ee.FeatureCollection("FAO/GAUL/2015/level2") ;//Município
+
+var Mato_Rico = secondLevel.filter(ee.Filter.eq('ADM2_NAME', 'Carlopolis'))
+Map.addLayer(Mato_Rico, {}, 'Limite Municipal')//Adicionar o limite como uma nova camada
+```
+
+Ao clicar em '_Run_', o limite de Carlópolis deve estar aparecendo na área de visualizador de mapas (e dados geoespaciais):
+![Alt text](image.png)
+
+Após desenhado, 
 clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
 
 ![image](https://user-images.githubusercontent.com/41900626/175430473-421e0bfc-7656-407f-a242-ffbd52765c49.png)
