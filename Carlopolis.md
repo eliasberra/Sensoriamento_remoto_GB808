@@ -45,7 +45,7 @@ Map.addLayer(Mato_Rico, {}, 'Limite Municipal')//Adicionar o limite como uma nov
 ```
 
 Ao clicar em '_Run_', o limite de Carlópolis deve estar aparecendo na área de visualizador de mapas (e dados geoespaciais):
-![Alt text](image.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/f623ada3-a8d4-4b43-87dc-932fc984acbe)
 
 Após desenhado, 
 clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
