@@ -29,6 +29,7 @@ O objetivo deste laboratório é entender o processo de classificação de image
 ----------
 
 ## Carregando a imagem
+Para carregar uma imagem, precisamos definir uma área de interesse.
 Vamos usar a ferramenta de desenho de ponto (ícone de lágrima) das ferramentas de geometria e desenhar um único ponto 
 na região de interesse - vamos usar a cidade de Carlópolis, PR, para este exemplo. Após desenhado, 
 clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
