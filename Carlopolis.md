@@ -31,41 +31,61 @@ O objetivo deste laboratório é entender o processo de classificação de image
 ## Carregando a imagem
 Para carregar uma imagem, precisamos definir uma área de interesse (AOI). Nesse exercício, vamos utilizar como AOI o polígono representando o limite municipal de Carlópolis, PR, conforme disponibilizado pela FAO.
 
-Nota: Quando iniciamos a linha com '//', a mesma vira um comentário e não será executada. Isso serve para que possamos comentar a finalidade das linhas de código.
+Nota: Quando iniciamos uma linha com '//', a mesma vira um comentário e não será executada. Isso serve para que possamos incluir notas sobre a finalidade das linhas de código.
 
 
 ```JavaScript
-//------------Importar o limite territorial de Carlópolis, PR, com dados da FAO 
+//------------Importar limite territorial de Carlópolis, PR, com dados da FAO 
 var zeroLevel = ee.FeatureCollection("FAO/GAUL/2015/level0");// País                      
 var firstLevel = ee.FeatureCollection("FAO/GAUL/2015/level1");//Estado
 var secondLevel = ee.FeatureCollection("FAO/GAUL/2015/level2") ;//Município
 
-var Mato_Rico = secondLevel.filter(ee.Filter.eq('ADM2_NAME', 'Carlopolis'))
-Map.addLayer(Mato_Rico, {}, 'Limite Municipal')//Adicionar o limite como uma nova camada
+var Carlopolis = secondLevel.filter(ee.Filter.eq('ADM2_NAME', 'Carlopolis'))
+Map.addLayer(Carlopolis, {}, 'Limite Municipal')//Adicionar o limite como uma nova camada
 ```
 
-Ao clicar em '_Run_', o limite de Carlópolis deve estar aparecendo na área de visualizador de mapas (e dados geoespaciais):
-![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/f623ada3-a8d4-4b43-87dc-932fc984acbe)
+Ao clicar em '_Run_', o limite de Carlópolis deve estar aparecendo na área de visualizador de mapas:
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/89a4e6c4-e719-4cfb-bb6f-5606930c41d3)
 
-Após desenhado, 
-clique na mãozinha para sair das ferramentas de desenho. Observe que uma nova variável é criada na seção de importações ('Imports'), contendo o ponto único, importado como uma Geometria. Altere o nome desta importação para "roi" - abreviação de região de interesse.
 
-![image](https://user-images.githubusercontent.com/41900626/175430473-421e0bfc-7656-407f-a242-ffbd52765c49.png)
 
-O primeiro passo é obter uma imagem sem nuvem para trabalhar. Faça isso importando imagens USGS Landsat 8 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first - primeira).
-
-Em seguida, podemos executar o script abaixo para extrair nossa imagem desejada da coleção Landsat 8 e adicioná-la à visualização do mapa como uma composição de cores verdadeiras (você pode copiar e colar OU digitar manualmente o Script):
+Agora vamos obter uma imagem sem nuvem de Carlópolis. Faça isso importando imagens USGS Landsat 9 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first - primeira).
 
 ```JavaScript
-//Seleciona imagem 
-var imagem = ee.Image(ee.ImageCollection('LANDSAT/LC08/C02/T1_L2') 
-    .filterBounds(roi)
-    .filterDate('2022-01-01', '2022-06-30')
+//------------Selecionar imagem do satélite Landsat 9 e recortar para Carlópolis
+var imagem_selecionada = 
+      ee.ImageCollection('LANDSAT/LC09/C02/T1_L2') 
+    .filterBounds(Carlopolis)
+    .filterDate('2022-05-01', '2022-06-30')//data inicial e final
     .sort('CLOUD_COVER')
-    .first()); 
-//Inspeciona imagem selecionada e a mostra no mapa
-print('imagem', imagem)
-Map.addLayer(imagem, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 10000}, 'Composição cor verdadeira');
+    .first()    
+    .clip(Carlopolis)//recorta para Carlópolis
+
+//Inspeciona imagem selecionada, mostrando no Console
+print('imagem_selecionada', imagem_selecionada)    
+
+```
+
+Para melhor visualizar a imagem selecionada, podemos utilizar diferentes combinações de bandas espectrais e aplicar diferentes limiares de contraste.
+
+```JavaScript
+//----Montar duas composições coloridas    
+//composição cor-verdadeira
+var corVerdadeira = {bands:['SR_B4',//Banda do vermelho
+                    'SR_B3',//Banda do verde
+                    'SR_B2'],//Banda do azul
+                    min:7000, max: 20000};//Contraste da composição  
+
+//composição falsa-cor
+var falsaCor = {bands:['SR_B6',//Infravermelho médio
+                    'SR_B5',//Infravermelho próximo 
+                    'SR_B4'],//Vermelho
+                    min:7000, max: 25000};     
+                                       
+
+Map.addLayer(imagem_selecionada, corVerdadeira, 'Mato Rico-cor verdadeira');//Adiciona imagem no visualizador de mapas
+Map.addLayer(imagem_selecionada, falsaCor, 'Mato Rico-falsa cor');
+
 ```
 ![image](https://user-images.githubusercontent.com/41900626/175431098-d6545b86-f7c0-4056-af33-505dc5d6f592.png)
 
