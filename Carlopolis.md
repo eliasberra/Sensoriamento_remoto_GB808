@@ -134,33 +134,31 @@ Você pode achar mais interessante utilizar outras combinações de bandas para 
 
 
 
-
 9. Agora temos cinco classes definidas ('urbana', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais para treinar nosso classificador, precisamos mesclá-las em uma única coleção de feições, chamada _FeatureCollection_:
 
 ```javascript
-//mesclar as classes em uma única coleção
+//mesclar as classes em uma única coleção de feições
 var nomeClasses = urbana.merge(floresta).merge(area_agricola_vegetada).merge(area_agricola_solo).merge(agua);
-```
 
-10. Imprima a coleção de feições e as inspecione no Console.
-
-```javascript
 //Imprimir a coleção de feições para inspeção
 print('nome das classes', nomeClasses)
+
 ```
-![image](https://user-images.githubusercontent.com/41900626/184744424-400a3a38-8a47-46c1-8ed0-bf0dccca6061.png)
+Repare que a coleção assume os valores e nomes que acambamos de definir no passo acima:
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/7566a82e-020d-4f43-8e2a-187ebb050220)
+
 
 
 
 
 ## Extraia os dados espectrais para treinamento do classificador
 
-Agora podemos usar o FeatureCollection que criamos para extrair os dados de reflectância para cada ponto amostral, de cada banda. Criamos dados de treinamento sobrepondo os polígonos de treinamento na imagem. Isso adicionará novas propriedades à coleção de feições que representará os valores das bandas espectrais de cada polígono:
+Agora podemos usar o coleção de feições que criamos para extrair os dados de reflectância espectral dentro de cada amostra. Os valores extraídos serão adicionados como novas propriedades à coleção de feições.
 
 ```javascript
-//Extrair uma lista de valores em cada ponto em cada banda
+//Extrair uma lista de valores por amostra, por banda espectral
 var bandas = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
-var treinamento = img_recorte.select(bandas).sampleRegions({
+var treinamento = imagem_selecionada.select(bandas).sampleRegions({
   collection: nomeClasses,
   properties: ['Uso','Nome'],//essa propriedade deve ser escrita da mesma forma como escrita no passo 5 e 7
   scale: 30
