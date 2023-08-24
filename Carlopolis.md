@@ -173,11 +173,9 @@ Depois de executar o script, os dados de treinamento serão impressos no '_Conso
 
 
 
-
-
 ## Treine o classificador e execute a classificação
-Nesse exemplo, vamos usar o classificador CART (Classification and Regression Trees) (Breiman et al. 1984) para prever as classes temáticas.
-Agora podemos treinar o algoritmo do classificador usando nossas amostras que devem ser, em teoria, representatias das diferentes classes de cobertura da terra de uma perspectiva multiespectral.
+Nesse exemplo, vamos usar o classificador CART (_Classification and Regression Trees_) (Breiman et al. 1984) para prever as classes temáticas.
+Agora podemos treinar o algoritmo do classificador usando nossas amostras que devem ser, idealmente, representativas de toda a variabilidade espectral presente na cena escolhida.
 
 ```javascript
 //Treinar o classificador
@@ -188,12 +186,11 @@ var classificador = ee.Classifier.smileCart().train({
 });
 ```
 
-O próximo passo é aplicar esse conhecimento de nosso treinamento ao restante da imagem - usando o que foi aprendido em nossa coleção supervisionada (ou seja, nós supervisionamos a coleta das amostras) para auxiliar o classificador a decidir sobre qual classe os outros pixels devem pertencer.
-
+Agora, o CART definiu uma árvore de decisão para classificar os pixels da nossa imagem em uma das cinco classes no qual o CART foi treinado. Podemos executar a classificação.
 
 ```javascript
-//Executa a classificação
-var classificada = img_recorte.select(bandas).classify(classificador);
+//Executar a classificação
+var classificada = imagem_selecionada.select(bandas).classify(classificador);
 ```
 
 Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbana = 1, floresta = 2,  area_agricola_vegetada = 3, area_agricola_solo = 4, agua = 5, - então o resultado será renderizado com essas classes como urbanoa= cinza, floresta = verde,  area_agricola_cultivada = oliva, area_agricola_solo = amarelo e água = azul.
