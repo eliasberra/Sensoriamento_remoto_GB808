@@ -160,14 +160,15 @@ Agora podemos usar o coleção de feições que criamos para extrair os dados de
 var bandas = ['SR_B2', 'SR_B3', 'SR_B4', 'SR_B5', 'SR_B6', 'SR_B7'];
 var treinamento = imagem_selecionada.select(bandas).sampleRegions({
   collection: nomeClasses,
-  properties: ['Uso','Nome'],//essa propriedade deve ser escrita da mesma forma como escrita no passo 5 e 7
+  properties: ['Uso','Nome'],//cuidado: as palavras são sensíveis as letras maísuculas/minúsculas
   scale: 30
 });
 print('treinamento', treinamento);
 ```
-Depois de executar o script, os dados de treinamento serão impressos no Console. Você notará que as informações de 'properties' agora mudaram e, além da classe de cobertura da terra, para cada ponto agora há um valor de refletância correspondente para cada banda da imagem.
+Depois de executar o script, os dados de treinamento serão impressos no '_Console_'. Você notará que as informações de 'properties' agora mudaram e, além da classe de cobertura da terra, para cada ponto agora há um valor de refletância correspondente para cada banda da imagem.
 
-![image](https://user-images.githubusercontent.com/41900626/184747281-6f90ec3b-f346-49a2-9696-2a0783a3c1e1.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/068ce7c5-1b2e-41c0-a4c2-ffecbce28827)
+
 
 
 
