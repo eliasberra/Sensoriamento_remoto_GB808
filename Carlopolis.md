@@ -49,7 +49,7 @@ Ao clicar em '_Run_', o limite de Carlópolis deve estar aparecendo na área de 
 
 
 
-Agora vamos obter uma imagem sem nuvem de Carlópolis. Faça isso importando imagens USGS Landsat 9 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first - primeira).
+Agora vamos obter uma imagem sem nuvem de Carlópolis. Faça isso importando imagens USGS Landsat 9 Surface Reflectance Tier 1, filtrando espacialmente para uma região de interesse (filterBounds), filtrando temporalmente para o intervalo de datas necessário (filterDate) e, por último, classificando por cobertura de nuvens ('CLOUD_COVER') e extraindo a cena menos nublada (first()).
 
 ```JavaScript
 //------------Selecionar imagem do satélite Landsat 9 e recortar para Carlópolis
@@ -87,63 +87,48 @@ Map.addLayer(imagem_selecionada, corVerdadeira, 'Mato Rico-cor verdadeira');//Ad
 Map.addLayer(imagem_selecionada, falsaCor, 'Mato Rico-falsa cor');
 
 ```
-![image](https://user-images.githubusercontent.com/41900626/175431098-d6545b86-f7c0-4056-af33-505dc5d6f592.png)
-
-Dê uma olhada ao redor da cena e familiarize-se com a paisagem. A composição parece ter muito brilho, não achas? Você pode testar diferentes limiares de contraste ajustando o valor de min e max.
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/8876dfe6-e5b7-45af-b3fd-61505c748d3a)
 
 
-**Nota: Lembre de ir SALVANDO o código.**
-
-## Recortando a cena para uma área menor
-Antes de prosseguirmos às etapas de classificação, vamos recortar nossa cena para uma área teste de menor tamanho a fim tornar mais rápida a etapa de classificação automática e economizar recurso computacional.
-Passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer'.![image](https://user-images.githubusercontent.com/41900626/175122195-9242e624-cf3b-4ab1-973c-1581a8aa0578.png)
-Use a ferramenta de geometria 'Draw a rectangle' ![image](https://user-images.githubusercontent.com/41900626/175122290-343fa15c-cd83-4321-aaa5-56d152b35c76.png)
-para desenhar um retângulo ao redor de Carlópolis representando nossa área de interesse. Desenhe um retângulo com dimensões parecidas as apresentadas na figura abaixo. Renomeie o vetor para 'recorte'.
-![image](https://user-images.githubusercontent.com/41900626/175431592-88b41349-c9c9-4d0f-87c8-707b42dbd884.png)
-
-Clique novamente na mãozinha para sair do modo desenho.
-
-Em seguida, podemos executar o script abaixo para extrair nossa imagem recortada:
-
-```JavaScript
-//Recortar cena
-var img_recorte =  imagem.clip(recorte);
-Map.addLayer(img_recorte, {bands:['SR_B4', 'SR_B3', 'SR_B2'],min:6000, max: 20000}, 'Recorte');
-```
-![image](https://user-images.githubusercontent.com/41900626/175431844-9218ab35-457b-4f88-ada7-4a05fe8ad066.png)
+Dê uma olhada ao redor da cena e familiarize-se com a paisagem. Na aba de '_Layers_', você pode ativar e desativar as diferentes camadas de dados geoespaciais.
 
 
-Você pode habilitar/desabilitar qualquer um dos vetores na aba de 'Geometry Imports'. Você pode, da mesma forma, desabilitar as camdas na aba 'Layers'.
-
+**Nota: Lembre de ir salvando o código.**
 
 
 ## Coletando dados de treinamento
-1. O primeiro passo para classificar nossa imagem é coletar alguns dados de treinamento para ensinar o classificador. Queremos coletar amostras representativas de espectros de refletância para cada classe de cobertura da terra de interesse na cena recortada. Ative o 'Draw a rectangle' primeiramente: ![image](https://user-images.githubusercontent.com/41900626/184734863-20d9b073-204b-49ef-aba6-a6b24bcf00e5.png)
+1. O primeiro passo para classificar nossa imagem é coletar alguns dados de treinamento para ensinar o classificador. Queremos coletar amostras representativas de espectros de refletância para cada classe de cobertura da terra de interesse na cena recortada. Vamos definir o número de classes e o número de amostras;
 
-2. Passe o mouse na caixa 'Geometry Imports' ao lado das ferramentas de desenho de geometria e clique em '+ new layer' ![image](https://user-images.githubusercontent.com/41900626/175124178-fd317651-ebba-403b-bc2d-c9693a6698c9.png).
-
-3. Cada nova camada (layer) a ser criada armazenará a localização do conjunto de polígonos representando uma determinada classe de cobertura da terra.
-4. Vamos definir nossa primeira nova camada/classe como 'urbana'. Localize áreas (alguns pixels) representativos dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando polígonos na camada de geometria.
-5. Colete em torno de 10 polígonos representativos e renomeie a 'geometry' para 'urbana'. Lembre de parar a aquisição clicando no símbolo da mãozinha![image]![image](https://user-images.githubusercontent.com/41900626/184735493-b28b6d65-a3db-40bc-a2ba-9847533ac11a.png)
-
-
-6. Em seguida, você pode configurar a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://user-images.githubusercontent.com/41900626/175432525-c8ee3afd-3265-4e20-b680-352c89888f73.png). 
-Clique no ícone da engrenagem para configurá-lo, altere 'Import as' de 'Geometry' para 'FeatureCollection'. Use '+Property' para adicionar valores identificadores de cada cobertura de terra (Property = 'Uso' (de Uso da Terra) e Value = 1). As classes subsequentes terão 'Value' 2, 3, 4 e 5. 
-Clique mais uma vez em '+Property' e escreva Property = 'Nome' e Value = urbana, para garantir a identificação da classe de interesse futuramente, conforme abaixo:
-Quando terminar, clique em 'OK'.
-![image](https://user-images.githubusercontent.com/41900626/184952065-d7acfead-0fda-4958-8279-ee1ba186446b.png)
-
-
-
-7. Adicione mais 4 classes. Colete em torno de 10 amostras de treinamento para cada uma dessas classes: 
+Vamos classificar Carlópolis em 5 classes temáticas: 
+  - 'urbana', 
   - 'floresta', 
   - 'area_agricola_vegetada' (área agrícola com cultivo evidente), 
-  - 'area_agricola_solo' (área agrícola sem um cultivo evidente; solo exposto) e,
+  - 'area_agricola_solo' (área agrícola sem um cultivo evidente e/ou solo exposto) e,
   - 'agua'. 
 
-Nota: Lembre de salvar seu código---
+Vamos coletar em torno de 10 amostras de treinamento para cada uma dessas classes.
 
-8. Repita a etapa 5 para cada classe de cobertura da terra que deseja incluir em sua classificação, garantindo que os pontos de treinamento se sobreponham à imagem. Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para FeatureCollection e definindo o nome da propriedade como 'Uso' com valores de 2, 3, 4 e 5 para as diferentes classes. Também defina o 'Nome' com o nome da respectivas classes.
+
+Ative o 'Draw a rectangle' primeiramente: ![image](https://user-images.githubusercontent.com/41900626/184734863-20d9b073-204b-49ef-aba6-a6b24bcf00e5.png). O retângulo chamado 'geometry' é criado e deve estar aparecendo na parte superior do editor de código. Ele deve estar visível na aba '_Geometry Imports_' ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/d77fa5b5-e811-427d-8166-07e159d5aa72).
+
+3. Vamos começar a coleta para a classe 'urbana'. Localize áreas (alguns pixels, a amostra não pode ser menor que o tamanho de um pixel) representativas dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando polígonos na camada de geometria.
+5. Colete os 10 polígonos representativos e renomeie a '_geometry_' para 'urbana'. Lembre de parar a aquisição clicando no símbolo da mãozinha!
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/8025f475-b59c-491a-902b-91684b183b36)
+
+
+
+6. Em seguida, configure a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/645313a0-ad18-4c7c-b099-150777b0403a).
+
+
+Clique no ícone da engrenagem para configurá-lo, altere '_Import as_' de '_Geometry_' para '_FeatureCollection_'. Use '_+Property_' para adicionar valores identificadores de cada cobertura de terra (_Property_ = 'Uso' (de Uso da Terra) e _Value_ = 1). As classes subsequentes terão '_Value_' = 2, 3, 4 e 5. 
+Clique mais uma vez em '_+Property_' e escreva '_Property_' = 'Nome' e '_Value_' = 'urbana', para garantir a identificação da classe de interesse futuramente, conforme abaixo.
+Quando terminar, clique em 'OK'.
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/7a452e73-c5d1-41f3-9214-85cda9f4e3cc)
+
+
+Repita o procedimento para as outras 4 classes: 'floresta', 'area_agricola_vegetada' (área agrícola com cultivo evidente), 'area_agricola_solo' (área agrícola sem um cultivo evidente e/ou solo exposto) e,  'agua'. Para criar novos polígonos, clique em '_+new layer_' ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/178fbc87-312e-4d91-b61e-0bf3a412752c).
+Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para '_FeatureCollection_' e definindo o nome da propriedade como 'Uso' com valores de 2, 3, 4 e 5 para as diferentes classes. Também defina o 'Nome' com o nome da respectivas classes.
+
 ![image](https://user-images.githubusercontent.com/41900626/184743002-ae2f92f4-95d6-4295-8235-0d7b9c322be8.png)
 
 
