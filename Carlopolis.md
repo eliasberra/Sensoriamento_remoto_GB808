@@ -81,13 +81,15 @@ var falsaCor = {bands:['SR_B6',//Infravermelho médio
                     'SR_B5',//Infravermelho próximo 
                     'SR_B4'],//Vermelho
                     min:7000, max: 25000};     
-                                       
-
-Map.addLayer(imagem_selecionada, corVerdadeira, 'Mato Rico-cor verdadeira');//Adiciona imagem no visualizador de mapas
-Map.addLayer(imagem_selecionada, falsaCor, 'Mato Rico-falsa cor');
+                    
+                    
+Map.addLayer(imagem_selecionada, corVerdadeira, 'Carlopolis-cor verdadeira');//Adiciona imagem no visualizador de mapas
+Map.addLayer(imagem_selecionada, falsaCor, 'Carlopolis-falsa cor');
 
 ```
-![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/8876dfe6-e5b7-45af-b3fd-61505c748d3a)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/f80bebdf-9ae4-413b-bd5e-ec1f01b7c571)
+
+
 
 
 Dê uma olhada ao redor da cena e familiarize-se com a paisagem. Na aba de '_Layers_', você pode ativar e desativar as diferentes camadas de dados geoespaciais.
@@ -128,13 +130,12 @@ Quando terminar, clique em 'OK'.
 
 Repita o procedimento para as outras 4 classes: 'floresta', 'area_agricola_vegetada' (área agrícola com cultivo evidente), 'area_agricola_solo' (área agrícola sem um cultivo evidente e/ou solo exposto) e,  'agua'. Para criar novos polígonos, clique em '_+new layer_' ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/178fbc87-312e-4d91-b61e-0bf3a412752c).
 Você pode achar mais interessante utilizar outras combinações de bandas para melhorar a fotointerpretação das classes na composição colorida. Lembre de usar a engrenagem para configurar as geometrias, alterando o tipo para '_FeatureCollection_' e definindo o nome da propriedade como 'Uso' com valores de 2, 3, 4 e 5 para as diferentes classes. Também defina o 'Nome' com o nome da respectivas classes.
-
-![image](https://user-images.githubusercontent.com/41900626/184743002-ae2f92f4-95d6-4295-8235-0d7b9c322be8.png)
-
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/8b485137-0009-4f06-93fd-2e117902ee3a)
 
 
 
-9. Agora temos cinco classes definidas ('urbana', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais de treinamento, precisamos mesclá-las em uma única coleção, chamada FeatureCollection. Execute a seguinte linha para mesclar as geometrias em um único FeatureCollection:
+
+9. Agora temos cinco classes definidas ('urbana', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais para treinar nosso classificador, precisamos mesclá-las em uma única coleção de feições, chamada _FeatureCollection_:
 
 ```javascript
 //mesclar as classes em uma única coleção
