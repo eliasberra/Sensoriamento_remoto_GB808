@@ -193,7 +193,7 @@ Agora, o CART definiu uma árvore de decisão para classificar os pixels da noss
 var classificada = imagem_selecionada.select(bandas).classify(classificador);
 ```
 
-Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com urbana = 1, floresta = 2,  area_agricola_vegetada = 3, area_agricola_solo = 4, agua = 5, - então o resultado será renderizado com essas classes como urbanoa= cinza, floresta = verde,  area_agricola_cultivada = oliva, area_agricola_solo = amarelo e água = azul.
+Exiba os resultados usando a função de mapeamento abaixo. Você pode precisar ajustar as cores, mas se os dados de treinamento foram criados com 'urbana' = 1, 'floresta' = 2,  'area_agricola_vegetada' = 3, 'area_agricola_solo' = 4, 'agua' = 5, então o resultado será renderizado com essas classes como 'urbana'= cinza, floresta = 'verde',  'area_agricola_cultivada' = oliva, 'area_agricola_solo' = amarelo e 'agua' = azul.
 Você pode consultar opções de cores para a pallete em <https://en.wikipedia.org/wiki/Web_colors>.
 
 
@@ -203,22 +203,55 @@ Map.centerObject(nomeClasses, 10);
 Map.addLayer(classificada,
 {min: 1, max: 5, palette: ['grey', 'green', 'olive','yellow', 'blue']}, 'classificação');
 ```
-![image](https://user-images.githubusercontent.com/41900626/175436317-53ad2840-1bbe-4fc5-9d61-9abcf9671f24.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/2ca25caa-eb76-4aed-a159-3c707b515577)
 
 
 
-## Examine seus resultados
 
-Parabéns - você fez sua primeira classificação de cobertura da terra! Mas.....
-- Você está feliz com a classificação?
-- Como poderia ser melhorado?
-- Tente adicionar algumas classes extras para categorias de cobertura de terra que mostram sinais de confusão
 
-Veremos como refinar isso e discutiremos limitações e caminhos para melhorias no próximo tutorial.
 
-Lembre de salvar seu script, pois o mesmo será utilizado no próximo tutorial.
 
--------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Melhorando a Classificação
 
