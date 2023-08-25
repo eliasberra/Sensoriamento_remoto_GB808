@@ -233,10 +233,8 @@ Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 
 **Nota: Lembre de ir SALVANDO o código.**
 
 Ao final, você deve ter adquirido amostras de validação para as cinco classes temáticas:
-![image](https://user-images.githubusercontent.com/41900626/184909657-6788ea15-d573-4ca7-a574-ee1e7e4eac60.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/99aab88a-6ec3-403f-a6fc-b9d0f2d3f83b)
 
-
-  
 
 2. Mescle seus polígonos de validação em uma coleção de feições
 ```JavaScript
