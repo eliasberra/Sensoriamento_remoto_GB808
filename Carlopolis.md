@@ -209,23 +209,25 @@ Map.addLayer(classificada,
 
 ## Validação da classificação
 
-Tão importante quanto a classificação, é sabermos o quão precisa é essa classificação. Para isso, podemos validar nossa classificação com amostras indenpendentes das classes de interesse.
+Tão importante quanto a classificação, é sabermos sua acurácia. Para isso, podemos validar nossa classificação com amostras indenpendentes para as classes de interesse.
 
 1. Colete dados de validação usando a ferramenta de geometria de polígono retangular ![image](https://user-images.githubusercontent.com/41900626/175937417-b8d465e1-d5af-48e2-b5ba-958bd98e2e09.png):
   - faça isso da mesma maneira que você coletou dados de treinamento.
+  - coletar amostras das mesmas cinco classes, mas renomeia-as de forma diferente, adicionando o 'v' de validação ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua')
   - use os mesmos nomes e rótulos de propriedade.
   - não sobreponha os polígonos aos dados de treinamento; queremos dados independentes.
-  - não exceda 5000 pixels por .
-  - coletar amostras das mesmas cinco classes, mas renomeia-as de forma diferente ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua')
+  - não exceda 5000 pixels (se não o GEE trava).
+  
+Vamos a um exemplo com a amostra 'vUrbana'. Colete poligonos para representar os dados de validação dentro de 'vUrbana': 
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/74195d19-068d-4df6-8e4f-251b57fcbeb7)
 
-Por exemplo, coletando poligonos para representar os dados de validação dentro de vUrbana: 
-![image](https://user-images.githubusercontent.com/41900626/184908712-6aabf151-31ad-4a55-aa9c-bb6e108485a2.png)
 
 
-Configure a geometria (clicando no ícone da engrenagem), seguindo a ordem dos dados de treinamento. Por exemplo, para 'vUrbana', configure para 'FeatureCollection', clique em '+Property' e  adicione a propriedade 'Property' = 'Uso'  e 'Value' = '1' (para as demais classes escreva valor 2,3, 4 e 5).
-Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 'vUrbana'
+Configure a geometria (clicando no ícone da engrenagem), seguindo a mesma ordem de insreção dos dados de treinamento. Por exemplo, para 'vUrbana', configure para '_FeatureCollection_', clique em '_+Property_' e  adicione a propriedade '_Property_' = 'Uso'  e '_Value_' = '1' (para as demais classes escreva o valor 2,3, 4 e 5).
+Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 'vUrbana' (para as demais classes escreva o valor  'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua').
 
-![image](https://user-images.githubusercontent.com/41900626/184953877-df13171b-7c4f-4394-ba07-49e15876f39a.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/7049f8d6-829e-4684-bc4d-9a6eac4804d4)
+
 
 
 **Nota: Lembre de ir SALVANDO o código.**
