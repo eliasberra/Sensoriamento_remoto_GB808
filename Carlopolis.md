@@ -207,24 +207,24 @@ Map.addLayer(classificada,
 
 
 
-## Validação da classificação
+## Validando a classificação
 
-Tão importante quanto a classificação, é sabermos sua acurácia. Para isso, podemos validar nossa classificação com amostras indenpendentes para as classes de interesse.
+Tão importante quanto a classificação, é sabermos sua acurácia. Para isso, devemos validar nossa classificação com amostras indenpendentes para as classes de interesse.
 
 1. Colete dados de validação usando a ferramenta de geometria de polígono retangular ![image](https://user-images.githubusercontent.com/41900626/175937417-b8d465e1-d5af-48e2-b5ba-958bd98e2e09.png):
   - faça isso da mesma maneira que você coletou dados de treinamento.
-  - coletar amostras das mesmas cinco classes, mas renomeia-as de forma diferente, adicionando o 'v' de validação ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua')
+  - colete amostras para as mesmas cinco classes, mas renomeia-as de forma diferente, adicionando o 'v' de validação ('vUrbana', 'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua')
   - use os mesmos nomes e rótulos de propriedade.
   - não sobreponha os polígonos aos dados de treinamento; queremos dados independentes.
   - não exceda 5000 pixels (se não o GEE trava).
   
-Vamos a um exemplo com a amostra 'vUrbana'. Colete poligonos para representar os dados de validação dentro de 'vUrbana': 
+Vamos a um exemplo para a amostra 'vUrbana'. Colete poligonos para representar os dados de validação dentro de 'vUrbana': 
 ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/74195d19-068d-4df6-8e4f-251b57fcbeb7)
 
 
 
-Configure a geometria (clicando no ícone da engrenagem), seguindo a mesma ordem de insreção dos dados de treinamento. Por exemplo, para 'vUrbana', configure para '_FeatureCollection_', clique em '_+Property_' e  adicione a propriedade '_Property_' = 'Uso'  e '_Value_' = '1' (para as demais classes escreva o valor 2,3, 4 e 5).
-Clique mais uma vez em '+Property' e  adicione 'Property' = 'Nome'  e 'Value' = 'vUrbana' (para as demais classes escreva o valor  'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua').
+Configure a geometria (clicando no ícone da engrenagem), seguindo a mesma ordem de inserção dos dados de treinamento. Por exemplo, para 'vUrbana', configure para '_FeatureCollection_', clique em '_+Property_' e  adicione a propriedade '_Property_' = 'Uso'  e '_Value_' = '1' (para as demais classes escreva o valor 2,3, 4 e 5).
+Clique mais uma vez em '_+Property_' e  adicione '_Property_' = 'Nome'  e '_Value_' = 'vUrbana' (para as demais classes escreva o valor  'vFloresta', 'vArea_agricola_vegetada', 'vArea_agricola_solo', 'vAgua').
 
 ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/7049f8d6-829e-4684-bc4d-9a6eac4804d4)
 
@@ -236,7 +236,7 @@ Ao final, você deve ter adquirido amostras de validação para as cinco classes
 ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/99aab88a-6ec3-403f-a6fc-b9d0f2d3f83b)
 
 
-2. Mescle seus polígonos de validação em uma coleção de feições
+2. Mescle seus polígonos de validação em uma única coleção de feições
 ```JavaScript
 ///--------------Validação------------------------------------------------
 //-----------------------------------------------------------------------
@@ -255,11 +255,11 @@ var validacao = classificada.sampleRegions({
 print('validação', validacao);
 
 ```
-![image](https://user-images.githubusercontent.com/41900626/184910866-0eb5a43a-a436-4955-99e1-8b6494fa0d7b.png)
+No Console, ao se investigar uma das feições, se pode observar a existência das amostras de validação (Nome e Uso) e o dado classificado ('_classification_').
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/c42fdb37-298c-4e15-bcae-272747f96300)
 
 
-
-4. Executar a avaliação de validação usando a abordagem de matriz de erros (ou matriz de confusão). Além do Console, a matriz de erros é exportada como um arquivo texto (.csv) para permitir que esse resultado seja melhor trabalhado e organizado.
+4. Executar a avaliação de validação usando a abordagem de matriz de erros (ou matriz de confusão). Esse resultado pode ser visualizado e explorado tanto no console, como pode ser exportado como um arquivo texto (.csv) para permitir que esse resultado seja melhor trabalhado e organizado.
 ```JavaScript
 // Construir a matriz de confusão dos dados de validação contra o resultado da classificação
 var testeAcuracia = validacao.errorMatrix('Uso', 'classification');
@@ -281,11 +281,13 @@ Export.table.toDrive({collection: featureCollection,
 
 
 ```
-![image](https://user-images.githubusercontent.com/41900626/184911504-abb712ee-84a8-419b-954e-c5e8fcbba737.png)
+
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/c4172260-b2a9-40f0-9ecd-0f346f98d9a0)
+
 
 
 Você deve ter observado que a aba 'Tasks' ficou laranja ![image](https://user-images.githubusercontent.com/41900626/176021968-ccf22719-c332-4979-aa52-34102b3ceedd.png)
-Se você clicar nela, irá aparece uma tarefa (task) esperando a ser executada. Clique em 'RUN' para exportar a tabela e salvá-la no seu Google Drive. Uma vez exportada, você pode trabalhar a tabela posteriormente calculando, por exemplo, a acurácia de cada classe individualmente.
+Se você clicar nela, irá aparece uma tarefa (_task_) esperando a ser executada. Clique em '_RUN_' para exportar a tabela e salvá-la no seu Google Drive. Uma vez exportada, você pode trabalhar a tabela posteriormente calculando, por exemplo, a acurácia de cada classe individualmente.
 ![image](https://user-images.githubusercontent.com/41900626/176022613-a803a49d-9816-4885-92a3-c64193e5bd0c.png)
 
 
@@ -306,7 +308,7 @@ print('AC:', testeAcuracia.producersAccuracy());
 print('Estatística kappa:', testeAcuracia.kappa());
 ```
 
-6. Essas metricas, na maioria dos casos, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive.
+6. Essas metricas, geralmente, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive.
 Ao abrir o arquivo, desconsidere a primeira linha e a primeira coluna.
 ![image](https://user-images.githubusercontent.com/41900626/185953931-1d31cee9-c634-4a3d-95db-3fd894eb1f56.png)
 
