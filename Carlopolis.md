@@ -384,11 +384,6 @@ Na janela que abre, clique em _Run_. Pronto, a imagem classificada está salva n
 ## Preparando mapa para impressão no QGIS
 Baixe a imagem 'Classificada.tif' para uma pasta no seu computador.
 Abra o QGIS e importe a imagem.
-Acesse as 'Propriedades' da imagem e observe o item 'Sistema de Referência de Coordenadas (SRC)'
-![image](https://user-images.githubusercontent.com/41900626/180450171-288ace23-719a-4570-a818-78c9b54a67bb.png)
-Como se pode ver, o SRC está como  'EPSG:32622 - WGS 84 / UTM zone 22N'. O que aparenta ser, em um primiero momento, um erro, é uma metodologia adotada pela distribuidora das cenas Landsat (USGS) para otimizar alguns processamentos. Veja mais informações na matéria ['Why do Landsat scenes in the Southern Hemisphere display negative UTM values?'](https://www.usgs.gov/faqs/why-do-landsat-scenes-southern-hemisphere-display-negative-utm-values).
-
-Deixe o SRC como está.
 Agora vamos identificar as classes com nomes que tragam um significado claro para o leitor do mapa.
 No QGIS, clique com o botão direito em 'Classificada' > 'Simbologia' e classifique as classes. Primeiramente, elimine a classe '0' que representa a borda da imagem sem valores significativos (no data), conforme abaixo. 
 ![image](https://user-images.githubusercontent.com/41900626/184964806-5639b40d-7c4c-42bd-8a39-eb40cad23b7e.png)
