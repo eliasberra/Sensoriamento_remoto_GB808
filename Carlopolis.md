@@ -113,13 +113,13 @@ Vamos coletar em torno de 10 amostras de treinamento para cada uma dessas classe
 
 Ative o 'Draw a rectangle' primeiramente: ![image](https://user-images.githubusercontent.com/41900626/184734863-20d9b073-204b-49ef-aba6-a6b24bcf00e5.png). O retângulo chamado 'geometry' é criado e deve estar aparecendo na parte superior do editor de código. Ele deve estar visível na aba '_Geometry Imports_' ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/d77fa5b5-e811-427d-8166-07e159d5aa72).
 
-3. Vamos começar a coleta para a classe 'urbana'. Localize áreas (alguns pixels, a amostra não pode ser menor que o tamanho de um pixel) representativas dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando polígonos na camada de geometria.
-5. Colete os 10 polígonos representativos e renomeie a '_geometry_' para 'urbana'. Lembre de parar a aquisição clicando no símbolo da mãozinha!
+2. Vamos começar a coleta para a classe 'urbana'. Localize áreas (alguns pixels, a amostra não pode ser menor que o tamanho de um pixel) representativas dessa camada em áreas urbanas ou edificadas (edifícios, estradas, estacionamentos, etc.) e clique para coletá-los adicionando polígonos na camada de geometria.
+3. Colete os 10 polígonos representativos e renomeie a '_geometry_' para 'urbana'. Lembre de parar a aquisição clicando no símbolo da mãozinha!
 ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/8025f475-b59c-491a-902b-91684b183b36)
 
 
 
-6. Em seguida, configure a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/645313a0-ad18-4c7c-b099-150777b0403a).
+4. Em seguida, configure a importação da geometria da classe 'urbana' clicando no símbolo da engrenagem na mesma linha em que ela se encontra ![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/645313a0-ad18-4c7c-b099-150777b0403a).
 
 
 Clique no ícone da engrenagem para configurá-lo, altere '_Import as_' de '_Geometry_' para '_FeatureCollection_'. Use '_+Property_' para adicionar valores identificadores de cada cobertura de terra (_Property_ = 'Uso' (de Uso da Terra) e _Value_ = 1). As classes subsequentes terão '_Value_' = 2, 3, 4 e 5. 
@@ -134,7 +134,7 @@ Você pode achar mais interessante utilizar outras combinações de bandas para 
 
 
 
-9. Agora temos cinco classes definidas ('urbana', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais para treinar nosso classificador, precisamos mesclá-las em uma única coleção de feições, chamada _FeatureCollection_:
+5. Agora temos cinco classes definidas ('urbana', 'floresta', 'area_agricola_vegetada', 'area_agricola_solo' e 'agua'), mas antes de podermos usá-las para coletar dados espectrais para treinar nosso classificador, precisamos mesclá-las em uma única coleção de feições, chamada _FeatureCollection_:
 
 ```javascript
 //mesclar as classes em uma única coleção de feições
