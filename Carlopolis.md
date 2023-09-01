@@ -286,12 +286,12 @@ Export.table.toDrive({collection: featureCollection,
 
 
 
-Você deve ter observado que a aba 'Tasks' ficou laranja ![image](https://user-images.githubusercontent.com/41900626/176021968-ccf22719-c332-4979-aa52-34102b3ceedd.png)
+Você deve ter observado que a aba '_Tasks_' ficou laranja ![image](https://user-images.githubusercontent.com/41900626/176021968-ccf22719-c332-4979-aa52-34102b3ceedd.png).
 Se você clicar nela, irá aparece uma tarefa (_task_) esperando a ser executada. Clique em '_RUN_' para exportar a tabela e salvá-la no seu Google Drive. Uma vez exportada, você pode trabalhar a tabela posteriormente calculando, por exemplo, a acurácia de cada classe individualmente.
 ![image](https://user-images.githubusercontent.com/41900626/176022613-a803a49d-9816-4885-92a3-c64193e5bd0c.png)
 
 
-5. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação.
+5. Por fim, calcule um conjunto de medidas fornecendo indicadores da qualidade da classificação e mostre-as no _Console_.
 ```JavaScript
 // Calcula e imprime a acurácia geral no console
 print('Acurácia geral da validação: ', testeAcuracia.accuracy());
@@ -310,19 +310,21 @@ print('Estatística kappa:', testeAcuracia.kappa());
 
 6. Essas metricas, geralmente, ficam melhor apresentadas em uma tabela. Encontre o arquivo 'matrizConfusao.csv' no seu Google Drive.
 Ao abrir o arquivo, desconsidere a primeira linha e a primeira coluna.
-![image](https://user-images.githubusercontent.com/41900626/185953931-1d31cee9-c634-4a3d-95db-3fd894eb1f56.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/4f243e2c-ea70-4298-84e6-029ccd79cbab)
 
-Após isso, organize os resultados da validação em uma tabela similar a apresentada abaixo (a tabela aabixo está no Teams e pode ser utilizada como modelo  para os cálculos):
-![image](https://user-images.githubusercontent.com/41900626/184937282-f8496879-3135-4506-bbcf-f72956d3b7d6.png)
+
+Após isso, organize os resultados da validação em uma tabela similar a apresentada abaixo:
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/119ec814-7de9-43fd-8625-5135bd3f0f8c)
+
   
  Vamos à interpretação da tabela (a sua tabela terá, provavelmente, valores diferentes):
- 
-  Acurácia de Usuário (AC):
-  Por exemplo, para a classe Área Urbana, temos uma acurácia de usuário AC=78%. Isso significa que, de todos os pixels que o classificador 'disse' (classificou) que  eram área urbana (37), ele acertou 29, ou seja, 29/37 = 78% dos casos. Ou seja, era área urbana e o classificador classificou como área urbana (_true positive_). Associado ao AC, temos o erro de comissão (ou complemento de AC); 
-No exemplo, o classificador 'disse' que 8 amostras (7 de área agricola vegetada + 1 de de área agricola solo) eram Área Urbana quando, na verdade, eram outra classe (áreas agrícolas). Assim, 8/37= 22% foi o erro de comissão (que é o complemento de 78%) 
+
+  Acurácia de Usuário (AU):
+  Por exemplo, para a classe Área Urbana, temos uma acurácia de usuário AU=77%. Isso significa que, de todos os pixels que o classificador 'disse' (classificou) que  eram área urbana (71), ele acertou 55, ou seja, 55/71 = 77% dos pixels. Ou seja, era área urbana e o classificador classificou como área urbana (_true positive_). Associado a AU, temos o erro de comissão (ou complemento de AU); 
+No exemplo, o classificador 'disse' que 16 amostras (15 de área agricola vegetada + 1 de de área agricola solo) eram Área Urbana quando, na verdade, eram outras classes. Assim, 16/71= 23% foi o erro de comissão (que é o complemento de 77%). 
 
   Acurácia de Produtor (AP):
-  De quantas amostras que eu indiquei que eram Área Urbana e, que, de fato, o algorítimo acertou como Área Urbana? No exemplo, indiquei um total de 30 amostras como Área Urbana (verdade de campo) e o algorítmo acertou 29, ou seja, 29/30 = 97%. O complemento, 100%-97% = 3% é o erro de omissão, ou seja, ele omitiu em 1/30 casos dizendo que essas 1 amostra não é Área Urbana, quando, na realidade, é área urbana.
+  De quantas amostras que eu indiquei que eram Área Urbana e, que, de fato, o algorítimo acertou como Área Urbana? No exemplo, indiquei um total de 68 amostras como Área Urbana ('verdade' de campo) e o algorítmo acertou 55, ou seja, 55/68 = 81%. O complemento, 100%-81% = 19% é o erro de omissão, ou seja, ele omitiu em 13/68 casos dizendo que essas 13 amostras não representam Área Urbana, quando, na realidade, é área urbana.
 
 
 O que achou dos resultados da classificação? Considera um bom mapa temático de classes de cobertura da terra?
