@@ -335,27 +335,32 @@ Vamos agora calcular a área de cada classe temática que acabamos de detectar.
 Para isso, é interessante realizar o cálculo em _loop_, utilizando a função 'for', a qual automatiza o processo. Caso contrário, teríamos que escrever um código para cada classe de interesse.
 
 ```JavaScript
+
 //-----------------Calcular a área ocupada por cada classe temática--------------
 for (var a = 1; a < 6; a++){//'a' vai representar a quantidade de classes temáticas (1, 2, 3, 4 e 5)
-  var x = classificada.eq(a).multiply(ee.Image.pixelArea());//recupera a área de cada pixel em m²
+  var x =  classificada.eq(a).multiply(ee.Image.pixelArea());//recupera a área de cada pixel em m²
   var stats = x.reduceRegion({//reduz a imagem de interesse em uma quantidade, nesse caso, a área total
   reducer: ee.Reducer.sum(),//soma a área de todos os pixels
-  geometry: imagem.geometry(),//define a região de interesse onde realizar a soma
+  geometry: Carlopolis,//define a região de interesse onde realizar a soma
+  scale:30,
   maxPixels: 1e9//o número máximo de pixels a reduzir
 });
   var area_class = ee.Number(stats.get('classification'));//define a área em formato numérico
   area_class = area_class.divide(10000).round();//transforma de m² para hectares (ha)
   print('pixels da classe', a, area_class, 'ha');//imprime a área no Console  
   }
+
 ```
 Ao final, a área de cada classe deverá aparecer no Console.
-![image](https://user-images.githubusercontent.com/41900626/184939542-480e8373-697c-4580-8357-52173784323a.png)
-Por exemplo, a classe 'Área urbana', valor = 0, nesse tutorial atingiu uma área total de 7.685 ha.
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/721cb0d7-366c-44d9-9c40-170d38d01fa9)
+
+
+Por exemplo, a classe 'Área urbana', valor = 1, na área total foi de 3623 ha.
 
 
 ## Exportar mapa para impressão
-O GEE é excelente para processamento digital de imagens, mas não é o mais indicado para preparação de mapas para impressão. Para isso, vamos utilizar o QGIS.
-Então, precisamos exportar a imagem classificada para, depois, importá-la no QGIS.
+O GEE é excelente para processamento digital de imagens, mas não é o mais indicado para preparação de mapas para impressão, se tiver essa necessidade. Esse trabalho é melhor executado com um SIG, como o QGIS ou ArcGIS.
+Assim, podemos exportar a imagem classificada para, depois, importá-la no QGIS.
 
 ```JavaScript
 //-----------------Preparar mapa temático para impressão--------------
