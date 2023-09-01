@@ -405,48 +405,6 @@ Espero que este tutorial tenha sido útil.
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Melhorando a Classificação
 
 Aqui devemos pensar se estamos satisfeitos ou não com essa classificação. Mesmo sem quaisquer dados quantitativos, podemos perceber erros em algumas regiões. Como podemos melhorar? Existem algumas opções que podemos explorar:
@@ -462,5 +420,3 @@ L., Breiman, J.H. Friedman, R.A. Olshen, and C.J. Stone. 1984. Classification an
 Boca Raton, FL: Wadsworth; Taylor & Francis Group
 
 ### Obrigado
-
-
