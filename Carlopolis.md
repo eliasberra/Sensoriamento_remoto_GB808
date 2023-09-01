@@ -372,14 +372,12 @@ Export.image.toDrive({image: classificada,//indica qual imagem será exportada
                     scale: 30,//resolução espacial que será salva a imagem 
                     });
 ```
-A tarefa de exportação irá aparecer na aba 'Tasks'.
-![image](https://user-images.githubusercontent.com/41900626/180433984-1c2e8922-20f6-4af7-844a-07c94f30fb1d.png)
-
+A tarefa de exportação irá aparecer na aba '_Tasks_'.
 Em 'Exportar_classificada', clique em _Run_.
-Na janela que abre, clique em _Run_. Você pode modificar os parâmetros se julgar necessário. No momento, deixe os parametros como estão.
-![image](https://user-images.githubusercontent.com/41900626/180451150-ecbbcee8-8be8-41b1-a10b-6dd8af4c8b30.png)
+![image](https://github.com/eliasberra/Sensoriamento_remoto_GB808/assets/41900626/206737cd-0674-4c38-b434-7a201ef02438)
 
-Pronto, a imagem classificada está salva no seu Google Drive (![image](https://user-images.githubusercontent.com/41900626/180434989-c67e7765-7ddd-4e5d-8371-ea3a3e51ce0d.png)) e pode ser importada no QGIS.
+
+Na janela que abre, clique em _Run_. Pronto, a imagem classificada está salva no seu Google Drive (folder 'GB808') e pode ser importada dentro de um SIG.
 
 
 
